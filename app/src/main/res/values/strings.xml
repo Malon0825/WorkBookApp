@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">WorkBookApp</string>
+    <string name="syntax_one_instruction">Introduction:</string>
+    <string name="syntax_one_instruction_content">
+        Are you ready to embark on a journey that\'ll make you a Sentence wizard? Understanding sentence structure is like learning how to construct a skyscraper or design a video game—it\'s all about putting pieces together in the most awesome way possible. This workbook will equip you with the skills to craft sentences! So, let\'s dive in! Sentence structure refers to the arrangement and organization of words, phrases, and clauses in a sentence. Understanding sentence structure is crucial for effective communication, both in written and spoken form. Varied sentence structures make your writing more engaging and easier to understand.
+    </string>
+    <string name="quizzes_syntax_one">
+        Read each sentence carefully. Select the best answer that identifies the type of sentence based on its structure.
+    </string>
+</resources>
