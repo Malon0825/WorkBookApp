@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lessons.SyntaxActivityOne">
+    tools:context=".lessons.SyntaxActivityTwo">
 
     <View
         android:id="@+id/view"
@@ -22,7 +22,7 @@
         android:id="@+id/imageView"
         android:layout_width="337dp"
         android:layout_height="102dp"
-        android:background="@drawable/button_syntax_one"
+        android:background="@drawable/button_syntax_two"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
@@ -63,7 +63,7 @@
         android:fontFamily="sans-serif-medium"
         android:gravity="left"
         android:scrollbars="vertical"
-        android:text="@string/syntax_one_instruction_content"
+        android:text="@string/syntaxt_two_instruction"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewInstruction"
         app:layout_constraintEnd_toEndOf="@+id/textViewInstruction"
@@ -101,7 +101,7 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="1. Simple Sentence"
+                android:text="1.	Declarative Sentences"
                 tools:layout_editor_absoluteX="89dp"
                 tools:layout_editor_absoluteY="391dp" />
 
@@ -110,14 +110,14 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="2. Compound Sentences" />
+                android:text="2.	Interrogative Sentences" />
 
             <Button
                 android:id="@+id/buttonThree"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="3. Complex Sentence"
+                android:text="3.	Imperative Sentences"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="635dp" />
 
@@ -126,13 +126,12 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="4. Compound-Complex Sentence"
+                android:text="4.	Exclamatory Sentences"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="565dp" />
         </LinearLayout>
 
 
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

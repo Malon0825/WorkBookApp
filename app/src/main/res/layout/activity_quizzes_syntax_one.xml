@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuizzesActivitySyntaxOne">
+    tools:context=".quizzes.QuizzesActivitySyntaxOne"
+    style="">
 
     <View
         android:id="@+id/view"
@@ -80,17 +81,65 @@
         android:background="@drawable/layout_bg_long"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/imageViewInstruction"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imageViewInstruction"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewInstruction" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewInstruction"
+        app:layout_constraintVertical_bias="0.466" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="292dp"
-        android:layout_height="40dp"
-        android:text="1. Simple Sentence"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="271dp"
+        android:layout_height="259dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewContent"
         app:layout_constraintEnd_toEndOf="@+id/imageViewContent"
         app:layout_constraintStart_toStartOf="@+id/imageViewContent"
-        app:layout_constraintTop_toTopOf="@+id/imageViewContent" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewContent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/buttonOne"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="1. Simple Sentence"
+                tools:layout_editor_absoluteX="89dp"
+                tools:layout_editor_absoluteY="391dp" />
+
+            <Button
+                android:id="@+id/buttonTwo"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="2. Compound Sentences" />
+
+            <Button
+                android:id="@+id/buttonThree"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="3. Complex Sentence"
+                tools:layout_editor_absoluteX="79dp"
+                tools:layout_editor_absoluteY="635dp" />
+
+            <Button
+                android:id="@+id/buttonFour"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="4. Compound-Complex Sentence"
+                tools:layout_editor_absoluteX="79dp"
+                tools:layout_editor_absoluteY="565dp" />
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

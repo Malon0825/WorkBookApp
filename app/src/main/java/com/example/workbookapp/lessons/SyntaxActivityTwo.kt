@@ -3,27 +3,25 @@ package com.example.workbookapp.lessons
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.Gravity
-import android.view.Window
-import android.view.WindowManager
-import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Button
+import android.widget.TextView
 import com.example.workbookapp.R
 
-
-class SyntaxActivityOne : AppCompatActivity() {
+class SyntaxActivityTwo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_syntax_one)
+        setContentView(R.layout.activity_syntax_two)
 
         // Get a reference to the TextView object
         val textView = findViewById<TextView>(R.id.textViewInstructionContent)
 
         // Set the properties of the TextView object
         textView.apply {
-            text = getString(R.string.syntax_one_instruction_content) // Get the text from strings.xml
+            text = getString(R.string.syntaxt_two_instruction) // Get the text from strings.xml
         }
 
         // Enable scrolling on the TextView object
@@ -31,35 +29,10 @@ class SyntaxActivityOne : AppCompatActivity() {
 
 
 
-        val oneOne = findViewById<Button>(R.id.buttonOne)
-        oneOne.setOnClickListener {
+        val twoOne = findViewById<Button>(R.id.buttonOne)
+        twoOne.setOnClickListener {
 
-            val dialogBinding = layoutInflater.inflate(R.layout.syntax_one_one, null)
-
-            val myDialog = Dialog(this)
-            myDialog.setContentView(dialogBinding)
-
-            val window = myDialog.window
-            window?.setGravity(Gravity.CENTER)
-            window?.setDimAmount(0.6F)
-
-            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            myDialog.setCanceledOnTouchOutside(true)
-            myDialog.show()
-
-
-            val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
-            textViewContent.apply {
-                text = getString(R.string.sysntaxOneOne)
-            }
-
-            textViewContent.setMovementMethod(ScrollingMovementMethod())
-        }
-
-        val oneTwo = findViewById<Button>(R.id.buttonTwo)
-        oneTwo.setOnClickListener {
-
-            val dialogBinding = layoutInflater.inflate(R.layout.syntax_one_two, null)
+            val dialogBinding = layoutInflater.inflate(R.layout.syntax_two_one, null)
 
             val myDialog = Dialog(this)
             myDialog.setContentView(dialogBinding)
@@ -75,16 +48,16 @@ class SyntaxActivityOne : AppCompatActivity() {
 
             val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
             textViewContent.apply {
-                text = getString(R.string.sysntaxOneTwo)
+                text = getString(R.string.syntaxt_two_one)
             }
 
             textViewContent.setMovementMethod(ScrollingMovementMethod())
         }
 
-        val oneThree = findViewById<Button>(R.id.buttonThree)
-        oneThree.setOnClickListener {
+        val twoTwo = findViewById<Button>(R.id.buttonTwo)
+        twoTwo.setOnClickListener {
 
-            val dialogBinding = layoutInflater.inflate(R.layout.syntax_one_three, null)
+            val dialogBinding = layoutInflater.inflate(R.layout.syntax_two_two, null)
 
             val myDialog = Dialog(this)
             myDialog.setContentView(dialogBinding)
@@ -100,15 +73,16 @@ class SyntaxActivityOne : AppCompatActivity() {
 
             val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
             textViewContent.apply {
-                text = getString(R.string.syntaxOneThree)
+                text = getString(R.string.syntaxt_two_two)
             }
 
             textViewContent.setMovementMethod(ScrollingMovementMethod())
         }
 
-        val oneFour = findViewById<Button>(R.id.buttonFour)
-        oneFour.setOnClickListener {
-            val dialogBinding = layoutInflater.inflate(R.layout.syntax_one_four, null)
+        val twoThree = findViewById<Button>(R.id.buttonThree)
+        twoThree.setOnClickListener {
+
+            val dialogBinding = layoutInflater.inflate(R.layout.syntax_two_three, null)
 
             val myDialog = Dialog(this)
             myDialog.setContentView(dialogBinding)
@@ -124,11 +98,35 @@ class SyntaxActivityOne : AppCompatActivity() {
 
             val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
             textViewContent.apply {
-                text = getString(R.string.syntaxOneFour)
+                text = getString(R.string.syntaxt_two_two)
             }
 
             textViewContent.setMovementMethod(ScrollingMovementMethod())
         }
 
+        val twoFour = findViewById<Button>(R.id.buttonFour)
+        twoFour.setOnClickListener {
+
+            val dialogBinding = layoutInflater.inflate(R.layout.syntax_two_four, null)
+
+            val myDialog = Dialog(this)
+            myDialog.setContentView(dialogBinding)
+
+            val window = myDialog.window
+            window?.setGravity(Gravity.CENTER)
+            window?.setDimAmount(0.6F)
+
+            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            myDialog.setCanceledOnTouchOutside(true)
+            myDialog.show()
+
+
+            val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
+            textViewContent.apply {
+                text = getString(R.string.syntaxt_two_four)
+            }
+
+            textViewContent.setMovementMethod(ScrollingMovementMethod())
+        }
     }
 }

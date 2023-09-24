@@ -1,10 +1,510 @@
 <resources>
-    <string name="app_name">WorkBookApp</string>
+    <string name="app_name">English Workbook</string>
     <string name="syntax_one_instruction">Introduction:</string>
     <string name="syntax_one_instruction_content">
         Are you ready to embark on a journey that\'ll make you a Sentence wizard? Understanding sentence structure is like learning how to construct a skyscraper or design a video game—it\'s all about putting pieces together in the most awesome way possible. This workbook will equip you with the skills to craft sentences! So, let\'s dive in! Sentence structure refers to the arrangement and organization of words, phrases, and clauses in a sentence. Understanding sentence structure is crucial for effective communication, both in written and spoken form. Varied sentence structures make your writing more engaging and easier to understand.
     </string>
     <string name="quizzes_syntax_one">
         Read each sentence carefully. Select the best answer that identifies the type of sentence based on its structure.
+    </string>
+    <string name="sysntaxOneOne">A simple sentence carries a singular idea, emotion, or piece of information. \n\nAt its heart, it has one independent clause (subject and predicate), which means the sentence can stand alone and still make complete sense.\n\nConsider the sentence \"The moon shines.\" In this instance, \"The moon\" is the subject, and \"shines\" is the predicate. \n\nThis sentence is a complete thought and hence a simple sentence. \nIn the sentence \"My sister sings.\", \"My sister\" serves as the subject, and \"sings\" functions as the predicate.\n</string>
+    <string name="sysntaxOneTwo">A compound sentence allows you to link thoughts together using conjunctions like:
+        \'and\',
+        \'but\',
+        \'or\',
+        \'yet\',
+        \'so\',
+        \'nor\',
+        \'for\'. \n\nThis is achieved by using two independent clauses in one sentence.\n\nExamine the sentence \"The moon shines, and the stars twinkle.\" \n\nThis sentence contains two independent clauses joined by the conjunction \'and.\' \n\nIn the sentence \"My sister sings, but she doesn\'t dance.\", two independent thoughts are connected by the conjunction \'but.\'\n</string>
+    <string name="syntaxOneThree">
+        A complex sentence shows a relationship between ideas by connecting one independent clause and one dependent clause. \n\nA dependent clause, unlike an independent one, cannot stand alone. Common subordinating conjunctions that often introduce dependent clauses are: \'although\', \'because\', \'if\', \'since\', \'when\', \'while\', and many more.
+        \n\nAnalyze the sentence "When the moon shines, the ocean glows." The independent clause "the ocean glows" is given context by the dependent clause "When the moon shines." \n\nIn the sentence "Because my sister sings, she joined the choir," "she joined the choir" is the independent clause, and "Because my sister sings" is the dependent clause.
+
+    </string>
+
+    <string name="syntaxOneFour">
+        A compound-complex sentence includes at least two independent clauses and one or more dependent clauses.
+        Assess the sentence "When the moon shines, the ocean glows, and the world feels magical." \n\nIt contains two independent clauses and one dependent clause, thus qualifying as a compound-complex sentence. \n\nIn the sentence "Although my sister sings, she doesn’t dance, but she plays the guitar," there are two independent clauses and one dependent clause.
+
+    </string>
+    <string name="syntaxt_two_instruction">
+        Understanding the different types of sentences is crucial for effective communication and writing. \nSentences can serve various functions, conveying information, asking questions, expressing emotions, or issuing commands. \nIn this workbook, we will explore the four main types of sentences according to their functions.
+    </string>
+
+    <string name="syntaxt_two_one">
+        Declarative sentences are used to make statements, provide information, or express facts. \n\nThey serve the primary function of conveying information or declaring something. \n\nDeclarative sentences typically end with a period (.), and they are the most common sentence type in written and spoken language.
+        \n\nExample:
+        \n\n"The sun rises in the east."
+        \n\n"She is an excellent student."
+        \n\n"The cat is sleeping on the couch."
+
+    </string>
+
+    <string name="syntaxt_two_two">
+        Interrogative sentences are designed to ask questions and seek information. They are used to elicit responses or engage in conversations. \n\n Interrogative sentences can begin with words like who, what, when, where, why, and how, and they end with a question mark (?).
+        \n\nExample:
+        \n\n"What time does the movie start?"
+        \n\n"Where is the nearest grocery store?"
+        \n\n"How did you solve the math problem?"
+    </string>
+
+    <string name="syntaxt_two_three">
+        Imperative sentences are used to give commands, make requests, or offer suggestions. They are intended to influence others to take specific actions. \n\n Imperative sentences often do not include a subject (it\'s implied), and they usually end with a period (.) or an exclamation mark (!) for strong emphasis.
+        \n\nExamples:
+        \n\n"Please pass me the salt." (request)
+        \n\n"Close the door." (command)
+        \n\n"Let's go to the park!" (suggestion)
+
+
+    </string>
+
+    <string name="syntaxt_two_four">
+        Exclamatory sentences are used to express strong emotions, enthusiasm, surprise, or excitement. \n\nThey convey a heightened emotional state and often begin with words like what or how and end with an exclamation mark (!).
+        \n\nExample:
+        \n\n"What a beautiful sunset!"
+        \n\n"How amazing that concert was!"
+        \n\n"I can't believe we won!"
+    </string>
+
+
+    <string name="syntax_three_instruction">
+        Welcome to the exciting world of sentences! In this lesson, we\'re going on a journey to uncover the fascinating parts that make up sentences.
+        \n\nJust like a treasure hunt, we\'ll discover subjects, predicates, objects, and modifiers that will help you become a sentence expert. It's like learning the magic behind your favorite tricks!
+
+    </string>
+
+    <string name="syntax_three_one">
+        In every sentence, there are two key parts: the subject and the predicate. The subject is the part that tells us what the sentence is about, and it\'s usually a noun or pronoun. \n\nThe predicate, on the other hand, is the part that tells us what the subject is doing or what\'s happening. \nIt includes the verb and other words that describe the action. \nTo find the subject and predicate in such sentences, look for the main noun or pronoun and the main verb.
+        \n\nExample:
+        \nSentence: "She dances beautifully."
+        \nSubject: "She" (refers to the person performing the action)
+        \nPredicate: "dances beautifully" (describes the action)
+
+        \n\nSentence: "The cat with the fluffy tail sleeps soundly."
+        \nSubject: "The cat" (refers to the animal performing the action)
+        \nPredicate: "sleeps soundly" (describes the action)
+
+
+    </string>
+
+    <string name="syntax_three_two">
+        1. Simple Subjects and Predicates
+        \n\nSimple subjects are the main nouns or pronouns in a sentence, while simple predicates are the main verbs. \nThey form the core of a sentence.
+        \n\nExample:
+        \nSentence: "The sun rises early."
+        \nSimple Subject: "sun"
+        \nSimple Predicate: "rises"
+        \n\n2. Compound Subjects and Predicates
+        \n\nCompound subjects and predicates involve more than one subject or verb, adding complexity to sentences.
+        \n\nExample:
+        \nSentence: "John and Jane sing beautifully."
+        \nCompound Subject: "John and Jane"
+        \nSimple Predicate: "sing"
+
+    </string>
+
+    <string name="syntax_three_three">
+        1. Direct and Indirect Objects
+        \n\nIn some sentences, there are objects. A direct object receives the action of the verb directly, while an indirect object receives the action indirectly and answers "to whom" or "for whom" the action is done.
+        \n\nExample:
+        \nSentence: "She gave him a book."
+        \nDirect Object: "book" (receives the action directly)
+        \nIndirect Object: "him" (answers "to whom" the book was given)
+
+    </string>
+
+    <string name="syntax_three_four">
+        The object of a preposition is a noun or pronoun that follows a preposition (like "on," "in," "at") and adds details to the sentence, usually about location or direction.
+        \n\nExample:
+        \nSentence: "The book is on the table."
+        \nObject of the Preposition: "table" (provides information about the location)
+
+    </string>
+
+    <string name="syntax_three_five">
+        1.	Adjectives
+        \n\nAdjectives are words that describe or modify nouns or pronouns, adding details and qualities.
+        \n\nExample:
+        \nSentence: "The tall, green tree stands proudly."
+        \nAdjectives: "tall" and "green" (modify the noun "tree")
+        \n2.	Adverbs
+        \n\nAdverbs are words that modify verbs, adjectives, or other adverbs. They tell us how, when, where, or to what extent something happens.
+        \n\nExample:
+        \nSentence: "She ran quickly and gracefully."
+        \nAdverbs: "quickly" and "gracefully" (modify the verb "ran")
+
+    </string>
+
+
+    <string name="syntax_four_instruction">
+        Effective communication and proficient writing depend on your ability to construct sentences that convey ideas clearly and eloquently.
+        \n\nIn this lesson, we will delve into the intricate world of sentence patterns, providing you with a solid foundation to enhance your writing skills.
+        \n\nWhether you\'re a seventh grader just beginning your journey or a tenth grader refining your craft, this workbook is designed to cater to learners at various stages of proficiency.
+        \n\nAt its core, a sentence pattern is the arrangement of words in a sentence to convey a complete thought.
+        \n\nIt serves as the blueprint that guides the organization of subjects, verbs, objects, adjectives, adverbs, and other elements within a sentence.
+        \n\nSentence patterns dictate the structure and flow of your writing, influencing how effectively your ideas are communicated.
+    </string>
+
+    <string name="syntax_four_one">
+        The SV pattern consists of a subject and a verb. It\'s the simplest sentence structure.
+        \n\nExample: 	"The cat sleeps."
+        \nSubject: "The cat" (The entity performing the action)
+        \nVerb: "sleeps" (The action or state)
+
+
+
+    </string>
+
+    <string name="syntax_four_two">
+        The SVO pattern includes a subject, a verb, and an object. The subject performs the action on the object.
+        \n\nExample: 	"The dog chases the ball."
+        \nSubject: "The dog"
+        \nVerb: "chases"
+        \nObject: "the ball" (The entity receiving the action)
+
+    </string>
+
+    <string name="syntax_four_three">
+       The SVA pattern contains a subject, a verb, and an adjective that describes the subject.
+        \n\nExample: 	"The sky is blue."
+        \nSubject: "The sky"
+        \nVerb: "is"
+        \nAdjective: "blue" (Describes the subject)
+
+
+    </string>
+
+    <string name="syntax_four_four">
+        The SVA pattern comprises a subject, a verb, and an adverb that modifies the verb.
+        \n\nExample: 	"He runs quickly."
+        \nSubject: "He"
+        \nVerb: "runs"
+        \nAdverb: "quickly" (Modifies the verb, describing how he runs)
+
+
+    </string>
+
+    <string name="syntax_four_five">
+       The SVOC pattern has a subject, a verb, an object, and a complement that provides additional information about the object.
+        \n\nExample: 	"She painted the wall red."
+        \nSubject: "She"
+        \nVerb: "painted"
+        \nObject: "the wall"
+        \nComplement: "red" (Adds information about the object, specifying the color)
+
+    </string>
+
+
+    <string name="syntax_five_instruction">
+        Welcome to the "Exploring Phrases" lesson! Phrases are essential building blocks of sentences, and a good grasp of phrases can greatly improve your writing and communication skills.
+        \n\nA phrase is a group of related words that does not contain a subject and a predicate (verb and its accompanying elements) necessary for a complete sentence.
+        \n\nPhrases function as units within sentences and can serve various grammatical roles. Phrases come in different types, including noun phrases, verb phrases, adjective phrases, and adverb phrases, each with its specific role and structure in a sentence.
+
+    </string>
+
+    <string name="syntax_five_one">
+        Example: The shiny red apple
+        \n\nA noun phrase is a group of words that describe or tell more about a noun. In this case, "The shiny red apple" is a noun phrase because it gives us more information about the noun "apple."
+        \n\nIt tells us that the apple is not just any apple; it's a shiny, red apple.
+
+    </string>
+
+    <string name="syntax_five_two">
+        Example: is running in the park
+        \n\nA verb phrase is a group of words that includes the main action word (verb) and any words that help describe or add details to that action.
+        \n\nIn this case, "is running in the park" is a verb phrase because it tells us what someone or something is doing (running), and it gives us extra information about where they are doing it (in the park).
+
+    </string>
+
+    <string name="syntax_five_three">
+        Example: very tall for his age
+        \n\nAn adjective phrase is a group of words that describe or give more information about an adjective.
+        \n\nHere, "very tall for his age" is an adjective phrase because it tells us more about how tall someone is.
+        \n\nIt's not just tall; it's "very tall for his age," which means the person is exceptionally tall compared to others of the same age.
+
+
+
+    </string>
+
+    <string name="syntax_five_four">
+        Example: with great enthusiasm
+        \n\nAn adverb phrase is a group of words that provide more information about an adverb. In this case, "with great enthusiasm" is an adverb phrase because it adds detail to how something is done.
+        \n\nIt's not just done enthusiastically; it's done "with great enthusiasm," which means a lot of excitement and energy are involved.
+
+    </string>
+
+    <string name="syntax_five_five">
+        Example: under the table
+        \n\nA prepositional phrase is a group of words that begins with a preposition (like "under," "in," or "on") and tells us more about the location or relationship of things.
+        \n\nHere, "under the table" is a prepositional phrase because it tells us where something is located (under the table).
+
+    </string>
+
+    <string name="syntax_five_six">
+        Example: to explore the unknown
+        \n\nAn infinitive phrase is a group of words that starts with the word "to" followed by a base verb (like "explore").
+        \n\nIt usually represents an action that can happen in the future. In this case,
+        \n"to explore the unknown" is an infinitive phrase because it describes an action (exploring) that someone may do in the future.
+
+
+    </string>
+
+    <string name="syntax_five_seven">
+        Examples: excited by the surprise
+        \n\nA participial phrase is a group of words that includes a verb\'s past participle form (like "excited") and provides more details about the noun it\'s related to.
+        \n\nHere, "excited by the surprise" is a participial phrase because it describes how someone feels (excited) due to the surprise they received.
+
+    </string>
+
+
+    <string name="syntax_six_instruction">
+        Clauses are essential components of sentences, and mastering them is crucial for developing strong writing skills. In this lesson, we will cover the basics of independent and dependent clauses, various types of dependent clauses, and how to use them in sentences.
+        \n\nBy the end of this workbook, you\'ll be able to craft more complex and engaging sentences. Let's get started!
+        \n\nA clause is a group of words that contains a subject and a verb. It can either stand alone as a complete thought (independent clause) or rely on another clause to make sense (dependent clause).
+
+    </string>
+
+    <string name="syntax_six_one">
+        Examples:
+        \n"I love reading books."
+        \n"He played basketball."
+        \n\nIndependent clauses are clauses that can stand alone as complete sentences.
+        \nIn the first example, "I love reading books," the subject ("I") and the verb ("love reading books") create a complete thought that can be a sentence on its own.
+        \nThe same applies to the second example, "He played basketball."
+
+    </string>
+
+    <string name="syntax_six_two">
+        Examples:
+        \n"Although it rained"
+        \n"Because she was tired"
+        \n\nDependent clauses are clauses that cannot stand alone as complete sentences. In the first example, "Although it rained," we have the subordinating conjunction "Although" that makes it a dependent clause.
+        \nIt needs more information to complete the thought. The second example, "Because she was tired," also relies on additional information to make sense as it starts with the subordinating conjunction "Because."
+
+    </string>
+
+    <string name="syntax_six_two_one">
+        Examples:
+        \n"The book that I borrowed from the library is fascinating."
+        \n"The girl who won the race is my sister."
+        \n\nAdjective clauses provide additional information about nouns in sentences.
+        \nIn the first example, "that I borrowed from the library" describes which book we're talking about.
+        \nIn the second example, "who won the race" provides more information about the girl. These clauses function like adjectives, adding details to the nouns they modify.
+
+    </string>
+
+    <string name="syntax_six_two_two">
+        Examples:
+        \n"She studied hard because she wanted to pass the exam."
+        \n"He ran quickly so that he could catch the bus."
+        \n\nAdverbial clauses modify verbs, adjectives, or adverbs. In the first example, "because she wanted to pass the exam" explains why she studied hard, modifying the verb "studied."
+        \nIn the second example, "so that he could catch the bus" tells us the purpose of running quickly, modifying the verb "ran."
+
+    </string>
+
+    <string name="syntax_six_two_three">
+        Examples:
+        \n"She studied hard because she wanted to pass the exam."
+        \n"He ran quickly so that he could catch the bus."
+        \n\nAdverbial clauses modify verbs, adjectives, or adverbs. In the first example, "because she wanted to pass the exam" explains why she studied hard, modifying the verb "studied."
+        \nIn the second example, "so that he could catch the bus" tells us the purpose of running quickly, modifying the verb "ran."
+
+    </string>
+
+
+    <string name="syntax_seven_instruction">
+        Understanding subject-verb agreement is a fundamental skill in English grammar.
+        \nThe subject and verb in a sentence must agree in number (singular or plural).
+        \nThis lesson will cover the rules and exceptions of subject-verb agreement.
+
+    </string>
+
+    <string name="syntax_seven_one">
+        When the subject of a sentence is singular (referring to one person, place, thing, or idea), the verb must also be singular, typically ending in "s" in the third person singular (he, she, it).
+        \n\nExample: She writes every day.
+        \nIn this sentence, "She" is the singular subject, referring to one person. The singular verb "writes" agrees with the subject.
+        \nException: When using the singular "they," use plural verb forms.
+        \nExample: The participant expressed satisfaction with their job. They are currently in a managerial role at the organization.
+        \n"They" is a singular pronoun used in a gender-neutral context. However, it still requires a plural verb form ("are").
+
+    </string>
+
+    <string name="syntax_seven_two">
+        Plural subjects refer to more than one person, place, thing, or idea. They require plural verbs, which do not end in "s" in the third person plural (they).
+        \n\nExample: They write every day.
+        \n"They" is the plural subject, referring to multiple people. The plural verb "write" agrees with the subject.
+
+    </string>
+
+    <string name="syntax_seven_three">
+        When the subject of the sentence is composed of two or more nouns or pronouns connected by "and," use a plural verb.
+        \n\nExample: The math student and the committee members write every day.
+        \nBoth "math student" and "committee members" are part of the subject, and they are connected by "and." Since it's a compound subject, a plural verb "write" is used.
+
+
+    </string>
+
+    <string name="syntax_seven_four">
+        When a phrase comes between the subject and the verb, remember that the verb still agrees with the subject, not the noun or pronoun in the phrase following the subject of the sentence.
+        \n\nExample: The student, as well as the committee members, is excited.
+        \nEven though there is a phrase "as well as the committee members" between the subject "The student" and the verb, the verb still agrees with the singular subject "The student."
+
+    </string>
+
+    <string name="syntax_seven_five">
+        When two or more singular nouns or pronouns are connected by "or" or "nor," use a singular verb.
+        \n\nExample: The chairperson or the CEO approves the proposal before proceeding.
+        \nBoth "chairperson" and "CEO" are singular nouns connected by "or," so a singular verb "approves" is used.
+
+    </string>
+
+    <string name="syntax_seven_six">
+        When a compound subject contains both a singular and a plural noun or pronoun joined by "or" or "nor," the verb should agree with the part of the subject that is closest to the verb. This is also called the rule of proximity.
+        \n\nExample 1: The student or the committee members write every day.
+        \n"Committee members" is plural, but since "student" is closer to the verb "write," a plural verb is used.
+        \n\nExample 2: The committee members or the student writes every day.
+        \nIn this case, "student" is closer to the verb "writes," which is singular.
+
+    </string>
+
+    <string name="syntax_seven_seven">
+        Words like "each," "everyone," "nobody," etc., are singular and require a singular verb.
+        \n\nExample: Each of the participants was willing to be recorded.
+        \n"Each" is an indefinite pronoun, and it is singular. Therefore, the singular verb "was" is used.
+
+    </string>
+
+    <string name="syntax_seven_eight">
+        Noncount nouns take a singular verb. These are nouns that represent something that cannot be counted as individual units.
+        \n\nExample: Education is the key to success.
+        \n"Education" is a noncount noun, and it is treated as singular. Therefore, the singular verb "is" is used.
+
+    </string>
+
+    <string name="syntax_seven_nine">
+        Some countable nouns like "earnings," "goods," etc., only have a plural form and take a plural verb.
+        \n\nExample: The earnings for this quarter exceed expectations.
+        \n"Earnings" is a noun that only has a plural form. Therefore, the plural verb "exceed" is used.
+
+    </string>
+
+    <string name="syntax_seven_ten">
+        In sentences beginning with "there is" or "there are," the verb agrees with what follows the verb, not with "there."
+        \n\nExample: There is little administrative support.
+        \nThe subject is "little administrative support," which is singular.
+
+
+
+    </string>
+
+    <string name="syntax_seven_eleven">
+        Collective nouns, which imply more than one person but are considered singular, take a singular verb.
+        \n\nExample: The group meets every week.
+        \n"Group" is a collective noun and is treated as singular. Therefore, the singular verb "meets" is used.
+
+    </string>
+
+
+    <string name="morph_one_instruction">
+        Morphemes are the smallest units of meaning in a language. They can be words themselves or parts of words (prefixes, suffixes, and roots) that carry meaning.
+        \n\nUnderstanding morphemes is crucial for building vocabulary and grasping the structure of words in a language.
+
+    </string>
+
+    <string name="morph_one_one">
+        Example: Unhappiness contains the free morpheme "un-" and the bound morpheme "-ness."
+        \n\nIn this example, "un-" is a free morpheme that can stand alone (e.g., "undo"), while "-ness" is a bound morpheme that must attach to a root to convey meaning.
+
+
+    </string>
+
+    <string name="morph_one_two">
+        Inflectional morphemes are those affixes added to words to convey grammatical information, such as tense, number, case, or comparison.
+        \nThey don\'t change the core meaning of the word but provide crucial grammatical details.
+        \n\nExamples
+        \nIn the word cats, the "-s" is an inflectional morpheme indicating the plural form of the noun "cat."
+        \nIn happily, the "-ly" is an inflectional morpheme that turns the adjective "happy" into an adverb.
+        \n\nDerivational morphemes are affixes that create new words or modify the meanings of existing words.
+        \nThey are responsible for building vocabulary and expanding the range of words in a language.
+        \n\nExamples
+        \nIn happiness, the "-ness" is a derivational morpheme that transforms the adjective "happy" into a noun.
+        \nIn undo, the prefix "un-" is a derivational morpheme that reverses the meaning of the root "do."
+
+    </string>
+
+
+    <string name="morph_two_instruction">
+        Word formation is the process of creating new words or changing the form of existing words in a language.
+        \n\nIt plays a crucial role in expanding vocabulary and expressing ideas effectively.
+
+    </string>
+
+    <string name="morph_two_one">
+        Prefixes are affixes (word parts added to the beginning of words) that change the meaning of a word. They often indicate negation, direction, time, or degree.
+        \nExamples: Un-: It indicates negation or reverses the meaning of a word.
+        \nExample: Unhappy means not happy or lacking happiness.
+        \n\nRe-: It denotes repetition or reversal.
+        \nExample: Reread means to read again.
+        \n\nPre-: It indicates before or in advance.
+        \nExample: Preheat means to heat something beforehand.
+
+
+    </string>
+
+    <string name="morph_two_two">
+       Suffixes are affixes added to the end of words, altering their meaning or grammatical category. They can turn verbs into nouns, create adjectives, and more.
+        \n\nExamples:
+        \n-ly: This suffix is used to create adverbs.
+        \n\nExample: Quickly means at a fast pace.
+        \n-er: It can turn verbs into nouns, indicating a person who performs an action.
+        \n\nExample: Teacher is someone who teaches.
+        \n-able: It forms adjectives meaning "capable of."
+        \n\nExample: Enjoyable means capable of being enjoyed.
+
+    </string>
+
+    <string name="morph_two_three">
+        The root is the core part of a word that carries its central meaning. Prefixes and suffixes are added to roots to create more complex words.
+        \n\nExamples:
+        \nAct: The root "act" means to do or perform.
+        \n\nExample: Activate means to make something active.
+        \nFriend: The root "friend" refers to a person with whom one has a bond.
+        \n\nExample: Friendship is the state of being friends.
+        \nNation: The root "nation" indicates a community of people with shared characteristics.
+        \n\nExample: International means involving multiple nations.
+
+
+    </string>
+
+    <string name="morph_two_four">
+        Compounding involves combining two or more words to create a new word with a distinct meaning.
+        \n\nExamples
+        \nBedroom is formed by combining "bed" and "room."
+        \nToothpaste is formed by combining "tooth" and "paste."
+
+    </string>
+
+    <string name="morph_two_five">
+        Blending combines parts of two words to create a new word.
+        \n\nExamples
+        \nBrunch blends "breakfast" and "lunch."
+        \nSmog blends "smoke" and "fog."
+
+    </string>
+
+    <string name="morph_two_six">
+        Backformation creates a new word by removing an affix from an existing word.
+        \n\nExamples
+        \nEdit is backformed from editor by removing the "-or" suffix.
+        \nBurgle is backformed from burglar by removing the "-ar" suffix.
+
+    </string>
+
+    <string name="morph_two_seven">
+        Conversion changes the grammatical category of a word without adding or removing affixes.
+        \n\nExamples
+        \nEmail can be a noun (I received an email) or a verb (I will email you).
+        \nText can be a noun (I received a text) or a verb (I will text you).
+
     </string>
 </resources>
