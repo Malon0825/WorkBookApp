@@ -22,5 +22,36 @@ class SyntaxActivity : AppCompatActivity() {
             val intent = Intent(this, SyntaxActivityTwo::class.java)
             startActivity(intent)
         }
+
+        val lessonThree = findViewById<ImageButton>(R.id.imageButtonThree)
+        lessonThree.setOnClickListener {
+            val intent = Intent(this, SyntaxActivityThree::class.java)
+            startActivity(intent)
+        }
+
+        val lessonFour = findViewById<ImageButton>(R.id.imageButtonFour)
+        lessonFour.setOnClickListener {
+            val intent = Intent(this, SyntaxActivityFour::class.java)
+            startActivity(intent)
+        }
+
+        val lessonFive = findViewById<ImageButton>(R.id.imageButtonFive)
+        lessonFive.setOnClickListener {
+            val intent = Intent(this, SyntaxActivityFive::class.java)
+            startActivity(intent)
+        }
+
+        val lessonSix = findViewById<ImageButton>(R.id.imageButtonSix)
+        lessonSix.setOnClickListener {
+            val intent = Intent(this, SyntaxActivitySix::class.java)
+            startActivity(intent)
+        }
+
+        val lessonSeven = findViewById<ImageButton>(R.id.imageButtonSeven)
+        lessonSeven.setOnClickListener {
+            val intent = Intent(this, SyntaxActivitySeven::class.java)
+            startActivity(intent)
+        }
+
     }
 }

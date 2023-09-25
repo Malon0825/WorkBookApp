@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".lessons.SyntaxActivityFour">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="337dp"
+        android:layout_height="102dp"
+        android:background="@drawable/button_syntax_four"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.095" />
+
+    <ImageView
+        android:id="@+id/imageViewInstruction"
+        android:layout_width="337dp"
+        android:layout_height="206dp"
+        android:background="@drawable/layout_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.084" />
+
+    <TextView
+        android:id="@+id/textViewInstruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:textSize="20sp"
+        android:text="@string/syntax_one_instruction"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewInstruction"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewInstruction"
+        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintStart_toStartOf="@+id/imageViewInstruction"
+        app:layout_constraintTop_toTopOf="@+id/imageViewInstruction"
+        app:layout_constraintVertical_bias="0.155" />
+
+
+    <TextView
+        android:id="@+id/textViewInstructionContent"
+        android:layout_width="270dp"
+        android:layout_height="129dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="left"
+        android:scrollbars="vertical"
+        android:text="@string/syntax_four_instruction"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewInstruction"
+        app:layout_constraintEnd_toEndOf="@+id/textViewInstruction"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewInstruction"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInstruction"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageViewContent"
+        android:layout_width="337dp"
+        android:layout_height="303dp"
+        android:background="@drawable/layout_bg_long"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewInstruction"
+        app:layout_constraintStart_toStartOf="@+id/imageViewInstruction"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewInstruction" />
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="271dp"
+        android:layout_height="259dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewContent"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewContent"
+        app:layout_constraintStart_toStartOf="@+id/imageViewContent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewContent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/buttonOne"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="1.	Subject-Verb (SV)"
+                tools:layout_editor_absoluteX="89dp"
+                tools:layout_editor_absoluteY="391dp" />
+
+            <Button
+                android:id="@+id/buttonTwo"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:text="2.	Subject-Verb-Obje-ct (SVO)" />
+
+            <Button
+                android:id="@+id/buttonThree"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="3.	Subject-Verb-Adje-ctive (SVA) "
+                tools:layout_editor_absoluteX="79dp"
+                tools:layout_editor_absoluteY="635dp" />
+
+            <Button
+                android:id="@+id/buttonFour"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="4.	Subject-Verb-Adve-rb (SVA)"
+                tools:layout_editor_absoluteX="79dp"
+                tools:layout_editor_absoluteY="565dp" />
+
+            <Button
+                android:id="@+id/buttonFive"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="121dp"
+                android:text="5.	Subject-Verb-Obje-ct-Complement (SVOC)"
+                tools:layout_editor_absoluteX="79dp"
+                tools:layout_editor_absoluteY="565dp" />
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

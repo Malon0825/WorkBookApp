@@ -69,7 +69,7 @@
 
     <string name="syntax_three_instruction">
         Welcome to the exciting world of sentences! In this lesson, we\'re going on a journey to uncover the fascinating parts that make up sentences.
-        \n\nJust like a treasure hunt, we\'ll discover subjects, predicates, objects, and modifiers that will help you become a sentence expert. It's like learning the magic behind your favorite tricks!
+        \n\nJust like a treasure hunt, we will discover subjects, predicates, objects, and modifiers that will help you become a sentence expert. It is like learning the magic behind your favorite tricks!
 
     </string>
 
@@ -122,19 +122,18 @@
     </string>
 
     <string name="syntax_three_five">
-        1.	Adjectives
+        1. Adjectives
         \n\nAdjectives are words that describe or modify nouns or pronouns, adding details and qualities.
         \n\nExample:
         \nSentence: "The tall, green tree stands proudly."
         \nAdjectives: "tall" and "green" (modify the noun "tree")
-        \n2.	Adverbs
+        \n\n2.	Adverbs
         \n\nAdverbs are words that modify verbs, adjectives, or other adverbs. They tell us how, when, where, or to what extent something happens.
         \n\nExample:
         \nSentence: "She ran quickly and gracefully."
         \nAdverbs: "quickly" and "gracefully" (modify the verb "ran")
 
     </string>
-
 
     <string name="syntax_four_instruction">
         Effective communication and proficient writing depend on your ability to construct sentences that convey ideas clearly and eloquently.
@@ -194,7 +193,6 @@
 
     </string>
 
-
     <string name="syntax_five_instruction">
         Welcome to the "Exploring Phrases" lesson! Phrases are essential building blocks of sentences, and a good grasp of phrases can greatly improve your writing and communication skills.
         \n\nA phrase is a group of related words that does not contain a subject and a predicate (verb and its accompanying elements) necessary for a complete sentence.
@@ -205,7 +203,7 @@
     <string name="syntax_five_one">
         Example: The shiny red apple
         \n\nA noun phrase is a group of words that describe or tell more about a noun. In this case, "The shiny red apple" is a noun phrase because it gives us more information about the noun "apple."
-        \n\nIt tells us that the apple is not just any apple; it's a shiny, red apple.
+        \n\nIt tells us that the apple is not just any apple; it\'s a shiny, red apple.
 
     </string>
 
@@ -220,7 +218,7 @@
         Example: very tall for his age
         \n\nAn adjective phrase is a group of words that describe or give more information about an adjective.
         \n\nHere, "very tall for his age" is an adjective phrase because it tells us more about how tall someone is.
-        \n\nIt's not just tall; it's "very tall for his age," which means the person is exceptionally tall compared to others of the same age.
+        \n\nIt\'s not just tall; it\'s "very tall for his age," which means the person is exceptionally tall compared to others of the same age.
 
 
 
@@ -229,7 +227,7 @@
     <string name="syntax_five_four">
         Example: with great enthusiasm
         \n\nAn adverb phrase is a group of words that provide more information about an adverb. In this case, "with great enthusiasm" is an adverb phrase because it adds detail to how something is done.
-        \n\nIt's not just done enthusiastically; it's done "with great enthusiasm," which means a lot of excitement and energy are involved.
+        \n\nIt\'s not just done enthusiastically; it\'s done "with great enthusiasm," which means a lot of excitement and energy are involved.
 
     </string>
 
@@ -259,7 +257,7 @@
 
     <string name="syntax_six_instruction">
         Clauses are essential components of sentences, and mastering them is crucial for developing strong writing skills. In this lesson, we will cover the basics of independent and dependent clauses, various types of dependent clauses, and how to use them in sentences.
-        \n\nBy the end of this workbook, you\'ll be able to craft more complex and engaging sentences. Let's get started!
+        \n\nBy the end of this workbook, you\'ll be able to craft more complex and engaging sentences. Let\'s get started!
         \n\nA clause is a group of words that contains a subject and a verb. It can either stand alone as a complete thought (independent clause) or rely on another clause to make sense (dependent clause).
 
     </string>
@@ -288,7 +286,7 @@
         \n"The book that I borrowed from the library is fascinating."
         \n"The girl who won the race is my sister."
         \n\nAdjective clauses provide additional information about nouns in sentences.
-        \nIn the first example, "that I borrowed from the library" describes which book we're talking about.
+        \nIn the first example, "that I borrowed from the library" describes which book we\'re talking about.
         \nIn the second example, "who won the race" provides more information about the girl. These clauses function like adjectives, adding details to the nouns they modify.
 
     </string>
@@ -302,14 +300,6 @@
 
     </string>
 
-    <string name="syntax_six_two_three">
-        Examples:
-        \n"She studied hard because she wanted to pass the exam."
-        \n"He ran quickly so that he could catch the bus."
-        \n\nAdverbial clauses modify verbs, adjectives, or adverbs. In the first example, "because she wanted to pass the exam" explains why she studied hard, modifying the verb "studied."
-        \nIn the second example, "so that he could catch the bus" tells us the purpose of running quickly, modifying the verb "ran."
-
-    </string>
 
 
     <string name="syntax_seven_instruction">
@@ -339,7 +329,7 @@
     <string name="syntax_seven_three">
         When the subject of the sentence is composed of two or more nouns or pronouns connected by "and," use a plural verb.
         \n\nExample: The math student and the committee members write every day.
-        \nBoth "math student" and "committee members" are part of the subject, and they are connected by "and." Since it's a compound subject, a plural verb "write" is used.
+        \nBoth "math student" and "committee members" are part of the subject, and they are connected by "and." Since it\'s a compound subject, a plural verb "write" is used.
 
 
     </string>
@@ -432,7 +422,6 @@
 
     </string>
 
-
     <string name="morph_two_instruction">
         Word formation is the process of creating new words or changing the form of existing words in a language.
         \n\nIt plays a crucial role in expanding vocabulary and expressing ideas effectively.
@@ -462,6 +451,10 @@
         \n\nExample: Enjoyable means capable of being enjoyed.
 
     </string>
+
+
+
+
 
     <string name="morph_two_three">
         The root is the core part of a word that carries its central meaning. Prefixes and suffixes are added to roots to create more complex words.
@@ -507,4 +500,12 @@
         \nText can be a noun (I received a text) or a verb (I will text you).
 
     </string>
+
+
+
+    <string name="seven_5">Rule 5: Singular Nouns or Pronouns Connected by "or" or "nor"</string>
+
+    <string name="seven_10">Rule 10: Sentences Beginning with "There is" or "There are"</string>
+
+
 </resources>

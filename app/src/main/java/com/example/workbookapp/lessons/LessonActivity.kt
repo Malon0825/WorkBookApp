@@ -16,5 +16,11 @@ class LessonActivity : AppCompatActivity() {
             val intent = Intent(this, SyntaxActivity::class.java)
             startActivity(intent)
         }
+
+        val lesson = findViewById<ImageButton>(R.id.imageButtonMorph)
+        lesson.setOnClickListener {
+            val intent = Intent(this, MorphActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
