@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".quizzes.QuizAddRearange">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageViewContent"
+        android:layout_width="358dp"
+        android:layout_height="450dp"
+        android:background="@drawable/layout_bg_long"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.498" />
+
+    <EditText
+        android:id="@+id/et_quiz_name"
+        style="@style/TextViewStyle"
+        android:layout_width="260dp"
+        android:layout_height="64dp"
+        android:ems="10"
+        android:hint="Quiz Name..."
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewContent"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewContent"
+        app:layout_constraintStart_toStartOf="@+id/imageViewContent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewContent"
+        app:layout_constraintVertical_bias="0.083" />
+
+    <EditText
+        android:id="@+id/et_first_statement"
+        style="@style/TextViewStyle"
+        android:layout_width="260dp"
+        android:layout_height="64dp"
+        android:ems="10"
+        android:hint="First statement.."
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/et_quiz_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_quiz_name"
+        app:layout_constraintTop_toBottomOf="@+id/et_quiz_name"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/et_second_statement"
+        style="@style/TextViewStyle"
+        android:layout_width="260dp"
+        android:layout_height="64dp"
+        android:ems="10"
+        android:hint="Second statement.."
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewContent"
+        app:layout_constraintEnd_toEndOf="@+id/et_first_statement"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_first_statement"
+        app:layout_constraintTop_toBottomOf="@+id/et_first_statement"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/et_third_statement"
+        style="@style/TextViewStyle"
+        android:layout_width="260dp"
+        android:layout_height="64dp"
+        android:ems="10"
+        android:hint="Third statement.."
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewContent"
+        app:layout_constraintEnd_toEndOf="@+id/et_second_statement"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_second_statement"
+        app:layout_constraintTop_toBottomOf="@+id/et_second_statement"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <EditText
+        android:id="@+id/et_answer_statement"
+        style="@style/TextViewStyle"
+        android:layout_width="260dp"
+        android:layout_height="64dp"
+        android:ems="10"
+        android:hint="Complete statement.."
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewContent"
+        app:layout_constraintEnd_toEndOf="@+id/et_third_statement"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_third_statement"
+        app:layout_constraintTop_toBottomOf="@+id/et_third_statement"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/buttonContinue"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewContent"
+        app:layout_constraintEnd_toEndOf="@+id/et_answer_statement"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/et_answer_statement"
+        app:layout_constraintTop_toBottomOf="@+id/et_answer_statement"
+        app:layout_constraintVertical_bias="0.123" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

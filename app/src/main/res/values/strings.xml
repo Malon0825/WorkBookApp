@@ -301,7 +301,6 @@
     </string>
 
 
-
     <string name="syntax_seven_instruction">
         Understanding subject-verb agreement is a fundamental skill in English grammar.
         \nThe subject and verb in a sentence must agree in number (singular or plural).
@@ -453,9 +452,6 @@
     </string>
 
 
-
-
-
     <string name="morph_two_three">
         The root is the core part of a word that carries its central meaning. Prefixes and suffixes are added to roots to create more complex words.
         \n\nExamples:
@@ -502,10 +498,10 @@
     </string>
 
 
-
     <string name="seven_5">Rule 5: Singular Nouns or Pronouns Connected by "or" or "nor"</string>
 
     <string name="seven_10">Rule 10: Sentences Beginning with "There is" or "There are"</string>
+    <string name="instruction_rearange">Instructions: Rearrange the words in correct order to make complete sentences. e.g. \nthe fat cat / a mouse / is chasing. \nThe fat cat is chasing a mouse.</string>
 
 
 </resources>

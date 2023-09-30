@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".quizzes.QuizzesActivitySyntaxOne"
-    style="">
+    tools:context=".AdminActivity">
 
     <View
         android:id="@+id/view"
@@ -21,58 +20,56 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="337dp"
-        android:layout_height="102dp"
-        android:background="@drawable/button_syntax_one"
+        android:layout_width="335dp"
+        android:layout_height="214dp"
+        android:background="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.095" />
-
+        app:layout_constraintVertical_bias="0.106"/>
 
     <ImageView
-        android:id="@+id/imageViewContent"
-        android:layout_width="357dp"
-        android:layout_height="306dp"
-        android:background="@drawable/layout_bg_long"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
+        android:id="@+id/imageViewScrollBg"
+        android:layout_width="335dp"
+        android:layout_height="214dp"
+        android:background="@drawable/layout_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.425" />
+        app:layout_constraintVertical_bias="0.141" />
 
         <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="271dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewContent"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewContent"
-        app:layout_constraintStart_toStartOf="@+id/imageViewContent"
-        app:layout_constraintTop_toTopOf="@+id/imageViewContent">
+        android:layout_width="268dp"
+        android:layout_height="172dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewScrollBg"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewScrollBg"
+        app:layout_constraintStart_toStartOf="@+id/imageViewScrollBg"
+        app:layout_constraintTop_toTopOf="@+id/imageViewScrollBg">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <Button
-                android:id="@+id/buttonOne"
+                android:id="@+id/buttonAddQuiz"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="1. Simple Sentence"
-                tools:layout_editor_absoluteX="89dp"
-                tools:layout_editor_absoluteY="391dp" />
+                android:layout_height="55dp"
+                android:text="Add Quiz"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewInstruction"
+                app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/editTextPassword"
+                app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+                app:layout_constraintVertical_bias="0.557" />
 
 
         </LinearLayout>
-
-
     </ScrollView>
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

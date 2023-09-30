@@ -13,6 +13,39 @@
         android:theme="@style/Theme.WorkBookApp"
         tools:targetApi="31">
         <activity
+            android:name=".quizzes.QuizAddMulChoice2"
+            android:exported="false" />
+        <activity
+            android:name=".quizzes.QuizTypeRearangeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".quizzes.QuizAddRearange"
+            android:exported="false" />
+        <activity
+            android:name=".quizzes.QuizAddMulChoice7"
+            android:exported="false" />
+        <activity
+            android:name=".model.QuizzesMulChoice7Model"
+            android:exported="false" />
+        <activity
+            android:name=".quizzes.QuizAddMulChoice6"
+            android:exported="false" />
+        <activity
+            android:name=".quizzes.QuizTypeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".scores.ScoresTakenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".quizzes.QuizAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".quizzes.QuizActivityOneOne"
+            android:exported="false" />
+        <activity
             android:name=".lessons.MorphActivity"
             android:exported="false" />
         <activity
@@ -68,6 +101,9 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LandingActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.WorkBookApp">
