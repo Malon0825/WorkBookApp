@@ -1,5 +1,6 @@
 package com.example.workbookapp.quizzes
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -7,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.workbookapp.R
 import com.example.workbookapp.database.DatabaseHelper
+import com.example.workbookapp.model.QuizListModel
 import com.example.workbookapp.model.QuizzesMulChoice2Model
 import com.example.workbookapp.model.QuizzesMulChoice6Model
 
@@ -31,14 +33,16 @@ class QuizAddMulChoice2 : AppCompatActivity() {
         val continueButton= findViewById<Button>(R.id.buttonContinue)
         continueButton.setOnClickListener {
             var success : Boolean = false
-            val quiz : QuizzesMulChoice2Model = QuizzesMulChoice2Model()
 
+            val quiz = QuizzesMulChoice2Model()
             quiz.quiz_topic = topic
             quiz.quiz_name = etQuizName.text.toString()
             quiz.question = etQuestion.text.toString()
             quiz.choice_a = etChoiceA.text.toString()
             quiz.choice_b = etChoiceB.text.toString()
             quiz.answer = etAnswer.text.toString()
+
+
 
             if (etQuizName.text.toString().isNotEmpty()
                 && etQuestion.text.toString().isNotEmpty()
@@ -60,5 +64,30 @@ class QuizAddMulChoice2 : AppCompatActivity() {
             }
 
         }
+
+        val finishButton= findViewById<Button>(R.id.buttonFinish)
+        finishButton.setOnClickListener {
+
+            var successQuizList : Boolean = false
+            val quizModel = QuizListModel()
+            quizModel.topic_name = topic
+            quizModel.quiz_name = etQuizName.text.toString()
+            quizModel.quiz_model = "QuizAddMulChoice2"
+            successQuizList = dbHandler?.addALlQuizList(quizModel) as Boolean
+
+            if (successQuizList) {
+                Toast.makeText(this, "Quiz has been saved.", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, QuizTypeActivity::class.java)
+                startActivity(intent)
+            }else{
+                Toast.makeText(this, "Unsuccessful.", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, QuizTypeActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
+    }
+    override fun onBackPressed() {
+        Toast.makeText(this, "Please press finish button to save the quiz.", Toast.LENGTH_LONG).show()
     }
 }

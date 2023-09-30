@@ -5,6 +5,7 @@ class QuizzesMulChoice7Model {
     var id : Int = 0
     var quiz_topic : String? = ""
     var quiz_name : String = ""
+    var instruction : String = ""
     var question : String = ""
     var choice_a : String = ""
     var choice_b : String = ""

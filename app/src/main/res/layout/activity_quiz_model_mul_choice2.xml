@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".quizzes.QuizModelMulChoice2">
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageViewInstruction"
+        android:layout_width="354dp"
+        android:layout_height="213dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/layout_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.08" />
+
+    <TextView
+        android:id="@+id/textViewInstruction"
+        style="@style/TextViewStyle"
+        android:layout_width="268dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Instructions: \nRead each sentence carefully. Select the best answer that identifies the type of sentence based on its structure."
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewInstruction"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewInstruction"
+        app:layout_constraintStart_toStartOf="@+id/imageViewInstruction"
+        app:layout_constraintTop_toTopOf="@+id/imageViewInstruction" />
+
+    <ImageView
+        android:id="@+id/imageViewContent"
+        android:layout_width="353dp"
+        android:layout_height="478dp"
+        android:background="@drawable/layout_bg_long"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewInstruction"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textViewQuestion"
+        style="@style/TextViewStyle"
+        android:layout_width="258dp"
+        android:layout_height="114dp"
+        android:textAlignment="center"
+        android:text="1.	Jane dances gracefully."
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewContent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/imageViewContent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewInstruction"
+        app:layout_constraintVertical_bias="0.102" />
+
+    <Button
+        android:id="@+id/buttonChoiceA"
+        style="@style/ButtonStyle"
+        android:layout_width="262dp"
+        android:layout_height="wrap_content"
+        android:text="A.	Simple	"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewContent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/imageViewContent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewQuestion"
+        app:layout_constraintVertical_bias="0.115" />
+
+    <Button
+        android:id="@+id/buttonChoiceB"
+        style="@style/ButtonStyle"
+        android:layout_width="262dp"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:text="B. Compound"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/buttonChoiceA"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/buttonChoiceA"
+        app:layout_constraintTop_toBottomOf="@+id/buttonChoiceA"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

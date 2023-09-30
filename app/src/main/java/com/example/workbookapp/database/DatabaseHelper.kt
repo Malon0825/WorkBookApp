@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.example.workbookapp.model.AnswersModel
+import com.example.workbookapp.model.QuizListModel
 import com.example.workbookapp.model.QuizzesModel
 import com.example.workbookapp.model.QuizzesMulChoice2Model
 import com.example.workbookapp.model.QuizzesMulChoice6Model
@@ -20,7 +21,15 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         private val DB_NAME = "EnglishWorkbook"
         private val DB_VERSION = 1
 
+        //Global
+        private val INSTRUCTUON = "Instruction"
+
         //Quizzes table
+        private val TABLE_NAME_QUIZ_LIST = "TABLE_NAME_QUIZ_LIST"
+        private val QUIZ_LIST_ID = "QUIZ_LIST_ID"
+        private val QUIZ_LIST_QUIZ_MODEL = "QUIZ_LIST_QUIZ_MODEL"
+        private val QUIZ_LIST_QUIZ_NAME = "QUIZ_LIST_QUIZ_NAME"
+        private val QUIZ_LIST_TOPIC_NAME = "QUIZ_LIST_TOPIC_NAME"
 
         //Quiz multiple choice
         private val TABLE_NAME_SYNTAX_ONE = "TABLE_NAME_SYNTAX_ONE"
@@ -102,22 +111,26 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         private val SCORE_QUIZ_NAME = "QuizName"
         private val SCORE = "Score"
         private val DATE_TAKEN = "DateTaken"
+
     }
 
     override fun onCreate(p0: SQLiteDatabase?) {
-        val CREATE_QUIZ_MULTIPLE_CHOICE_TABLE = "CREATE TABLE $TABLE_NAME_SYNTAX_ONE ($ID INTEGER PRIMARY KEY, $TOPIC_NAME TEXT, $QUIZ_NAME TEXT, $QUESTION TEXT, $CHOICE_A TEXT, $CHOICE_B TEXT, $CHOICE_C TEXT, $CHOICE_D TEXT, $ANSWER TEXT)"
+        val CREATE_QUIZ_TABLE_NAME_QUIZ_LIST = "CREATE TABLE $TABLE_NAME_QUIZ_LIST ($QUIZ_LIST_ID INTEGER PRIMARY KEY, $QUIZ_LIST_QUIZ_MODEL TEXT, $QUIZ_LIST_QUIZ_NAME TEXT, $QUIZ_LIST_TOPIC_NAME TEXT)"
+        p0?.execSQL(CREATE_QUIZ_TABLE_NAME_QUIZ_LIST)
+
+        val CREATE_QUIZ_MULTIPLE_CHOICE_TABLE = "CREATE TABLE $TABLE_NAME_SYNTAX_ONE ($ID INTEGER PRIMARY KEY, $TOPIC_NAME TEXT, $INSTRUCTUON TEXT, $QUIZ_NAME TEXT, $QUESTION TEXT, $CHOICE_A TEXT, $CHOICE_B TEXT, $CHOICE_C TEXT, $CHOICE_D TEXT, $ANSWER TEXT)"
         p0?.execSQL(CREATE_QUIZ_MULTIPLE_CHOICE_TABLE)
 
-        val CREATE_QUIZ_MULTIPLE_CHOICE_2_TABLE = "CREATE TABLE $TABLE_NAME_QUIZ_MUL_CHOICE_2 ($ID_QUIZ_MUL_CHOICE_2 INTEGER PRIMARY KEY, $TOPIC_NAME__QUIZ_MUL_CHOICE_2 TEXT, $QUIZ_NAME__QUIZ_MUL_CHOICE_2 TEXT, $QUESTION__QUIZ_MUL_CHOICE_2 TEXT, $CHOICE_A__QUIZ_MUL_CHOICE_2 TEXT, $CHOICE_B__QUIZ_MUL_CHOICE_2 TEXT, $ANSWER__QUIZ_MUL_CHOICE_2 TEXT)"
+        val CREATE_QUIZ_MULTIPLE_CHOICE_2_TABLE = "CREATE TABLE $TABLE_NAME_QUIZ_MUL_CHOICE_2 ($ID_QUIZ_MUL_CHOICE_2 INTEGER PRIMARY KEY, $INSTRUCTUON TEXT, $TOPIC_NAME__QUIZ_MUL_CHOICE_2 TEXT, $QUIZ_NAME__QUIZ_MUL_CHOICE_2 TEXT, $QUESTION__QUIZ_MUL_CHOICE_2 TEXT, $CHOICE_A__QUIZ_MUL_CHOICE_2 TEXT, $CHOICE_B__QUIZ_MUL_CHOICE_2 TEXT, $ANSWER__QUIZ_MUL_CHOICE_2 TEXT)"
         p0?.execSQL(CREATE_QUIZ_MULTIPLE_CHOICE_2_TABLE)
 
-        val CREATE_QUIZ_MULTIPLE_CHOICE_6_TABLE = "CREATE TABLE $TABLE_NAME_QUIZ_MUL_CHOICE_6 ($ID_QUIZ_MUL_CHOICE_6 INTEGER PRIMARY KEY, $TOPIC_NAME__QUIZ_MUL_CHOICE_6 TEXT, $QUIZ_NAME__QUIZ_MUL_CHOICE_6 TEXT, $QUESTION__QUIZ_MUL_CHOICE_6 TEXT, $CHOICE_A__QUIZ_MUL_CHOICE_6 TEXT, $CHOICE_B__QUIZ_MUL_CHOICE_6 TEXT, $CHOICE_C__QUIZ_MUL_CHOICE_6 TEXT, $CHOICE_D__QUIZ_MUL_CHOICE_6 TEXT, $CHOICE_E__QUIZ_MUL_CHOICE_6 TEXT, $CHOICE_F__QUIZ_MUL_CHOICE_6 TEXT, $ANSWER__QUIZ_MUL_CHOICE_6 TEXT)"
+        val CREATE_QUIZ_MULTIPLE_CHOICE_6_TABLE = "CREATE TABLE $TABLE_NAME_QUIZ_MUL_CHOICE_6 ($ID_QUIZ_MUL_CHOICE_6 INTEGER PRIMARY KEY, $INSTRUCTUON TEXT, $TOPIC_NAME__QUIZ_MUL_CHOICE_6 TEXT, $QUIZ_NAME__QUIZ_MUL_CHOICE_6 TEXT, $QUESTION__QUIZ_MUL_CHOICE_6 TEXT, $CHOICE_A__QUIZ_MUL_CHOICE_6 TEXT, $CHOICE_B__QUIZ_MUL_CHOICE_6 TEXT, $CHOICE_C__QUIZ_MUL_CHOICE_6 TEXT, $CHOICE_D__QUIZ_MUL_CHOICE_6 TEXT, $CHOICE_E__QUIZ_MUL_CHOICE_6 TEXT, $CHOICE_F__QUIZ_MUL_CHOICE_6 TEXT, $ANSWER__QUIZ_MUL_CHOICE_6 TEXT)"
         p0?.execSQL(CREATE_QUIZ_MULTIPLE_CHOICE_6_TABLE)
 
-        val CREATE_QUIZ_MULTIPLE_CHOICE_7_TABLE = "CREATE TABLE $TABLE_NAME_QUIZ_MUL_CHOICE_7 ($ID_QUIZ_MUL_CHOICE_7 INTEGER PRIMARY KEY, $TOPIC_NAME__QUIZ_MUL_CHOICE_7 TEXT, $QUIZ_NAME__QUIZ_MUL_CHOICE_7 TEXT, $QUESTION__QUIZ_MUL_CHOICE_7 TEXT, $CHOICE_A__QUIZ_MUL_CHOICE_7 TEXT, $CHOICE_B__QUIZ_MUL_CHOICE_7 TEXT, $CHOICE_C__QUIZ_MUL_CHOICE_7 TEXT, $CHOICE_D__QUIZ_MUL_CHOICE_7 TEXT, $CHOICE_E__QUIZ_MUL_CHOICE_7 TEXT, $CHOICE_F__QUIZ_MUL_CHOICE_7 TEXT, $CHOICE_G__QUIZ_MUL_CHOICE_7 TEXT, $ANSWER__QUIZ_MUL_CHOICE_7 TEXT)"
+        val CREATE_QUIZ_MULTIPLE_CHOICE_7_TABLE = "CREATE TABLE $TABLE_NAME_QUIZ_MUL_CHOICE_7 ($ID_QUIZ_MUL_CHOICE_7 INTEGER PRIMARY KEY, $INSTRUCTUON TEXT, $TOPIC_NAME__QUIZ_MUL_CHOICE_7 TEXT, $QUIZ_NAME__QUIZ_MUL_CHOICE_7 TEXT, $QUESTION__QUIZ_MUL_CHOICE_7 TEXT, $CHOICE_A__QUIZ_MUL_CHOICE_7 TEXT, $CHOICE_B__QUIZ_MUL_CHOICE_7 TEXT, $CHOICE_C__QUIZ_MUL_CHOICE_7 TEXT, $CHOICE_D__QUIZ_MUL_CHOICE_7 TEXT, $CHOICE_E__QUIZ_MUL_CHOICE_7 TEXT, $CHOICE_F__QUIZ_MUL_CHOICE_7 TEXT, $CHOICE_G__QUIZ_MUL_CHOICE_7 TEXT, $ANSWER__QUIZ_MUL_CHOICE_7 TEXT)"
         p0?.execSQL(CREATE_QUIZ_MULTIPLE_CHOICE_7_TABLE)
 
-        val CREATE_QUIZ_REARRANGE = "CREATE TABLE $TABLE_NAME_QUIZ_REARRANGE ($ID_QUIZ_QUIZ_REARRANGE INTEGER PRIMARY KEY, $TOPIC_NAME_QUIZ_REARRANGE TEXT, $QUIZ_NAME_QUIZ_REARRANGE TEXT, $STATEMENT_ONE_QUIZ_REARRANGE TEXT, $STATEMENT_TWO_QUIZ_REARRANGE TEXT, $STATEMENT_THREE_QUIZ_REARRANGE TEXT, $STATEMENT_CORRECT_QUIZ_REARRANGE TEXT)"
+        val CREATE_QUIZ_REARRANGE = "CREATE TABLE $TABLE_NAME_QUIZ_REARRANGE ($ID_QUIZ_QUIZ_REARRANGE INTEGER PRIMARY KEY, $INSTRUCTUON TEXT, $TOPIC_NAME_QUIZ_REARRANGE TEXT, $QUIZ_NAME_QUIZ_REARRANGE TEXT, $STATEMENT_ONE_QUIZ_REARRANGE TEXT, $STATEMENT_TWO_QUIZ_REARRANGE TEXT, $STATEMENT_THREE_QUIZ_REARRANGE TEXT, $STATEMENT_CORRECT_QUIZ_REARRANGE TEXT)"
         p0?.execSQL(CREATE_QUIZ_REARRANGE)
 
         val CREATE_ANSWER_MULTIPLE_CHOICE_TABLE = "CREATE TABLE $ANSWERS_TABLE_NAME_SYNTAX_ONE ($ANSWER_ID INTEGER PRIMARY KEY, $QUIZ_NAME TEXT, $QUESTION TEXT, $CHOICE_A TEXT, $CHOICE_B TEXT, $CHOICE_C TEXT, $CHOICE_D TEXT, $ANSWER TEXT)"
@@ -129,6 +142,10 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
+        val DROP_TABLE_TABLE_NAME_QUIZ_LIST = "DROP TABLE IF EXISTS $TABLE_NAME_QUIZ_LIST"
+        p0?.execSQL(DROP_TABLE_TABLE_NAME_QUIZ_LIST)
+        onCreate(p0)
+
         val DROP_TABLE = "DROP TABLE IF EXISTS $TABLE_NAME_SYNTAX_ONE"
         p0?.execSQL(DROP_TABLE)
         onCreate(p0)
@@ -154,6 +171,28 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         onCreate(p0)
     }
 
+    fun getALlQuizList(): List<QuizListModel>{
+        val quiz_list = ArrayList<QuizListModel>()
+        val db = writableDatabase
+        val selectQuery = "SELECT * FROM $TABLE_NAME_QUIZ_LIST"
+        val cursor = db.rawQuery(selectQuery, null)
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                val quiz = QuizListModel()
+                try {
+                    quiz.id = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(QUIZ_LIST_ID)))
+                    quiz.quiz_name = cursor.getString(cursor.getColumnIndexOrThrow(QUIZ_LIST_QUIZ_NAME))
+                    quiz.quiz_model = cursor.getString(cursor.getColumnIndexOrThrow(QUIZ_LIST_QUIZ_MODEL))
+                    quiz.topic_name = cursor.getString(cursor.getColumnIndexOrThrow(QUIZ_LIST_TOPIC_NAME))
+                    quiz_list.add(quiz)
+                } catch (e: IllegalArgumentException) {
+                    Log.e("DBHelper", e.message.toString())
+                }
+            }
+        }
+        cursor.close()
+        return quiz_list
+    }
 
     fun getALlQuiz(): List<QuizzesModel>{
         val quiz_list = ArrayList<QuizzesModel>()
@@ -166,6 +205,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
                 try {
                     quiz.id = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(ID)))
                     quiz.quiz_name = cursor.getString(cursor.getColumnIndexOrThrow(QUIZ_NAME))
+                    quiz.instruction = cursor.getString(cursor.getColumnIndexOrThrow(INSTRUCTUON))
                     quiz.question = cursor.getString(cursor.getColumnIndexOrThrow(QUESTION))
                     quiz.choice_a = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_A))
                     quiz.choice_b = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_B))
@@ -183,13 +223,59 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         return quiz_list
     }
 
+    fun getALlQuizModel2(): List<QuizzesMulChoice2Model>{
+        val quiz_list = ArrayList<QuizzesMulChoice2Model>()
+        val db = writableDatabase
+        val selectQuery = "SELECT * FROM $TABLE_NAME_QUIZ_MUL_CHOICE_2"
+        val cursor = db.rawQuery(selectQuery, null)
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                val quiz = QuizzesMulChoice2Model()
+                try {
+                    quiz.id = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(ID_QUIZ_MUL_CHOICE_2)))
+                    quiz.quiz_name = cursor.getString(cursor.getColumnIndexOrThrow(QUIZ_NAME__QUIZ_MUL_CHOICE_2))
+                    quiz.instruction = cursor.getString(cursor.getColumnIndexOrThrow(INSTRUCTUON))
+                    quiz.question = cursor.getString(cursor.getColumnIndexOrThrow(QUESTION__QUIZ_MUL_CHOICE_2))
+                    quiz.choice_a = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_A__QUIZ_MUL_CHOICE_2))
+                    quiz.choice_b = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_B__QUIZ_MUL_CHOICE_2))
+                    quiz.answer = cursor.getString(cursor.getColumnIndexOrThrow(ANSWER__QUIZ_MUL_CHOICE_2))
+                    quiz_list.add(quiz)
+                } catch (e: IllegalArgumentException) {
+                    Log.e("DBHelper", e.message.toString())
+                }
+            }
+        }
+        cursor.close()
+        return quiz_list
+    }
 
+    fun addALlQuizList(quiz : QuizListModel): Boolean{ val db = this.writableDatabase
+        val values = ContentValues()
+        values.put(QUIZ_LIST_TOPIC_NAME, quiz.topic_name)
+        values.put(QUIZ_LIST_QUIZ_NAME, quiz.quiz_name)
+        values.put(QUIZ_LIST_QUIZ_MODEL, quiz.quiz_model)
+
+        var success : Boolean = false
+        try
+        {
+            val is_success = db.insertOrThrow(TABLE_NAME_QUIZ_LIST, null, values)
+            success = (is_success != 0L)
+        } catch (e: Exception)
+        {
+            Log.e("DBHelper", e.message.toString())
+        }
+        finally {
+            db.close()
+            return success
+        }
+    }
 
     fun addQuiz(quiz : QuizzesModel): Boolean{ val db = this.writableDatabase
         val values = ContentValues()
         values.put(TOPIC_NAME, quiz.quiz_topic)
         values.put(QUIZ_NAME, quiz.quiz_name)
         values.put(QUESTION, quiz.question)
+        values.put(INSTRUCTUON, quiz.instruction)
         values.put(CHOICE_A, quiz.choice_a)
         values.put(CHOICE_B, quiz.choice_b)
         values.put(CHOICE_C, quiz.choice_c)
@@ -216,6 +302,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
 
         values.put(TOPIC_NAME__QUIZ_MUL_CHOICE_2, quiz.quiz_topic)
         values.put(QUIZ_NAME__QUIZ_MUL_CHOICE_2, quiz.quiz_name)
+        values.put(INSTRUCTUON, quiz.instruction)
         values.put(QUESTION__QUIZ_MUL_CHOICE_2, quiz.question)
         values.put(CHOICE_A__QUIZ_MUL_CHOICE_2, quiz.choice_a)
         values.put(CHOICE_B__QUIZ_MUL_CHOICE_2, quiz.choice_b)
@@ -242,6 +329,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         values.put(TOPIC_NAME__QUIZ_MUL_CHOICE_6, quiz.quiz_topic)
         values.put(QUIZ_NAME__QUIZ_MUL_CHOICE_6, quiz.quiz_name)
         values.put(QUESTION__QUIZ_MUL_CHOICE_6, quiz.question)
+        values.put(INSTRUCTUON, quiz.instruction)
         values.put(CHOICE_A__QUIZ_MUL_CHOICE_6, quiz.choice_a)
         values.put(CHOICE_B__QUIZ_MUL_CHOICE_6, quiz.choice_b)
         values.put(CHOICE_C__QUIZ_MUL_CHOICE_6, quiz.choice_c)
@@ -271,6 +359,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         values.put(TOPIC_NAME__QUIZ_MUL_CHOICE_7, quiz.quiz_topic)
         values.put(QUIZ_NAME__QUIZ_MUL_CHOICE_7, quiz.quiz_name)
         values.put(QUESTION__QUIZ_MUL_CHOICE_7, quiz.question)
+        values.put(INSTRUCTUON, quiz.instruction)
         values.put(CHOICE_A__QUIZ_MUL_CHOICE_7, quiz.choice_a)
         values.put(CHOICE_B__QUIZ_MUL_CHOICE_7, quiz.choice_b)
         values.put(CHOICE_C__QUIZ_MUL_CHOICE_7, quiz.choice_c)
@@ -300,6 +389,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
 
         values.put(TOPIC_NAME_QUIZ_REARRANGE, quiz.quiz_topic)
         values.put(QUIZ_NAME_QUIZ_REARRANGE, quiz.quiz_name)
+        values.put(INSTRUCTUON, quiz.instruction)
         values.put(STATEMENT_ONE_QUIZ_REARRANGE, quiz.quiz_statement_one)
         values.put(STATEMENT_TWO_QUIZ_REARRANGE, quiz.quiz_statement_two)
         values.put(STATEMENT_THREE_QUIZ_REARRANGE, quiz.quiz_statement_three)

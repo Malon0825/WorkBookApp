@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.workbookapp.R
 import com.example.workbookapp.database.DatabaseHelper
+import com.example.workbookapp.model.QuizListModel
 import com.example.workbookapp.model.QuizzesModel
 
 class QuizAddActivity : AppCompatActivity() {
@@ -69,5 +70,31 @@ class QuizAddActivity : AppCompatActivity() {
             }
 
         }
+
+        val finishButton= findViewById<Button>(R.id.buttonFinish)
+        finishButton.setOnClickListener {
+
+            var successQuizList : Boolean = false
+            val quizModel = QuizListModel()
+            quizModel.topic_name = topic
+            quizModel.quiz_name = etQuizName.text.toString()
+            quizModel.quiz_model = "QuizAddMulChoice4"
+            successQuizList = dbHandler?.addALlQuizList(quizModel) as Boolean
+
+            if (successQuizList) {
+                Toast.makeText(this, "Quiz has been saved.", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, QuizTypeActivity::class.java)
+                startActivity(intent)
+            }else{
+                Toast.makeText(this, "Unsuccessful.", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, QuizTypeActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
+    }
+    override fun onBackPressed() {
+        Toast.makeText(this, "Please press finish button to save the quiz.", Toast.LENGTH_LONG)
+            .show()
     }
 }

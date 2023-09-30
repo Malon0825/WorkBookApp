@@ -13,6 +13,9 @@
         android:theme="@style/Theme.WorkBookApp"
         tools:targetApi="31">
         <activity
+            android:name=".quizzes.QuizModelMulChoice2"
+            android:exported="false" />
+        <activity
             android:name=".quizzes.QuizAddMulChoice2"
             android:exported="false" />
         <activity
