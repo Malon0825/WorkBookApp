@@ -24,6 +24,7 @@ class QuizAddRearange : AppCompatActivity() {
 
         dbHandler = DatabaseHelper(this)
 
+        val etInstruction = findViewById<EditText>(R.id.et_quiz_instrunction)
         val etQuizName = findViewById<EditText>(R.id.et_quiz_name)
         val etStatementOne = findViewById<EditText>(R.id.et_first_statement)
         val etStatementTwo = findViewById<EditText>(R.id.et_second_statement)
@@ -36,14 +37,16 @@ class QuizAddRearange : AppCompatActivity() {
             val quiz : QuizzesRearangeModel = QuizzesRearangeModel()
 
             quiz.quiz_topic = topic
+            quiz.instruction = etInstruction.text.toString()
             quiz.quiz_name = etQuizName.text.toString()
-            quiz.quiz_statement_one = etStatementOne.toString()
-            quiz.quiz_statement_two = etStatementTwo.toString()
-            quiz.quiz_statement_three = etStatementThree.toString()
-            quiz.quiz_statement_correct = etStatementCorrect.toString()
+            quiz.quiz_statement_one = etStatementOne.text.toString()
+            quiz.quiz_statement_two = etStatementTwo.text.toString()
+            quiz.quiz_statement_three = etStatementThree.text.toString()
+            quiz.quiz_statement_correct = etStatementCorrect.text.toString()
 
 
             if (etQuizName.text.toString().isNotEmpty()
+                && etInstruction.text.toString().isNotEmpty()
                 && etStatementOne.text.toString().isNotEmpty()
                 && etStatementThree.text.toString().isNotEmpty()
                 && etStatementTwo.text.toString().isNotEmpty()

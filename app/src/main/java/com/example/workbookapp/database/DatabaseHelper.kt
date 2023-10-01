@@ -31,7 +31,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         private val QUIZ_LIST_QUIZ_NAME = "QUIZ_LIST_QUIZ_NAME"
         private val QUIZ_LIST_TOPIC_NAME = "QUIZ_LIST_TOPIC_NAME"
 
-        //Quiz multiple choice
+        //Quiz multiple choice 4
         private val TABLE_NAME_SYNTAX_ONE = "TABLE_NAME_SYNTAX_ONE"
         private val ID = "Id"
         private val TOPIC_NAME = "TopicName"
@@ -171,11 +171,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         onCreate(p0)
     }
 
-    fun getALlQuizList(): List<QuizListModel>{
+
+    fun getALlQuizList(topic: String): List<QuizListModel>{
         val quiz_list = ArrayList<QuizListModel>()
         val db = writableDatabase
-        val selectQuery = "SELECT * FROM $TABLE_NAME_QUIZ_LIST"
-        val cursor = db.rawQuery(selectQuery, null)
+        val selectQuery = "SELECT * FROM $TABLE_NAME_QUIZ_LIST WHERE $QUIZ_LIST_TOPIC_NAME = ?"
+        val cursor = db.rawQuery(selectQuery, arrayOf(topic))
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 val quiz = QuizListModel()
@@ -194,11 +195,44 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         return quiz_list
     }
 
-    fun getALlQuiz(): List<QuizzesModel>{
+    //Fix the date_take data is null, score_id is also null
+    fun getALlScoreList(): List<ScoreModel>{
+        val score_list = ArrayList<ScoreModel>()
+        val db = writableDatabase
+        val selectQuery = "SELECT * FROM $TABLE_NAME_SCORES"
+        val cursor = db.rawQuery(selectQuery, null)
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                val quiz = ScoreModel()
+                try {
+                    val dateTakenColumnIndex = cursor.getColumnIndexOrThrow(DATE_TAKEN)
+                    if (!cursor.isNull(dateTakenColumnIndex)) {
+                        quiz.dateTaken = cursor.getString(dateTakenColumnIndex)
+                    } else {
+                        Log.e("DBHelper", "DateTaken is null for score_id ${quiz.score_id}")
+                    }
+//                    quiz.score_id = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(SCORE_ID)))
+//                    quiz.quiz_name = cursor.getString(cursor.getColumnIndexOrThrow(SCORE_QUIZ_NAME))
+//                    quiz.score = cursor.getString(cursor.getColumnIndexOrThrow(SCORE))
+//                    quiz.dateTaken = cursor.getString(cursor.getColumnIndexOrThrow(DATE_TAKEN))
+//                    Log.e("DBHelper Date: ", quiz.dateTaken)
+//                    score_list.add(quiz)
+                } catch (e: IllegalArgumentException) {
+                    Log.e("DBHelper", e.message.toString())
+                }
+
+            }
+        }
+        cursor.close()
+        return score_list
+    }
+
+    //Multiple choice (4)
+    fun getALlQuiz(quiz_name: String, topic: String): List<QuizzesModel>{
         val quiz_list = ArrayList<QuizzesModel>()
         val db = writableDatabase
-        val selectQuery = "SELECT * FROM $TABLE_NAME_SYNTAX_ONE"
-        val cursor = db.rawQuery(selectQuery, null)
+        val selectQuery = "SELECT * FROM $TABLE_NAME_SYNTAX_ONE WHERE $TOPIC_NAME = ? AND $QUIZ_NAME = ?"
+        val cursor = db.rawQuery(selectQuery, arrayOf(topic, quiz_name))
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 val quiz = QuizzesModel()
@@ -223,11 +257,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         return quiz_list
     }
 
-    fun getALlQuizModel2(): List<QuizzesMulChoice2Model>{
+    //Multiple choice (2)
+    fun getALlQuizModel2(quiz_name: String, topic: String): List<QuizzesMulChoice2Model>{
         val quiz_list = ArrayList<QuizzesMulChoice2Model>()
         val db = writableDatabase
-        val selectQuery = "SELECT * FROM $TABLE_NAME_QUIZ_MUL_CHOICE_2"
-        val cursor = db.rawQuery(selectQuery, null)
+        val selectQuery = "SELECT * FROM $TABLE_NAME_QUIZ_MUL_CHOICE_2 WHERE $TOPIC_NAME__QUIZ_MUL_CHOICE_2 = ? AND $QUIZ_NAME__QUIZ_MUL_CHOICE_2 = ?"
+        val cursor = db.rawQuery(selectQuery, arrayOf(topic, quiz_name))
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 val quiz = QuizzesMulChoice2Model()
@@ -249,6 +284,99 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         return quiz_list
     }
 
+    //Multiple choice (6)
+    fun getALlQuizModel6(quiz_name: String, topic: String): List<QuizzesMulChoice6Model>{
+        val quiz_list = ArrayList<QuizzesMulChoice6Model>()
+        val db = writableDatabase
+        val selectQuery = "SELECT * FROM $TABLE_NAME_QUIZ_MUL_CHOICE_6 WHERE $TOPIC_NAME__QUIZ_MUL_CHOICE_6 = ? AND $QUIZ_NAME__QUIZ_MUL_CHOICE_6 = ?"
+        val cursor = db.rawQuery(selectQuery, arrayOf(topic, quiz_name))
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                val quiz = QuizzesMulChoice6Model()
+                try {
+                    quiz.id = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(ID_QUIZ_MUL_CHOICE_6)))
+                    quiz.quiz_name = cursor.getString(cursor.getColumnIndexOrThrow(QUIZ_NAME__QUIZ_MUL_CHOICE_6))
+                    quiz.instruction = cursor.getString(cursor.getColumnIndexOrThrow(INSTRUCTUON))
+                    quiz.question = cursor.getString(cursor.getColumnIndexOrThrow(QUESTION__QUIZ_MUL_CHOICE_6))
+                    quiz.choice_a = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_A__QUIZ_MUL_CHOICE_6))
+                    quiz.choice_b = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_B__QUIZ_MUL_CHOICE_6))
+                    quiz.choice_c = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_C__QUIZ_MUL_CHOICE_6))
+                    quiz.choice_d = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_D__QUIZ_MUL_CHOICE_6))
+                    quiz.choice_e = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_E__QUIZ_MUL_CHOICE_6))
+                    quiz.choice_f = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_F__QUIZ_MUL_CHOICE_6))
+                    quiz.answer = cursor.getString(cursor.getColumnIndexOrThrow(ANSWER__QUIZ_MUL_CHOICE_6))
+                    quiz_list.add(quiz)
+                } catch (e: IllegalArgumentException) {
+                    Log.e("DBHelper", e.message.toString())
+                }
+            }
+        }
+        cursor.close()
+        return quiz_list
+    }
+
+    //Multiple choice (7)
+    fun getALlQuizModel7(quiz_name: String, topic: String): List<QuizzesMulChoice7Model>{
+        val quiz_list = ArrayList<QuizzesMulChoice7Model>()
+        val db = writableDatabase
+        val selectQuery = "SELECT * FROM $TABLE_NAME_QUIZ_MUL_CHOICE_7 WHERE $TOPIC_NAME__QUIZ_MUL_CHOICE_7 = ? AND $QUIZ_NAME__QUIZ_MUL_CHOICE_7 = ?"
+        val cursor = db.rawQuery(selectQuery, arrayOf(topic, quiz_name))
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                val quiz = QuizzesMulChoice7Model()
+                try {
+                    quiz.id = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(ID_QUIZ_MUL_CHOICE_7)))
+                    quiz.quiz_name = cursor.getString(cursor.getColumnIndexOrThrow(QUIZ_NAME__QUIZ_MUL_CHOICE_7))
+                    quiz.instruction = cursor.getString(cursor.getColumnIndexOrThrow(INSTRUCTUON))
+                    quiz.question = cursor.getString(cursor.getColumnIndexOrThrow(QUESTION__QUIZ_MUL_CHOICE_7))
+                    quiz.choice_a = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_A__QUIZ_MUL_CHOICE_7))
+                    quiz.choice_b = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_B__QUIZ_MUL_CHOICE_7))
+                    quiz.choice_c = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_C__QUIZ_MUL_CHOICE_7))
+                    quiz.choice_d = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_D__QUIZ_MUL_CHOICE_7))
+                    quiz.choice_e = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_E__QUIZ_MUL_CHOICE_7))
+                    quiz.choice_f = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_F__QUIZ_MUL_CHOICE_7))
+                    quiz.choice_g = cursor.getString(cursor.getColumnIndexOrThrow(CHOICE_G__QUIZ_MUL_CHOICE_7))
+                    quiz.answer = cursor.getString(cursor.getColumnIndexOrThrow(ANSWER__QUIZ_MUL_CHOICE_7))
+                    quiz_list.add(quiz)
+                } catch (e: IllegalArgumentException) {
+                    Log.e("DBHelper", e.message.toString())
+                }
+            }
+        }
+        cursor.close()
+        return quiz_list
+    }
+
+    //Rearrange quiz
+    fun getQuizRearrange(quiz_name: String, topic: String): List<QuizzesRearangeModel> {
+        val quiz_list = ArrayList<QuizzesRearangeModel>()
+        val db = writableDatabase
+        val selectQuery = "SELECT * FROM $TABLE_NAME_QUIZ_REARRANGE WHERE $TOPIC_NAME_QUIZ_REARRANGE = ? AND $QUIZ_NAME_QUIZ_REARRANGE = ?"
+        val cursor = db.rawQuery(selectQuery, arrayOf(topic, quiz_name))
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                val quiz = QuizzesRearangeModel()
+                try {
+                    quiz.id = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(ID_QUIZ_QUIZ_REARRANGE)))
+                    quiz.quiz_name = cursor.getString(cursor.getColumnIndexOrThrow(QUIZ_NAME_QUIZ_REARRANGE))
+                    quiz.quiz_topic = cursor.getString(cursor.getColumnIndexOrThrow(TOPIC_NAME_QUIZ_REARRANGE))
+                    quiz.instruction = cursor.getString(cursor.getColumnIndexOrThrow(INSTRUCTUON))
+                    quiz.quiz_statement_one = cursor.getString(cursor.getColumnIndexOrThrow(STATEMENT_ONE_QUIZ_REARRANGE))
+                    quiz.quiz_statement_two = cursor.getString(cursor.getColumnIndexOrThrow(STATEMENT_TWO_QUIZ_REARRANGE))
+                    quiz.quiz_statement_three = cursor.getString(cursor.getColumnIndexOrThrow(STATEMENT_THREE_QUIZ_REARRANGE))
+                    quiz.quiz_statement_correct = cursor.getString(cursor.getColumnIndexOrThrow(STATEMENT_CORRECT_QUIZ_REARRANGE))
+                    quiz_list.add(quiz)
+                } catch (e: IllegalArgumentException) {
+                    Log.e("DBHelper", e.message.toString())
+                }
+            }
+        }
+        cursor.close()
+        return quiz_list
+    }
+
+
+    //Adding quiz to identify the topic
     fun addALlQuizList(quiz : QuizListModel): Boolean{ val db = this.writableDatabase
         val values = ContentValues()
         values.put(QUIZ_LIST_TOPIC_NAME, quiz.topic_name)
@@ -270,6 +398,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         }
     }
 
+
+    //Add quiz multiple choice (4)
     fun addQuiz(quiz : QuizzesModel): Boolean{ val db = this.writableDatabase
         val values = ContentValues()
         values.put(TOPIC_NAME, quiz.quiz_topic)
@@ -297,6 +427,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         }
     }
 
+    //Add quiz multiple choice (2)
     fun addQuizMulChoice2(quiz : QuizzesMulChoice2Model): Boolean{ val db = this.writableDatabase
         val values = ContentValues()
 
@@ -323,6 +454,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         }
     }
 
+    //Add quiz multiple choice (6)
     fun addQuizMulChoice6(quiz : QuizzesMulChoice6Model): Boolean{ val db = this.writableDatabase
         val values = ContentValues()
 
@@ -353,6 +485,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         }
     }
 
+    //Add quiz multiple choice (7)
     fun addQuizMulChoice7(quiz : QuizzesMulChoice7Model): Boolean{ val db = this.writableDatabase
         val values = ContentValues()
 
@@ -384,6 +517,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         }
     }
 
+    //Add quiz rearrange
     fun addQuizRearrange(quiz : QuizzesRearangeModel): Boolean{ val db = this.writableDatabase
         val values = ContentValues()
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".quizzes.QuizActivityOneOne">
+    tools:context=".quizzes.QuizModelMulChoice7">
 
 
     <View
@@ -27,10 +27,10 @@
         android:background="@drawable/layout_bg"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.08" />
+        app:layout_constraintVertical_bias="0.057" />
 
     <TextView
         android:id="@+id/textViewInstruction"
@@ -69,61 +69,80 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewInstruction"
         app:layout_constraintVertical_bias="0.102" />
 
-    <Button
-        android:id="@+id/buttonChoiceA"
-        style="@style/ButtonStyle"
-        android:layout_width="262dp"
-        android:layout_height="wrap_content"
-        android:text="A.	Simple	"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewContent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="@+id/imageViewContent"
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="259dp"
+        android:layout_height="277dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewContent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewQuestion"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewQuestion"
         app:layout_constraintTop_toBottomOf="@+id/textViewQuestion"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintVertical_bias="0.183">
 
-    <Button
-        android:id="@+id/buttonChoiceB"
-        style="@style/ButtonStyle"
-        android:layout_width="262dp"
-        android:textSize="15sp"
-        android:layout_height="wrap_content"
-        android:text="B. Compound"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="@+id/buttonChoiceA"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/buttonChoiceA"
-        app:layout_constraintTop_toBottomOf="@+id/buttonChoiceA"
-        app:layout_constraintVertical_bias="0.0" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonChoiceC"
-        style="@style/ButtonStyle"
-        android:layout_width="262dp"
-        android:textSize="15sp"
-        android:layout_height="wrap_content"
-        android:text="C. Complex"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/buttonChoiceB"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/buttonChoiceB"
-        app:layout_constraintTop_toBottomOf="@+id/buttonChoiceB"
-        app:layout_constraintVertical_bias="0.0" />
+            <Button
+                android:id="@+id/buttonChoiceA"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A.	Simple	"
+                android:textSize="15sp"/>
 
-    <Button
-        android:id="@+id/buttonChoiceD"
-        style="@style/ButtonStyle"
-        android:layout_width="262dp"
-        android:textSize="15sp"
-        android:layout_height="wrap_content"
-        android:text="D. Compound-Complex"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/buttonChoiceC"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/buttonChoiceC"
-        app:layout_constraintTop_toBottomOf="@+id/buttonChoiceC"
-        app:layout_constraintVertical_bias="0.0" />
+            <Button
+                android:id="@+id/buttonChoiceB"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:textSize="15sp"
+                android:layout_height="wrap_content"
+                android:text="B. Compound" />
+
+            <Button
+                android:id="@+id/buttonChoiceC"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:textSize="15sp"
+                android:layout_height="wrap_content"
+                android:text="C. Complex" />
+
+            <Button
+                android:id="@+id/buttonChoiceD"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:textSize="15sp"
+                android:layout_height="wrap_content"
+                android:text="D. Compound-Complex" />
+
+            <Button
+                android:id="@+id/buttonChoiceE"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="E. Complex"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/buttonChoiceF"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="F. Compound-Complex"
+                android:textSize="15sp"/>
+
+            <Button
+                android:id="@+id/buttonChoiceG"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="G. Compound-Complex"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

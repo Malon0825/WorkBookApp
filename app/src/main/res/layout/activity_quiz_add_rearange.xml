@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/imageViewContent"
-        android:layout_width="358dp"
-        android:layout_height="450dp"
+        android:layout_width="353dp"
+        android:layout_height="526dp"
         android:background="@drawable/layout_bg_long"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/view"
@@ -45,6 +45,21 @@
         app:layout_constraintVertical_bias="0.083" />
 
     <EditText
+        android:id="@+id/et_quiz_instrunction"
+        style="@style/TextViewStyle"
+        android:layout_width="260dp"
+        android:layout_height="64dp"
+        android:ems="10"
+        android:hint="Instruction..."
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewContent"
+        app:layout_constraintEnd_toEndOf="@+id/et_quiz_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_quiz_name"
+        app:layout_constraintTop_toBottomOf="@+id/et_quiz_name"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
         android:id="@+id/et_first_statement"
         style="@style/TextViewStyle"
         android:layout_width="260dp"
@@ -52,11 +67,10 @@
         android:ems="10"
         android:hint="First statement.."
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/et_quiz_name"
+        app:layout_constraintEnd_toEndOf="@+id/et_quiz_instrunction"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/et_quiz_name"
-        app:layout_constraintTop_toBottomOf="@+id/et_quiz_name"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/et_quiz_instrunction"
+        app:layout_constraintTop_toBottomOf="@+id/et_quiz_instrunction" />
 
     <EditText
         android:id="@+id/et_second_statement"

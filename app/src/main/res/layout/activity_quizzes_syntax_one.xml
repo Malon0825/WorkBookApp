@@ -57,14 +57,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/buttonOne"
-                style="@style/ButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="1. Simple Sentence"
-                tools:layout_editor_absoluteX="89dp"
-                tools:layout_editor_absoluteY="391dp" />
 
 
         </LinearLayout>

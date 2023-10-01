@@ -55,6 +55,14 @@
                 android:ems="10"
                 android:hint="Quiz Name..."
                 android:inputType="text" />
+            <EditText
+                android:id="@+id/et_quiz_instrunction"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:ems="10"
+                android:hint="Instruction..."
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/et_question"

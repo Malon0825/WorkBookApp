@@ -9,31 +9,30 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
-import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.workbookapp.R
 import com.example.workbookapp.database.DatabaseHelper
-import com.example.workbookapp.lessons.SyntaxActivityOne
 import com.example.workbookapp.model.AnswersModel
 import com.example.workbookapp.model.QuizzesModel
+import com.example.workbookapp.model.QuizzesMulChoice6Model
 import com.example.workbookapp.model.ScoreModel
-import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class QuizActivityOneOne : AppCompatActivity() {
+class QuizModelMulChoice6 : AppCompatActivity() {
 
     var dbHandler : DatabaseHelper = DatabaseHelper(this)
-    var questionList : List<QuizzesModel> = ArrayList<QuizzesModel>()
-    private var correctSound : MediaPlayer ?= null
-    private var wrongSound : MediaPlayer ?= null
+    var questionList : List<QuizzesMulChoice6Model> = ArrayList<QuizzesMulChoice6Model>()
+    private var correctSound : MediaPlayer?= null
+    private var wrongSound : MediaPlayer?= null
     var quiz_name : String? = ""
     var topic : String? = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quiz_one_one)
+        setContentView(R.layout.activity_quiz_model_mul_choice6)
 
         quiz_name = intent.getStringExtra("quiz_name")
         topic = intent.getStringExtra("topic")
@@ -59,6 +58,8 @@ class QuizActivityOneOne : AppCompatActivity() {
         val buttonChoiceB = findViewById<Button>(R.id.buttonChoiceB)
         val buttonChoiceC = findViewById<Button>(R.id.buttonChoiceC)
         val buttonChoiceD = findViewById<Button>(R.id.buttonChoiceD)
+        val buttonChoiceE = findViewById<Button>(R.id.buttonChoiceE)
+        val buttonChoiceF = findViewById<Button>(R.id.buttonChoiceF)
         var questionAnswer = ""
 
         val currentDate = Date()
@@ -73,10 +74,13 @@ class QuizActivityOneOne : AppCompatActivity() {
             if (currentQuestionIndex < questionList.size) {
                 val question = questionList[currentQuestionIndex]
                 textViewQuestion.text = question.question
+                textViewInstruction.text = question.instruction
                 buttonChoiceA.text = question.choice_a
                 buttonChoiceB.text = question.choice_b
                 buttonChoiceC.text = question.choice_c
                 buttonChoiceD.text = question.choice_d
+                buttonChoiceE.text = question.choice_e
+                buttonChoiceF.text = question.choice_f
                 questionAnswer = question.answer
                 quizName = question.quiz_name
             } else {
@@ -217,6 +221,56 @@ class QuizActivityOneOne : AppCompatActivity() {
 
         }
 
+        buttonChoiceE.setOnClickListener {
+            val question = questionList[currentQuestionIndex]
+            answer.quiz_name = question.question
+            answer.question = textViewQuestion.text.toString()
+            answer.answer_answer = buttonChoiceE.text.toString()
+
+            success = dbHandler?.addAnswer(answer) as Boolean
+
+            if (success) {
+                if (questionAnswer == answer.answer_answer) {
+                    currentCorrectAnswerIndex++
+                    correctSound?.start()
+                    Toast.makeText(this, "Your answer is correct.", Toast.LENGTH_SHORT).show()
+                }else{
+                    wrongSound?.start()
+                    Toast.makeText(this, "The correct answer is " + questionAnswer, Toast.LENGTH_SHORT).show()
+                }
+                currentQuestionIndex++
+                showQuestion()
+            } else {
+                Toast.makeText(this, "Answer not saved.", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+        buttonChoiceF.setOnClickListener {
+            val question = questionList[currentQuestionIndex]
+            answer.quiz_name = question.question
+            answer.question = textViewQuestion.text.toString()
+            answer.answer_answer = buttonChoiceF.text.toString()
+
+            success = dbHandler?.addAnswer(answer) as Boolean
+
+            if (success) {
+                if (questionAnswer == answer.answer_answer) {
+                    currentCorrectAnswerIndex++
+                    correctSound?.start()
+                    Toast.makeText(this, "Your answer is correct.", Toast.LENGTH_SHORT).show()
+                }else{
+                    wrongSound?.start()
+                    Toast.makeText(this, "The correct answer is " + questionAnswer, Toast.LENGTH_SHORT).show()
+                }
+                currentQuestionIndex++
+                showQuestion()
+            } else {
+                Toast.makeText(this, "Answer not saved.", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
         showQuestion()
     }
 
@@ -227,6 +281,6 @@ class QuizActivityOneOne : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun fetchList(){
-        questionList = dbHandler!!.getALlQuiz(quiz_name.toString(), topic.toString())
+        questionList = dbHandler!!.getALlQuizModel6(quiz_name.toString(), topic.toString())
     }
 }

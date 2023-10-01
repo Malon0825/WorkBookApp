@@ -6,4 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".scores.ScoresActivity">
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageViewContent"
+        android:layout_width="335dp"
+        android:layout_height="420dp"
+        android:background="@drawable/layout_bg_long"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.425" />
+
+
+    <TextView
+        android:id="@+id/textViewQuizName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Quiz Name / Score / Date"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewContent"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewContent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/imageViewContent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewContent"
+        app:layout_constraintVertical_bias="0.088" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="270dp"
+        android:layout_height="293dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewContent"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewContent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/imageViewContent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewQuizName"
+        app:layout_constraintVertical_bias="0.322">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutScoreList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

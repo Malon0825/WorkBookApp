@@ -19,4 +19,12 @@
         <item name="android:textColor">@color/black</item>
         <item name="fontFamily">sans-serif-black</item>
     </style>
+
+    <style name="ButtonStyleQuizName">
+        <item name="android:backgroundTint">@color/background</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:height">100dp</item>
+        <item name="android:width">280dp</item>
+    </style>
 </resources>

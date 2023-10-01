@@ -15,7 +15,10 @@ import com.example.workbookapp.model.QuizzesModel
 class QuizAddActivity : AppCompatActivity() {
 
     var dbHandler : DatabaseHelper ?= null
+    var topicGlobal  = ""
+    var quizNameGlobal  = ""
 
+    /////// Fix the onBackPressed listener to not save if the fields are empty!!///////////////////////////////////////
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_add)
@@ -25,6 +28,7 @@ class QuizAddActivity : AppCompatActivity() {
         dbHandler = DatabaseHelper(this)
 
         val etQuizName = findViewById<EditText>(R.id.et_quiz_name)
+        val etInstruction = findViewById<EditText>(R.id.et_quiz_instrunction)
         val etQuestion = findViewById<EditText>(R.id.et_question)
         val etChoiceA = findViewById<EditText>(R.id.et_choice_a)
         val etChoiceB = findViewById<EditText>(R.id.et_choice_b)
@@ -38,6 +42,7 @@ class QuizAddActivity : AppCompatActivity() {
             val quiz : QuizzesModel = QuizzesModel()
 
             quiz.quiz_topic = topic
+            quiz.instruction = etInstruction.text.toString()
             quiz.quiz_name = etQuizName.text.toString()
             quiz.question = etQuestion.text.toString()
             quiz.choice_a = etChoiceA.text.toString()
@@ -49,6 +54,7 @@ class QuizAddActivity : AppCompatActivity() {
 
 
             if (etQuizName.text.toString().isNotEmpty()
+                && etInstruction.text.toString().isNotEmpty()
                 && etQuestion.text.toString().isNotEmpty()
                 && etChoiceA.text.toString().isNotEmpty()
                 && etChoiceB.text.toString().isNotEmpty()
@@ -57,6 +63,9 @@ class QuizAddActivity : AppCompatActivity() {
                 && etAnswer.text.toString().isNotEmpty())
             {
                 success = dbHandler?.addQuiz(quiz) as Boolean
+
+                topicGlobal = topic.toString()
+                quizNameGlobal = etQuizName.text.toString()
 
                 if (success) {
                     etQuestion.setText("")
@@ -81,6 +90,7 @@ class QuizAddActivity : AppCompatActivity() {
             quizModel.quiz_model = "QuizAddMulChoice4"
             successQuizList = dbHandler?.addALlQuizList(quizModel) as Boolean
 
+
             if (successQuizList) {
                 Toast.makeText(this, "Quiz has been saved.", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, QuizTypeActivity::class.java)
@@ -93,8 +103,24 @@ class QuizAddActivity : AppCompatActivity() {
 
         }
     }
+
     override fun onBackPressed() {
-        Toast.makeText(this, "Please press finish button to save the quiz.", Toast.LENGTH_LONG)
-            .show()
+        var successQuizList : Boolean = false
+        val quizModel = QuizListModel()
+        quizModel.topic_name = topicGlobal
+        quizModel.quiz_name = quizNameGlobal
+        quizModel.quiz_model = "QuizAddMulChoice4"
+        successQuizList = dbHandler?.addALlQuizList(quizModel) as Boolean
+
+        if (successQuizList) {
+            Toast.makeText(this, "Quiz has been saved.", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, QuizTypeActivity::class.java)
+            startActivity(intent)
+        }else{
+            Toast.makeText(this, "Unsuccessful.", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, QuizTypeActivity::class.java)
+            startActivity(intent)
+        }
     }
+
 }

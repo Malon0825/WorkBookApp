@@ -24,6 +24,7 @@ class QuizAddMulChoice2 : AppCompatActivity() {
 
         dbHandler = DatabaseHelper(this)
 
+        val etInstruction = findViewById<EditText>(R.id.et_quiz_instrunction)
         val etQuizName = findViewById<EditText>(R.id.et_quiz_name)
         val etQuestion = findViewById<EditText>(R.id.et_question)
         val etChoiceA = findViewById<EditText>(R.id.et_choice_a)
@@ -36,6 +37,7 @@ class QuizAddMulChoice2 : AppCompatActivity() {
 
             val quiz = QuizzesMulChoice2Model()
             quiz.quiz_topic = topic
+            quiz.instruction = etInstruction.text.toString()
             quiz.quiz_name = etQuizName.text.toString()
             quiz.question = etQuestion.text.toString()
             quiz.choice_a = etChoiceA.text.toString()
@@ -45,6 +47,7 @@ class QuizAddMulChoice2 : AppCompatActivity() {
 
 
             if (etQuizName.text.toString().isNotEmpty()
+                && etInstruction.text.toString().isNotEmpty()
                 && etQuestion.text.toString().isNotEmpty()
                 && etChoiceA.text.toString().isNotEmpty()
                 && etChoiceB.text.toString().isNotEmpty()
