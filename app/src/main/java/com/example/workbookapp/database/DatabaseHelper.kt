@@ -4,6 +4,8 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.os.Environment
+import android.os.FileUtils
 import android.util.Log
 import com.example.workbookapp.model.AnswersModel
 import com.example.workbookapp.model.QuizListModel
@@ -14,12 +16,23 @@ import com.example.workbookapp.model.QuizzesMulChoice7Model
 import com.example.workbookapp.model.QuizzesRearangeModel
 import com.example.workbookapp.model.ScoreModel
 import com.example.workbookapp.quizzes.QuizAddMulChoice2
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
+import org.json.JSONObject
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.IOException
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
+    val dbFirestore = Firebase.firestore
 
     companion object{
         private val DB_NAME = "EnglishWorkbook"
         private val DB_VERSION = 1
+
+        const val DB_FILEPATH = "/data/data/com.example.workbookapp/databases/EnglishWorkbook"
 
         //Global
         private val INSTRUCTUON = "Instruction"
@@ -170,6 +183,88 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         p0?.execSQL(DROP_TABLE_SCORE)
         onCreate(p0)
     }
+
+
+    @Throws(IOException::class)
+    fun copyFile(sourceFile: File, destFile: File) {
+        FileInputStream(sourceFile).use { input ->
+            FileOutputStream(destFile).use { output ->
+                input.channel.transferTo(0, input.channel.size(), output.channel)
+            }
+        }
+    }
+
+    @Throws(IOException::class)
+    fun exportDatabase(dbPath: String): Boolean {
+        close()
+        val newDb = File(dbPath)
+        val oldDb = File(DB_FILEPATH)
+        if (newDb.exists()) {
+            // Change the destination path to the path of the destination file.
+            copyFile(oldDb, File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "EnglishWorkbook"))
+            writableDatabase.close()
+            return true
+        }
+        return false
+    }
+
+    @Throws(IOException::class)
+    fun importDatabase(dbPath: String): Boolean {
+        close()
+        val newDb = File(dbPath)
+        val oldDb = File(DB_FILEPATH)
+        // Check if the new database file exists.
+        if (newDb.exists()) {
+            Log.e("Import:", "Entered")
+            try {
+                // Delete the old database file.
+                oldDb.delete()
+                // Copy the new database file to the db file path.
+               // copyFile(File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "EnglishWorkbook"), oldDb)
+                copyFile(oldDb, File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "EnglishWorkbook"))
+                Log.e("ImportDatabaseHelper:", "Success")
+            } catch (e: IllegalArgumentException){
+                Log.e("ImportDatabaseHelper:", e.message.toString())
+            }finally {
+                writableDatabase.close()
+            }
+
+//            // Open the database at the db file path.
+//            val database = openDatabase(DB_FILEPATH)
+//
+//            // Close the database.
+//            database.close()
+
+            return true
+        }
+
+        return false
+    }
+//    @Throws(IOException::class)
+//    fun importDatabase(dbPath: String): Boolean {
+//        close()
+//        val newDb = File(dbPath)
+//        val oldDb = File(DB_FILEPATH)
+//        if (newDb.exists()) {
+//            copyFile(newDb, oldDb)
+//            writableDatabase.close()
+//            return true
+//        }
+//        return false
+//    }
+//
+//    @Throws(IOException::class)
+//    fun exportDatabase(dbPath: String): Boolean {
+//        close()
+//        val newDb = File(DB_FILEPATH)
+//        val oldDb = File(dbPath)
+//        if (newDb.exists()) {
+//            copyFile(newDb, oldDb)
+//            writableDatabase.close()
+//            return true
+//        }
+//        return false
+//    }
 
 
     fun getALlQuizList(topic: String): List<QuizListModel>{
@@ -587,5 +682,561 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
             return success
         }
     }
+
+
+
+    fun importFromFirestoreToSQLite(): Boolean{
+        val success : Boolean
+        try {
+            TABLE_NAME_QUIZ_LIST_IMPORT()
+            TABLE_NAME_SYNTAX_ONE_IMPORT()
+            TABLE_NAME_QUIZ_MUL_CHOICE_2_IMPORT()
+            TABLE_NAME_QUIZ_MUL_CHOICE_6_IMPORT()
+            TABLE_NAME_QUIZ_MUL_CHOICE_7_IMPORT()
+            TABLE_NAME_QUIZ_REARRANGE_IMPORT()
+
+        }catch (e: Exception){
+            Log.e("DBHelper", e.message.toString())
+        }finally {
+            success = true
+        }
+        return success
+    }
+
+    fun TABLE_NAME_SYNTAX_ONE_IMPORT() {
+        // Get a reference to the Firestore collection
+        val collection = dbFirestore.collection("TABLE_NAME_SYNTAX_ONE")
+
+        // Fetch all documents from the collection
+        collection.get().addOnSuccessListener { documents ->
+            for (document in documents) {
+                val id = document.getLong(ID)
+                val topicName = document.getString(TOPIC_NAME)
+                val quizName = document.getString(QUIZ_NAME)
+                val question = document.getString(QUESTION)
+                val choiceA = document.getString(CHOICE_A)
+                val choiceB = document.getString(CHOICE_B)
+                val choiceC = document.getString(CHOICE_C)
+                val choiceD = document.getString(CHOICE_D)
+                val answer = document.getString(ANSWER)
+                val instruction = document.getString(INSTRUCTUON)
+
+                // Create a ContentValues object
+                val values = ContentValues()
+                values.put(ID, id)
+                values.put(TOPIC_NAME, topicName)
+                values.put(QUIZ_NAME, quizName)
+                values.put(QUESTION, question)
+                values.put(CHOICE_A, choiceA)
+                values.put(CHOICE_B, choiceB)
+                values.put(CHOICE_C, choiceC)
+                values.put(CHOICE_D, choiceD)
+                values.put(ANSWER, answer)
+                values.put(INSTRUCTUON, instruction)
+
+                // Insert the data into the SQLite database
+                val db = this.writableDatabase
+                db.insert(TABLE_NAME_SYNTAX_ONE, null, values)
+            }
+            Log.e("SQLite: ", "Import complete for TABLE_NAME_SYNTAX_ONE!!")
+        }.addOnFailureListener { e ->
+            Log.w("Error fetching documents", e)
+        }
+    }
+
+    fun TABLE_NAME_QUIZ_MUL_CHOICE_2_IMPORT() {
+        // Get a reference to the Firestore collection
+        val collection = dbFirestore.collection("TABLE_NAME_QUIZ_MUL_CHOICE_2")
+
+        // Fetch all documents from the collection
+        collection.get().addOnSuccessListener { documents ->
+            for (document in documents) {
+                val id = document.getLong(ID_QUIZ_MUL_CHOICE_2)
+                val topicName = document.getString(TOPIC_NAME__QUIZ_MUL_CHOICE_2)
+                val quizName = document.getString(QUIZ_NAME__QUIZ_MUL_CHOICE_2)
+                val question = document.getString(QUESTION__QUIZ_MUL_CHOICE_2)
+                val choiceA = document.getString(CHOICE_A__QUIZ_MUL_CHOICE_2)
+                val choiceB = document.getString(CHOICE_B__QUIZ_MUL_CHOICE_2)
+                val answer = document.getString(ANSWER__QUIZ_MUL_CHOICE_2)
+                val instruction = document.getString(INSTRUCTUON)
+
+                // Create a ContentValues object
+                val values = ContentValues()
+                values.put(ID_QUIZ_MUL_CHOICE_2, id)
+                values.put(TOPIC_NAME__QUIZ_MUL_CHOICE_2, topicName)
+                values.put(QUIZ_NAME__QUIZ_MUL_CHOICE_2, quizName)
+                values.put(QUESTION__QUIZ_MUL_CHOICE_2, question)
+                values.put(CHOICE_A__QUIZ_MUL_CHOICE_2, choiceA)
+                values.put(CHOICE_B__QUIZ_MUL_CHOICE_2, choiceB)
+                values.put(ANSWER__QUIZ_MUL_CHOICE_2, answer)
+                values.put(INSTRUCTUON, instruction)
+
+                // Insert the data into the SQLite database
+                val db = this.writableDatabase
+                db.insert(TABLE_NAME_QUIZ_MUL_CHOICE_2, null, values)
+            }
+            Log.e("SQLite: ", "Import complete for TABLE_NAME_QUIZ_MUL_CHOICE_2!!")
+        }.addOnFailureListener { e ->
+            Log.w("Error fetching documents", e)
+        }
+    }
+
+    fun TABLE_NAME_QUIZ_MUL_CHOICE_6_IMPORT() {
+        // Get a reference to the Firestore collection
+        val collection = dbFirestore.collection("TABLE_NAME_QUIZ_MUL_CHOICE_6")
+
+        // Fetch all documents from the collection
+        collection.get().addOnSuccessListener { documents ->
+            for (document in documents) {
+                val id = document.getLong(ID_QUIZ_MUL_CHOICE_6)
+                val topicName = document.getString(TOPIC_NAME__QUIZ_MUL_CHOICE_6)
+                val quizName = document.getString(QUIZ_NAME__QUIZ_MUL_CHOICE_6)
+                val question = document.getString(QUESTION__QUIZ_MUL_CHOICE_6)
+                val choiceA = document.getString(CHOICE_A__QUIZ_MUL_CHOICE_6)
+                val choiceB = document.getString(CHOICE_B__QUIZ_MUL_CHOICE_6)
+                val choiceC = document.getString(CHOICE_C__QUIZ_MUL_CHOICE_6)
+                val choiceD = document.getString(CHOICE_D__QUIZ_MUL_CHOICE_6)
+                val choiceE = document.getString(CHOICE_E__QUIZ_MUL_CHOICE_6)
+                val choiceF = document.getString(CHOICE_F__QUIZ_MUL_CHOICE_6)
+                val answer = document.getString(ANSWER__QUIZ_MUL_CHOICE_6)
+                val instruction = document.getString(INSTRUCTUON)
+
+                // Create a ContentValues object
+                val values = ContentValues()
+                values.put(ID_QUIZ_MUL_CHOICE_6, id)
+                values.put(TOPIC_NAME__QUIZ_MUL_CHOICE_6, topicName)
+                values.put(QUIZ_NAME__QUIZ_MUL_CHOICE_6, quizName)
+                values.put(QUESTION__QUIZ_MUL_CHOICE_6, question)
+                values.put(CHOICE_A__QUIZ_MUL_CHOICE_6, choiceA)
+                values.put(CHOICE_B__QUIZ_MUL_CHOICE_6, choiceB)
+                values.put(CHOICE_C__QUIZ_MUL_CHOICE_6, choiceC)
+                values.put(CHOICE_D__QUIZ_MUL_CHOICE_6, choiceD)
+                values.put(CHOICE_E__QUIZ_MUL_CHOICE_6, choiceE)
+                values.put(CHOICE_F__QUIZ_MUL_CHOICE_6, choiceF)
+                values.put(ANSWER__QUIZ_MUL_CHOICE_6, answer)
+                values.put(INSTRUCTUON, instruction)
+
+                // Insert the data into the SQLite database
+                val db = this.writableDatabase
+                db.insert(TABLE_NAME_QUIZ_MUL_CHOICE_6, null, values)
+            }
+            Log.e("SQLite: ", "Import complete for TABLE_NAME_QUIZ_MUL_CHOICE_6!!")
+        }.addOnFailureListener { e ->
+            Log.w("Error fetching documents", e)
+        }
+    }
+
+    fun TABLE_NAME_QUIZ_MUL_CHOICE_7_IMPORT() {
+        // Get a reference to the Firestore collection
+        val collection = dbFirestore.collection("TABLE_NAME_QUIZ_MUL_CHOICE_7")
+
+        // Fetch all documents from the collection
+        collection.get().addOnSuccessListener { documents ->
+            for (document in documents) {
+                val id = document.getLong(ID_QUIZ_MUL_CHOICE_7)
+                val topicName = document.getString(TOPIC_NAME__QUIZ_MUL_CHOICE_7)
+                val quizName = document.getString(QUIZ_NAME__QUIZ_MUL_CHOICE_7)
+                val question = document.getString(QUESTION__QUIZ_MUL_CHOICE_7)
+                val choiceA = document.getString(CHOICE_A__QUIZ_MUL_CHOICE_7)
+                val choiceB = document.getString(CHOICE_B__QUIZ_MUL_CHOICE_7)
+                val choiceC = document.getString(CHOICE_C__QUIZ_MUL_CHOICE_7)
+                val choiceD = document.getString(CHOICE_D__QUIZ_MUL_CHOICE_7)
+                val choiceE = document.getString(CHOICE_E__QUIZ_MUL_CHOICE_7)
+                val choiceF = document.getString(CHOICE_F__QUIZ_MUL_CHOICE_7)
+                val choiceG = document.getString(CHOICE_G__QUIZ_MUL_CHOICE_7)
+                val answer = document.getString(ANSWER__QUIZ_MUL_CHOICE_7)
+                val instruction = document.getString(INSTRUCTUON)
+
+                // Create a ContentValues object
+                val values = ContentValues()
+                values.put(ID_QUIZ_MUL_CHOICE_7, id)
+                values.put(TOPIC_NAME__QUIZ_MUL_CHOICE_7, topicName)
+                values.put(QUIZ_NAME__QUIZ_MUL_CHOICE_7, quizName)
+                values.put(QUESTION__QUIZ_MUL_CHOICE_7, question)
+                values.put(CHOICE_A__QUIZ_MUL_CHOICE_7, choiceA)
+                values.put(CHOICE_B__QUIZ_MUL_CHOICE_7, choiceB)
+                values.put(CHOICE_C__QUIZ_MUL_CHOICE_7, choiceC)
+                values.put(CHOICE_D__QUIZ_MUL_CHOICE_7, choiceD)
+                values.put(CHOICE_E__QUIZ_MUL_CHOICE_7, choiceE)
+                values.put(CHOICE_F__QUIZ_MUL_CHOICE_7, choiceF)
+                values.put(CHOICE_G__QUIZ_MUL_CHOICE_7, choiceG)
+                values.put(ANSWER__QUIZ_MUL_CHOICE_7, answer)
+                values.put(INSTRUCTUON, instruction)
+
+                // Insert the data into the SQLite database
+                val db = this.writableDatabase
+                db.insert(TABLE_NAME_QUIZ_MUL_CHOICE_7, null, values)
+            }
+            Log.e("SQLite: ", "Import complete for TABLE_NAME_QUIZ_MUL_CHOICE_7!!")
+        }.addOnFailureListener { e ->
+            Log.w("Error fetching documents", e)
+        }
+    }
+
+    fun TABLE_NAME_QUIZ_REARRANGE_IMPORT() {
+        // Get a reference to the Firestore collection
+        val collection = dbFirestore.collection("TABLE_NAME_QUIZ_REARRANGE")
+
+        // Fetch all documents from the collection
+        collection.get().addOnSuccessListener { documents ->
+            for (document in documents) {
+                val id = document.getLong(ID_QUIZ_QUIZ_REARRANGE)
+                val topicName = document.getString(TOPIC_NAME_QUIZ_REARRANGE)
+                val quizName = document.getString(QUIZ_NAME_QUIZ_REARRANGE)
+                val statementOne = document.getString(STATEMENT_ONE_QUIZ_REARRANGE)
+                val statementTwo = document.getString(STATEMENT_TWO_QUIZ_REARRANGE)
+                val statementThree = document.getString(STATEMENT_THREE_QUIZ_REARRANGE)
+                val statementCorrect = document.getString(STATEMENT_CORRECT_QUIZ_REARRANGE)
+                val instruction = document.getString(INSTRUCTUON)
+
+                // Create a ContentValues object
+                val values = ContentValues()
+                values.put(ID_QUIZ_QUIZ_REARRANGE, id)
+                values.put(TOPIC_NAME_QUIZ_REARRANGE, topicName)
+                values.put(QUIZ_NAME_QUIZ_REARRANGE, quizName)
+                values.put(STATEMENT_ONE_QUIZ_REARRANGE, statementOne)
+                values.put(STATEMENT_TWO_QUIZ_REARRANGE, statementTwo)
+                values.put(STATEMENT_THREE_QUIZ_REARRANGE, statementThree)
+                values.put(STATEMENT_CORRECT_QUIZ_REARRANGE, statementCorrect)
+                values.put(INSTRUCTUON, instruction)
+
+                // Insert the data into the SQLite database
+                val db = this.writableDatabase
+                db.insert(TABLE_NAME_QUIZ_REARRANGE, null, values)
+            }
+            Log.e("SQLite: ", "Import complete for TABLE_NAME_QUIZ_REARRANGE!!")
+        }.addOnFailureListener { e ->
+            Log.w("Error fetching documents", e)
+        }
+    }
+
+    fun TABLE_NAME_QUIZ_LIST_IMPORT() {
+        // Get a reference to the Firestore collection
+        val collection = dbFirestore.collection("TABLE_NAME_QUIZ_LIST")
+
+        // Fetch all documents from the collection
+        collection.get().addOnSuccessListener { documents ->
+            for (document in documents) {
+                val id = document.getLong(QUIZ_LIST_ID)
+                val model = document.getString(QUIZ_LIST_QUIZ_MODEL)
+                val name = document.getString(QUIZ_LIST_QUIZ_NAME)
+                val topic = document.getString(QUIZ_LIST_TOPIC_NAME)
+
+                // Create a ContentValues object
+                val values = ContentValues()
+                values.put(QUIZ_LIST_ID, id)
+                values.put(QUIZ_LIST_QUIZ_MODEL, model)
+                values.put(QUIZ_LIST_QUIZ_NAME, name)
+                values.put(QUIZ_LIST_TOPIC_NAME, topic)
+
+                // Insert the data into the SQLite database
+                val db = this.writableDatabase
+                db.insert(TABLE_NAME_QUIZ_LIST, null, values)
+            }
+            Log.e("SQLite: ", "Import complete!!")
+        }.addOnFailureListener { e ->
+            Log.w("Error fetching documents", e)
+        }
+    }
+
+
+
+    fun exportDbToFirestore(): Boolean{
+        val success : Boolean
+        try {
+            TABLE_NAME_QUIZ_LIST()
+            TABLE_NAME_SYNTAX_ONE()
+            TABLE_NAME_QUIZ_MUL_CHOICE_2()
+            TABLE_NAME_QUIZ_MUL_CHOICE_6()
+            TABLE_NAME_QUIZ_MUL_CHOICE_7()
+            TABLE_NAME_QUIZ_REARRANGE()
+
+        }catch (e: Exception){
+            Log.e("DBHelper", e.message.toString())
+        }finally {
+            success = true
+        }
+        return success
+    }
+
+    fun TABLE_NAME_QUIZ_LIST(){
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME_QUIZ_LIST", null)
+        Log.e("Firestore: ", "Trying to access database")
+        if (cursor.moveToFirst()) {
+            Log.e("Firestore: ", "Entered database")
+            do {
+                val jsonObject = JSONObject()
+                val idIndex = cursor.getColumnIndex(QUIZ_LIST_ID)
+                val modelIndex = cursor.getColumnIndex(QUIZ_LIST_QUIZ_MODEL)
+                val nameIndex = cursor.getColumnIndex(QUIZ_LIST_QUIZ_NAME)
+                val topicIndex = cursor.getColumnIndex(QUIZ_LIST_TOPIC_NAME)
+
+                if (idIndex != -1) jsonObject.put(QUIZ_LIST_ID, cursor.getInt(idIndex))
+                if (modelIndex != -1) jsonObject.put(QUIZ_LIST_QUIZ_MODEL, cursor.getString(modelIndex))
+                if (nameIndex != -1) jsonObject.put(QUIZ_LIST_QUIZ_NAME, cursor.getString(nameIndex))
+                if (topicIndex != -1) jsonObject.put(QUIZ_LIST_TOPIC_NAME, cursor.getString(topicIndex))
+
+
+                // Convert the JSONObject to a Map
+                val map = Gson().fromJson(jsonObject.toString(), HashMap::class.java)
+
+                // Add a new document with a generated ID
+                dbFirestore.collection("TABLE_NAME_QUIZ_LIST")
+                    .add(map)
+                    .addOnSuccessListener { documentReference ->
+                        Log.d("DocumentSnapshot added with ID: ", documentReference.id)
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w("Error adding document", e)
+                    }
+            } while (cursor.moveToNext())
+            Log.e("Firestore: ", "Export complete!!")
+        }
+        cursor.close()
+    }
+
+    fun TABLE_NAME_SYNTAX_ONE(){
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME_SYNTAX_ONE", null)
+        Log.e("Firestore: ", "Trying to access database")
+        if (cursor.moveToFirst()) {
+            Log.e("Firestore: ", "Entered database")
+            do {
+                val jsonObject = JSONObject()
+                val idIndex = cursor.getColumnIndex(ID)
+                val topicNameIndex = cursor.getColumnIndex(TOPIC_NAME)
+                val quizNameIndex = cursor.getColumnIndex(QUIZ_NAME)
+                val questionIndex = cursor.getColumnIndex(QUESTION)
+                val choiceAIndex = cursor.getColumnIndex(CHOICE_A)
+                val choiceBIndex = cursor.getColumnIndex(CHOICE_B)
+                val choiceCIndex = cursor.getColumnIndex(CHOICE_C)
+                val choiceDIndex = cursor.getColumnIndex(CHOICE_D)
+                val answerIndex = cursor.getColumnIndex(ANSWER)
+                val instruction = cursor.getColumnIndex(INSTRUCTUON)
+
+                if (instruction != -1) jsonObject.put(INSTRUCTUON, cursor.getString(instruction))
+                if (idIndex != -1) jsonObject.put(ID, cursor.getInt(idIndex))
+                if (topicNameIndex != -1) jsonObject.put(TOPIC_NAME, cursor.getString(topicNameIndex))
+                if (quizNameIndex != -1) jsonObject.put(QUIZ_NAME, cursor.getString(quizNameIndex))
+                if (questionIndex != -1) jsonObject.put(QUESTION, cursor.getString(questionIndex))
+                if (choiceAIndex != -1) jsonObject.put(CHOICE_A, cursor.getString(choiceAIndex))
+                if (choiceBIndex != -1) jsonObject.put(CHOICE_B, cursor.getString(choiceBIndex))
+                if (choiceCIndex != -1) jsonObject.put(CHOICE_C, cursor.getString(choiceCIndex))
+                if (choiceDIndex != -1) jsonObject.put(CHOICE_D, cursor.getString(choiceDIndex))
+                if (answerIndex != -1) jsonObject.put(ANSWER, cursor.getString(answerIndex))
+
+                // Convert the JSONObject to a Map
+                val map = Gson().fromJson(jsonObject.toString(), HashMap::class.java)
+
+                // Add a new document with a generated ID
+                dbFirestore.collection("TABLE_NAME_SYNTAX_ONE")
+                    .add(map)
+                    .addOnSuccessListener { documentReference ->
+                        Log.d("DocumentSnapshot added with ID: ", documentReference.id)
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w("Error adding document", e)
+                    }
+            } while (cursor.moveToNext())
+            Log.e("Firestore: ", "Export complete!!")
+        }
+        cursor.close()
+    }
+
+    fun TABLE_NAME_QUIZ_MUL_CHOICE_2(){
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME_QUIZ_MUL_CHOICE_2", null)
+        Log.e("Firestore: ", "Trying to access database")
+        if (cursor.moveToFirst()) {
+            Log.e("Firestore: ", "Entered database")
+            do {
+                val jsonObject = JSONObject()
+                val idIndex = cursor.getColumnIndex(ID_QUIZ_MUL_CHOICE_2)
+                val topicNameIndex = cursor.getColumnIndex(TOPIC_NAME__QUIZ_MUL_CHOICE_2)
+                val quizNameIndex = cursor.getColumnIndex(QUIZ_NAME__QUIZ_MUL_CHOICE_2)
+                val questionIndex = cursor.getColumnIndex(QUESTION__QUIZ_MUL_CHOICE_2)
+                val choiceAIndex = cursor.getColumnIndex(CHOICE_A__QUIZ_MUL_CHOICE_2)
+                val choiceBIndex = cursor.getColumnIndex(CHOICE_B__QUIZ_MUL_CHOICE_2)
+                val answerIndex = cursor.getColumnIndex(ANSWER__QUIZ_MUL_CHOICE_2)
+                val instruction = cursor.getColumnIndex(INSTRUCTUON)
+
+                if (instruction != -1) jsonObject.put(INSTRUCTUON, cursor.getString(instruction))
+                if (idIndex != -1) jsonObject.put(ID_QUIZ_MUL_CHOICE_2, cursor.getInt(idIndex))
+                if (topicNameIndex != -1) jsonObject.put(TOPIC_NAME__QUIZ_MUL_CHOICE_2, cursor.getString(topicNameIndex))
+                if (quizNameIndex != -1) jsonObject.put(QUIZ_NAME__QUIZ_MUL_CHOICE_2, cursor.getString(quizNameIndex))
+                if (questionIndex != -1) jsonObject.put(QUESTION__QUIZ_MUL_CHOICE_2, cursor.getString(questionIndex))
+                if (choiceAIndex != -1) jsonObject.put(CHOICE_A__QUIZ_MUL_CHOICE_2, cursor.getString(choiceAIndex))
+                if (choiceBIndex != -1) jsonObject.put(CHOICE_B__QUIZ_MUL_CHOICE_2, cursor.getString(choiceBIndex))
+                if (answerIndex != -1) jsonObject.put(ANSWER__QUIZ_MUL_CHOICE_2, cursor.getString(answerIndex))
+
+                // Convert the JSONObject to a Map
+                val map = Gson().fromJson(jsonObject.toString(), HashMap::class.java)
+
+                // Add a new document with a generated ID
+                dbFirestore.collection("TABLE_NAME_QUIZ_MUL_CHOICE_2")
+                    .add(map)
+                    .addOnSuccessListener { documentReference ->
+                        Log.d("DocumentSnapshot added with ID: ", documentReference.id)
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w("Error adding document", e)
+                    }
+            } while (cursor.moveToNext())
+            Log.e("Firestore: ", "Export complete!!")
+        }
+        cursor.close()
+    }
+
+    fun TABLE_NAME_QUIZ_MUL_CHOICE_6(){
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME_QUIZ_MUL_CHOICE_6", null)
+        Log.e("Firestore: ", "Trying to access database")
+        if (cursor.moveToFirst()) {
+            Log.e("Firestore: ", "Entered database")
+            do {
+                val jsonObject = JSONObject()
+                val idIndex = cursor.getColumnIndex(ID_QUIZ_MUL_CHOICE_6)
+                val topicNameIndex = cursor.getColumnIndex(TOPIC_NAME__QUIZ_MUL_CHOICE_6)
+                val quizNameIndex = cursor.getColumnIndex(QUIZ_NAME__QUIZ_MUL_CHOICE_6)
+                val questionIndex = cursor.getColumnIndex(QUESTION__QUIZ_MUL_CHOICE_6)
+                val choiceAIndex = cursor.getColumnIndex(CHOICE_A__QUIZ_MUL_CHOICE_6)
+                val choiceBIndex = cursor.getColumnIndex(CHOICE_B__QUIZ_MUL_CHOICE_6)
+                val choiceCIndex = cursor.getColumnIndex(CHOICE_C__QUIZ_MUL_CHOICE_6)
+                val choiceDIndex = cursor.getColumnIndex(CHOICE_D__QUIZ_MUL_CHOICE_6)
+                val choiceEIndex = cursor.getColumnIndex(CHOICE_E__QUIZ_MUL_CHOICE_6)
+                val choiceFIndex = cursor.getColumnIndex(CHOICE_F__QUIZ_MUL_CHOICE_6)
+                val answerIndex = cursor.getColumnIndex(ANSWER__QUIZ_MUL_CHOICE_6)
+                val instruction = cursor.getColumnIndex(INSTRUCTUON)
+
+                if (instruction != -1) jsonObject.put(INSTRUCTUON, cursor.getString(instruction))
+                if (idIndex != -1) jsonObject.put(ID_QUIZ_MUL_CHOICE_6, cursor.getInt(idIndex))
+                if (topicNameIndex != -1) jsonObject.put(TOPIC_NAME__QUIZ_MUL_CHOICE_6, cursor.getString(topicNameIndex))
+                if (quizNameIndex != -1) jsonObject.put(QUIZ_NAME__QUIZ_MUL_CHOICE_6, cursor.getString(quizNameIndex))
+                if (questionIndex != -1) jsonObject.put(QUESTION__QUIZ_MUL_CHOICE_6, cursor.getString(questionIndex))
+                if (choiceAIndex != -1) jsonObject.put(CHOICE_A__QUIZ_MUL_CHOICE_6, cursor.getString(choiceAIndex))
+                if (choiceBIndex != -1) jsonObject.put(CHOICE_B__QUIZ_MUL_CHOICE_6, cursor.getString(choiceBIndex))
+                if (choiceCIndex != -1) jsonObject.put(CHOICE_C__QUIZ_MUL_CHOICE_6, cursor.getString(choiceCIndex))
+                if (choiceDIndex != -1) jsonObject.put(CHOICE_D__QUIZ_MUL_CHOICE_6, cursor.getString(choiceDIndex))
+                if (choiceEIndex != -1) jsonObject.put(CHOICE_E__QUIZ_MUL_CHOICE_6, cursor.getString(choiceEIndex))
+                if (choiceFIndex != -1) jsonObject.put(CHOICE_F__QUIZ_MUL_CHOICE_6, cursor.getString(choiceFIndex))
+                if (answerIndex != -1) jsonObject.put(ANSWER__QUIZ_MUL_CHOICE_6, cursor.getString(answerIndex))
+
+                // Convert the JSONObject to a Map
+                val map = Gson().fromJson(jsonObject.toString(), HashMap::class.java)
+
+                // Add a new document with a generated ID
+                dbFirestore.collection("TABLE_NAME_QUIZ_MUL_CHOICE_6")
+                    .add(map)
+                    .addOnSuccessListener { documentReference ->
+                        Log.d("DocumentSnapshot added with ID: ", documentReference.id)
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w("Error adding document", e)
+                    }
+            } while (cursor.moveToNext())
+            Log.e("Firestore: ", "Export complete!!")
+        }
+        cursor.close()
+    }
+
+    fun TABLE_NAME_QUIZ_MUL_CHOICE_7(){
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME_QUIZ_MUL_CHOICE_7", null)
+        Log.e("Firestore: ", "Trying to access database")
+        if (cursor.moveToFirst()) {
+            Log.e("Firestore: ", "Entered database")
+            do {
+                val jsonObject = JSONObject()
+                val idIndex = cursor.getColumnIndex(ID_QUIZ_MUL_CHOICE_7)
+                val topicNameIndex = cursor.getColumnIndex(TOPIC_NAME__QUIZ_MUL_CHOICE_7)
+                val quizNameIndex = cursor.getColumnIndex(QUIZ_NAME__QUIZ_MUL_CHOICE_7)
+                val questionIndex = cursor.getColumnIndex(QUESTION__QUIZ_MUL_CHOICE_7)
+                val choiceAIndex = cursor.getColumnIndex(CHOICE_A__QUIZ_MUL_CHOICE_7)
+                val choiceBIndex = cursor.getColumnIndex(CHOICE_B__QUIZ_MUL_CHOICE_7)
+                val choiceCIndex = cursor.getColumnIndex(CHOICE_C__QUIZ_MUL_CHOICE_7)
+                val choiceDIndex = cursor.getColumnIndex(CHOICE_D__QUIZ_MUL_CHOICE_7)
+                val choiceEIndex = cursor.getColumnIndex(CHOICE_E__QUIZ_MUL_CHOICE_7)
+                val choiceFIndex = cursor.getColumnIndex(CHOICE_F__QUIZ_MUL_CHOICE_7)
+                val choiceGIndex = cursor.getColumnIndex(CHOICE_G__QUIZ_MUL_CHOICE_7)
+                val answerIndex = cursor.getColumnIndex(ANSWER__QUIZ_MUL_CHOICE_7)
+                val instruction = cursor.getColumnIndex(INSTRUCTUON)
+
+                if (instruction != -1) jsonObject.put(INSTRUCTUON, cursor.getString(instruction))
+                if (idIndex != -1) jsonObject.put(ID_QUIZ_MUL_CHOICE_7, cursor.getInt(idIndex))
+                if (topicNameIndex != -1) jsonObject.put(TOPIC_NAME__QUIZ_MUL_CHOICE_7, cursor.getString(topicNameIndex))
+                if (quizNameIndex != -1) jsonObject.put(QUIZ_NAME__QUIZ_MUL_CHOICE_7, cursor.getString(quizNameIndex))
+                if (questionIndex != -1) jsonObject.put(QUESTION__QUIZ_MUL_CHOICE_7, cursor.getString(questionIndex))
+                if (choiceAIndex != -1) jsonObject.put(CHOICE_A__QUIZ_MUL_CHOICE_7, cursor.getString(choiceAIndex))
+                if (choiceBIndex != -1) jsonObject.put(CHOICE_B__QUIZ_MUL_CHOICE_7, cursor.getString(choiceBIndex))
+                if (choiceCIndex != -1) jsonObject.put(CHOICE_C__QUIZ_MUL_CHOICE_7, cursor.getString(choiceCIndex))
+                if (choiceDIndex != -1) jsonObject.put(CHOICE_D__QUIZ_MUL_CHOICE_7, cursor.getString(choiceDIndex))
+                if (choiceEIndex != -1) jsonObject.put(CHOICE_E__QUIZ_MUL_CHOICE_7, cursor.getString(choiceEIndex))
+                if (choiceFIndex != -1) jsonObject.put(CHOICE_F__QUIZ_MUL_CHOICE_7, cursor.getString(choiceFIndex))
+                if (choiceGIndex != -1) jsonObject.put(CHOICE_G__QUIZ_MUL_CHOICE_7, cursor.getString(choiceGIndex))
+                if (answerIndex != -1) jsonObject.put(ANSWER__QUIZ_MUL_CHOICE_7, cursor.getString(answerIndex))
+
+                // Convert the JSONObject to a Map
+                val map = Gson().fromJson(jsonObject.toString(), HashMap::class.java)
+
+                // Add a new document with a generated ID
+                dbFirestore.collection("TABLE_NAME_QUIZ_MUL_CHOICE_7")
+                    .add(map)
+                    .addOnSuccessListener { documentReference ->
+                        Log.d("DocumentSnapshot added with ID: ", documentReference.id)
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w("Error adding document", e)
+                    }
+            } while (cursor.moveToNext())
+            Log.e("Firestore: ", "Export complete!!")
+        }
+        cursor.close()
+    }
+
+    fun TABLE_NAME_QUIZ_REARRANGE(){
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME_QUIZ_REARRANGE", null)
+        Log.e("Firestore: ", "Trying to access database")
+        if (cursor.moveToFirst()) {
+            Log.e("Firestore: ", "Entered database")
+            do {
+                val jsonObject = JSONObject()
+                val idIndex = cursor.getColumnIndex(ID_QUIZ_QUIZ_REARRANGE)
+                val topicNameIndex = cursor.getColumnIndex(TOPIC_NAME_QUIZ_REARRANGE)
+                val quizNameIndex = cursor.getColumnIndex(QUIZ_NAME_QUIZ_REARRANGE)
+                val statementOneIndex = cursor.getColumnIndex(STATEMENT_ONE_QUIZ_REARRANGE)
+                val statementTwoIndex = cursor.getColumnIndex(STATEMENT_TWO_QUIZ_REARRANGE)
+                val statementThreeIndex = cursor.getColumnIndex(STATEMENT_THREE_QUIZ_REARRANGE)
+                val statementCorrectIndex = cursor.getColumnIndex(STATEMENT_CORRECT_QUIZ_REARRANGE)
+                val instruction = cursor.getColumnIndex(INSTRUCTUON)
+
+                if (instruction != -1) jsonObject.put(INSTRUCTUON, cursor.getString(instruction))
+                if (idIndex != -1) jsonObject.put(ID_QUIZ_QUIZ_REARRANGE, cursor.getInt(idIndex))
+                if (topicNameIndex != -1) jsonObject.put(TOPIC_NAME_QUIZ_REARRANGE, cursor.getString(topicNameIndex))
+                if (quizNameIndex != -1) jsonObject.put(QUIZ_NAME_QUIZ_REARRANGE, cursor.getString(quizNameIndex))
+                if (statementOneIndex != -1) jsonObject.put(STATEMENT_ONE_QUIZ_REARRANGE, cursor.getString(statementOneIndex))
+                if (statementTwoIndex != -1) jsonObject.put(STATEMENT_TWO_QUIZ_REARRANGE, cursor.getString(statementTwoIndex))
+                if (statementThreeIndex != -1) jsonObject.put(STATEMENT_THREE_QUIZ_REARRANGE, cursor.getString(statementThreeIndex))
+                if (statementCorrectIndex != -1) jsonObject.put(STATEMENT_CORRECT_QUIZ_REARRANGE, cursor.getString(statementCorrectIndex))
+
+                // Convert the JSONObject to a Map
+                val map = Gson().fromJson(jsonObject.toString(), HashMap::class.java)
+
+                // Add a new document with a generated ID
+                dbFirestore.collection("TABLE_NAME_QUIZ_REARRANGE")
+                    .add(map)
+                    .addOnSuccessListener { documentReference ->
+                        Log.d("DocumentSnapshot added with ID: ", documentReference.id)
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w("Error adding document", e)
+                    }
+            } while (cursor.moveToNext())
+            Log.e("Firestore: ", "Export complete!!")
+        }
+        cursor.close()
+    }
+
 
 }
