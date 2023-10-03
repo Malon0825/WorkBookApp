@@ -298,29 +298,51 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         val cursor = db.rawQuery(selectQuery, null)
         if (cursor != null) {
             while (cursor.moveToNext()) {
-                val quiz = ScoreModel()
+                val score = ScoreModel()
                 try {
-                    val dateTakenColumnIndex = cursor.getColumnIndexOrThrow(DATE_TAKEN)
-                    if (!cursor.isNull(dateTakenColumnIndex)) {
-                        quiz.dateTaken = cursor.getString(dateTakenColumnIndex)
-                    } else {
-                        Log.e("DBHelper", "DateTaken is null for score_id ${quiz.score_id}")
-                    }
-//                    quiz.score_id = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(SCORE_ID)))
-//                    quiz.quiz_name = cursor.getString(cursor.getColumnIndexOrThrow(SCORE_QUIZ_NAME))
-//                    quiz.score = cursor.getString(cursor.getColumnIndexOrThrow(SCORE))
-//                    quiz.dateTaken = cursor.getString(cursor.getColumnIndexOrThrow(DATE_TAKEN))
-//                    Log.e("DBHelper Date: ", quiz.dateTaken)
-//                    score_list.add(quiz)
+                    score.score_id = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(SCORE_ID)))
+                    score.quiz_name = cursor.getString(cursor.getColumnIndexOrThrow(SCORE_QUIZ_NAME))
+                    score.score = cursor.getString(cursor.getColumnIndexOrThrow(SCORE))
+                    score.dateTaken = cursor.getString(cursor.getColumnIndexOrThrow(DATE_TAKEN))
+                    score_list.add(score)
+                    Log.e("Score Data", score.quiz_name)
                 } catch (e: IllegalArgumentException) {
                     Log.e("DBHelper", e.message.toString())
                 }
-
             }
         }
         cursor.close()
         return score_list
     }
+
+
+
+
+//        if (cursor != null) {
+//            while (cursor.moveToNext()) {
+//                val quiz = ScoreModel()
+//                try {
+//                    val dateTakenColumnIndex = cursor.getColumnIndexOrThrow(DATE_TAKEN)
+//                    if (!cursor.isNull(dateTakenColumnIndex)) {
+//                        quiz.dateTaken = cursor.getString(dateTakenColumnIndex)
+//                        val scoreM = quiz
+//
+//                            Log.e("DBHelper", scoreM.toString())
+//                    } else {
+//                        Log.e("DBHelper", "DateTaken is null for score_id ${quiz.score_id}")
+//                    }
+////                    quiz.score_id = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(SCORE_ID)))
+////                    quiz.quiz_name = cursor.getString(cursor.getColumnIndexOrThrow(SCORE_QUIZ_NAME))
+////                    quiz.score = cursor.getString(cursor.getColumnIndexOrThrow(SCORE))
+////                    quiz.dateTaken = cursor.getString(cursor.getColumnIndexOrThrow(DATE_TAKEN))
+////                    Log.e("DBHelper Date: ", quiz.dateTaken)
+////                    score_list.add(quiz)
+//                } catch (e: IllegalArgumentException) {
+//                    Log.e("DBHelper", e.message.toString())
+//                }
+//
+//            }
+//        }
 
     //Multiple choice (4)
     fun getALlQuiz(quiz_name: String, topic: String): List<QuizzesModel>{
@@ -667,6 +689,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         val values = ContentValues()
         values.put(SCORE_QUIZ_NAME, score.quiz_name)
         values.put(SCORE, score.score)
+        values.put(DATE_TAKEN, score.dateTaken)
 
         var success : Boolean = false
         try

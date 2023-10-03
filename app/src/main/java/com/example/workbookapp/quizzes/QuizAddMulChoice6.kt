@@ -16,6 +16,23 @@ import com.example.workbookapp.model.QuizzesMulChoice6Model
 class QuizAddMulChoice6 : AppCompatActivity() {
 
     var dbHandler : DatabaseHelper ?= null
+    var topicGlobal  = ""
+    var quizNameGlobal  = ""
+
+    lateinit var etQuizName : EditText
+    lateinit var etInstruction : EditText
+
+    lateinit var etQuestion : EditText
+    lateinit var etChoiceA : EditText
+
+    lateinit var etChoiceB : EditText
+    lateinit var etChoiceC : EditText
+
+    lateinit var etChoiceD : EditText
+    lateinit var etChoiceE : EditText
+
+    lateinit var etChoiceF : EditText
+    lateinit var etAnswer : EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,16 +42,16 @@ class QuizAddMulChoice6 : AppCompatActivity() {
 
         dbHandler = DatabaseHelper(this)
 
-        val etInstruction = findViewById<EditText>(R.id.et_quiz_instrunction)
-        val etQuizName = findViewById<EditText>(R.id.et_quiz_name)
-        val etQuestion = findViewById<EditText>(R.id.et_question)
-        val etChoiceA = findViewById<EditText>(R.id.et_choice_a)
-        val etChoiceB = findViewById<EditText>(R.id.et_choice_b)
-        val etChoiceC = findViewById<EditText>(R.id.et_choice_c)
-        val etChoiceD = findViewById<EditText>(R.id.et_choice_d)
-        val etChoiceE = findViewById<EditText>(R.id.et_choice_e)
-        val etChoiceF = findViewById<EditText>(R.id.et_choice_f)
-        val etAnswer = findViewById<EditText>(R.id.et_answer)
+        etInstruction = findViewById(R.id.et_quiz_instrunction)
+        etQuizName = findViewById(R.id.et_quiz_name)
+        etQuestion = findViewById(R.id.et_question)
+        etChoiceA = findViewById(R.id.et_choice_a)
+        etChoiceB = findViewById(R.id.et_choice_b)
+        etChoiceC = findViewById(R.id.et_choice_c)
+        etChoiceD = findViewById(R.id.et_choice_d)
+        etChoiceE = findViewById(R.id.et_choice_e)
+        etChoiceF = findViewById(R.id.et_choice_f)
+        etAnswer = findViewById(R.id.et_answer)
 
         val continueButton= findViewById<Button>(R.id.buttonContinue)
         continueButton.setOnClickListener {
@@ -101,7 +118,35 @@ class QuizAddMulChoice6 : AppCompatActivity() {
         }
     }
     override fun onBackPressed() {
-        Toast.makeText(this, "Please press finish button to save the quiz.", Toast.LENGTH_LONG)
-            .show()
+        var successQuizList : Boolean = false
+        val quizModel = QuizListModel()
+        quizModel.topic_name = topicGlobal
+        quizModel.quiz_name = quizNameGlobal
+        quizModel.quiz_model = "QuizAddMulChoice4"
+
+        if (etQuizName.text.toString().isNotEmpty()
+            && etInstruction.text.toString().isNotEmpty()
+            && etQuestion.text.toString().isNotEmpty()
+            && etChoiceA.text.toString().isNotEmpty()
+            && etChoiceB.text.toString().isNotEmpty()
+            && etChoiceC.text.toString().isNotEmpty()
+            && etChoiceD.text.toString().isNotEmpty()
+            && etChoiceE.text.toString().isNotEmpty()
+            && etChoiceF.text.toString().isNotEmpty()
+            && etAnswer.text.toString().isNotEmpty())
+        {
+            successQuizList = dbHandler?.addALlQuizList(quizModel) as Boolean
+
+            if (successQuizList) {
+                Toast.makeText(this, "Please press finish button to save the quiz.", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this, "Unsuccessful.", Toast.LENGTH_SHORT).show()
+            }
+        }else{
+            val intent = Intent(this, QuizTypeActivity::class.java)
+            startActivity(intent)
+        }
+
     }
+
 }

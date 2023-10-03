@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
+import com.example.workbookapp.MainActivity
 import com.example.workbookapp.R
 
 class QuizzesActivity : AppCompatActivity() {
@@ -22,5 +23,10 @@ class QuizzesActivity : AppCompatActivity() {
             val intent = Intent(this, QuizzesActivityMorph::class.java)
             startActivity(intent)
         }
+    }
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+
     }
 }

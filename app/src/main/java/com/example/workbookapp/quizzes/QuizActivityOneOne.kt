@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.Button
@@ -17,6 +18,7 @@ import com.example.workbookapp.R
 import com.example.workbookapp.database.DatabaseHelper
 import com.example.workbookapp.lessons.SyntaxActivityOne
 import com.example.workbookapp.model.AnswersModel
+import com.example.workbookapp.model.QuizListModel
 import com.example.workbookapp.model.QuizzesModel
 import com.example.workbookapp.model.ScoreModel
 import java.lang.Exception
@@ -69,9 +71,17 @@ class QuizActivityOneOne : AppCompatActivity() {
 
 
 
+
+
         fun showQuestion() {
             if (currentQuestionIndex < questionList.size) {
                 val question = questionList[currentQuestionIndex]
+
+                textViewInstruction.apply {
+                    text = question.instruction
+                }
+                textViewInstruction.setMovementMethod(ScrollingMovementMethod())
+
                 textViewQuestion.text = question.question
                 buttonChoiceA.text = question.choice_a
                 buttonChoiceB.text = question.choice_b
@@ -228,5 +238,9 @@ class QuizActivityOneOne : AppCompatActivity() {
     @SuppressLint("NotifyDataSetChanged")
     private fun fetchList(){
         questionList = dbHandler!!.getALlQuiz(quiz_name.toString(), topic.toString())
+    }
+
+    override fun onBackPressed() {
+        Toast.makeText(this, "Please finish the all the questions.", Toast.LENGTH_SHORT).show()
     }
 }

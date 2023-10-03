@@ -17,15 +17,11 @@ class MorphActivityTwo : AppCompatActivity() {
         setContentView(R.layout.activity_morph_two)
 
 
-        // Get a reference to the TextView object
         val textView = findViewById<TextView>(R.id.textViewInstructionContent)
 
-        // Set the properties of the TextView object
         textView.apply {
             text = getString(R.string.morph_two_instruction) // Get the text from strings.xml
         }
-
-        // Enable scrolling on the TextView object
         textView.setMovementMethod(ScrollingMovementMethod())
 
 

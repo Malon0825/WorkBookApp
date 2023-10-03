@@ -35,10 +35,10 @@
     <TextView
         android:id="@+id/textViewInstruction"
         style="@style/TextViewStyle"
-        android:layout_width="268dp"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:layout_width="274dp"
+        android:layout_height="154dp"
         android:text="Instructions: \nRead each sentence carefully. Select the best answer that identifies the type of sentence based on its structure."
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewInstruction"
         app:layout_constraintEnd_toEndOf="@+id/imageViewInstruction"
         app:layout_constraintStart_toStartOf="@+id/imageViewInstruction"

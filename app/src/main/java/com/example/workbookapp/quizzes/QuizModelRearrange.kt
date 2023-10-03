@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.Gravity
 import android.widget.Button
@@ -70,11 +71,11 @@ class QuizModelRearrange : AppCompatActivity() {
         fun showQuestion() {
             if (currentQuestionIndex < questionList.size) {
                 val question = questionList[currentQuestionIndex]
-                textViewInstruction.text = question.instruction
-                Log.e("DBHelper", question.instruction)
-                Log.e("DBHelper", question.quiz_statement_one)
-                Log.e("DBHelper", question.quiz_statement_two)
-                Log.e("DBHelper", question.quiz_statement_three)
+                textViewInstruction.apply {
+                    text = question.instruction
+                }
+                textViewInstruction.setMovementMethod(ScrollingMovementMethod())
+
 
                 val rearrange = question.quiz_statement_one + "/" + question.quiz_statement_two + "/" + question.quiz_statement_three
                 textViewQuestion.text = rearrange
@@ -149,5 +150,9 @@ class QuizModelRearrange : AppCompatActivity() {
     @SuppressLint("NotifyDataSetChanged")
     private fun fetchList(){
         questionList = dbHandler!!.getQuizRearrange(quiz_name.toString(), topic.toString())
+    }
+
+    override fun onBackPressed() {
+        Toast.makeText(this, "Please finish the all the questions.", Toast.LENGTH_SHORT).show()
     }
 }

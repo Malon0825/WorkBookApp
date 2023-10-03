@@ -68,4 +68,9 @@ class QuizzesActivitySyntax : AppCompatActivity() {
         }
 
     }
+    override fun onBackPressed() {
+        val intent = Intent(this, QuizzesActivity::class.java)
+        startActivity(intent)
+
+    }
 }

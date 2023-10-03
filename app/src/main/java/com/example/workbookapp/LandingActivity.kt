@@ -65,4 +65,7 @@ class LandingActivity : AppCompatActivity() {
 
         }
     }
+    override fun onBackPressed() {
+        this.finish()
+    }
 }

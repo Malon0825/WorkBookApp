@@ -23,17 +23,12 @@ class ScoresActivity : AppCompatActivity() {
         dbHandler = DatabaseHelper(this)
         fetchList()
 
-        var currentQuestionIndex = 0
-
         for (score in scoreList) {
-
             val textScore = TextView(this).apply {
-                text = score.quiz_name + " / " + score.score + " / " + score.dateTaken
+                text = score.quiz_name + "  ||  " + score.score
+                setTextAppearance(this@ScoresActivity, R.style.TextViewStyle) // Replace 'YourActivity' with the name of your activity
             }
-
-            layout.addView(textScore.apply { R.style.TextViewStyle })
-
-
+            layout.addView(textScore)
         }
     }
 

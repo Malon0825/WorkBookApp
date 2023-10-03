@@ -57,6 +57,7 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView4"
         android:layout_width="267dp"
         android:layout_height="259dp"
         app:layout_constraintBottom_toBottomOf="@+id/viewTExt"
@@ -64,48 +65,71 @@
         app:layout_constraintStart_toStartOf="@+id/viewTExt"
         app:layout_constraintTop_toTopOf="@+id/viewTExt">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/imageButtonFive"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:text="Two Choices (2)"
-                        style="@style/ButtonStyle" />
+            <Button
+                android:id="@+id/imageButtonFive"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Two Choices (2)" />
 
-                    <Button
-                        android:id="@+id/imageButtonOne"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:text="Multiple Choice (4)"
-                        style="@style/ButtonStyle" />
+            <Button
+                android:id="@+id/imageButtonOne"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Multiple Choices (4)" />
 
-                    <Button
-                        android:id="@+id/imageButtonTwo"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:text="Multiple Choice (6)"
-                        style="@style/ButtonStyle" />
+            <Button
+                android:id="@+id/imageButtonTwo"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Multiple Choices (6)" />
 
-                    <Button
-                        android:id="@+id/imageButtonThree"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:text="Multiple Choice (7)"
-                        style="@style/ButtonStyle" />
+            <Button
+                android:id="@+id/imageButtonThree"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Multiple Choices (7)" />
 
-                    <Button
-                        android:id="@+id/imageButtonFour"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:text="Rearrange (3)"
-                        style="@style/ButtonStyle" />
+            <Button
+                android:id="@+id/imageButtonFour"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Rearrange (3)" />
 
 
-                </LinearLayout>
+
+        </LinearLayout>
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageButtonBg"
+        android:layout_width="192dp"
+        android:layout_height="93dp"
+        android:background="@drawable/layout_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/viewTExt"
+        app:layout_constraintStart_toStartOf="@+id/viewTExt"
+        app:layout_constraintTop_toBottomOf="@+id/viewTExt" />
+
+    <Button
+        android:id="@+id/imageButtonHome"
+        style="@style/ButtonStyle"
+        android:layout_width="160dp"
+        android:layout_height="76dp"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButtonBg"
+        app:layout_constraintEnd_toEndOf="@+id/imageButtonBg"
+        app:layout_constraintStart_toStartOf="@+id/imageButtonBg"
+        app:layout_constraintTop_toTopOf="@+id/imageButtonBg" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

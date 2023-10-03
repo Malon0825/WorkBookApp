@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.RecyclerView
 import com.example.workbookapp.R
 import com.example.workbookapp.database.DatabaseHelper
 import com.example.workbookapp.model.QuizListModel
@@ -18,6 +19,19 @@ class QuizAddActivity : AppCompatActivity() {
     var topicGlobal  = ""
     var quizNameGlobal  = ""
 
+    lateinit var etQuizName : EditText
+    lateinit var etInstruction : EditText
+
+    lateinit var etQuestion : EditText
+    lateinit var etChoiceA : EditText
+
+    lateinit var etChoiceB : EditText
+    lateinit var etChoiceC : EditText
+
+    lateinit var etChoiceD : EditText
+    lateinit var etAnswer : EditText
+
+
     /////// Fix the onBackPressed listener to not save if the fields are empty!!///////////////////////////////////////
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,14 +41,14 @@ class QuizAddActivity : AppCompatActivity() {
 
         dbHandler = DatabaseHelper(this)
 
-        val etQuizName = findViewById<EditText>(R.id.et_quiz_name)
-        val etInstruction = findViewById<EditText>(R.id.et_quiz_instrunction)
-        val etQuestion = findViewById<EditText>(R.id.et_question)
-        val etChoiceA = findViewById<EditText>(R.id.et_choice_a)
-        val etChoiceB = findViewById<EditText>(R.id.et_choice_b)
-        val etChoiceC = findViewById<EditText>(R.id.et_choice_c)
-        val etChoiceD = findViewById<EditText>(R.id.et_choice_d)
-        val etAnswer = findViewById<EditText>(R.id.et_answer)
+        etQuizName = findViewById(R.id.et_quiz_name)
+        etInstruction = findViewById(R.id.et_quiz_instrunction)
+        etQuestion = findViewById(R.id.et_question)
+        etChoiceA = findViewById(R.id.et_choice_a)
+        etChoiceB = findViewById(R.id.et_choice_b)
+        etChoiceC = findViewById(R.id.et_choice_c)
+        etChoiceD = findViewById(R.id.et_choice_d)
+        etAnswer = findViewById(R.id.et_answer)
 
         val continueButton= findViewById<Button>(R.id.buttonContinue)
         continueButton.setOnClickListener {
@@ -110,17 +124,28 @@ class QuizAddActivity : AppCompatActivity() {
         quizModel.topic_name = topicGlobal
         quizModel.quiz_name = quizNameGlobal
         quizModel.quiz_model = "QuizAddMulChoice4"
-        successQuizList = dbHandler?.addALlQuizList(quizModel) as Boolean
 
-        if (successQuizList) {
-            Toast.makeText(this, "Quiz has been saved.", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, QuizTypeActivity::class.java)
-            startActivity(intent)
+        if (etQuizName.text.toString().isNotEmpty()
+            && etInstruction.text.toString().isNotEmpty()
+            && etQuestion.text.toString().isNotEmpty()
+            && etChoiceA.text.toString().isNotEmpty()
+            && etChoiceB.text.toString().isNotEmpty()
+            && etChoiceC.text.toString().isNotEmpty()
+            && etChoiceD.text.toString().isNotEmpty()
+            && etAnswer.text.toString().isNotEmpty())
+        {
+            successQuizList = dbHandler?.addALlQuizList(quizModel) as Boolean
+
+            if (successQuizList) {
+                Toast.makeText(this, "Please press finish button to save the quiz.", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this, "Unsuccessful.", Toast.LENGTH_SHORT).show()
+            }
         }else{
-            Toast.makeText(this, "Unsuccessful.", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, QuizTypeActivity::class.java)
             startActivity(intent)
         }
+
     }
 
 }

@@ -16,6 +16,19 @@ class QuizAddRearange : AppCompatActivity() {
 
     var dbHandler : DatabaseHelper?= null
 
+    var topicGlobal  = ""
+    var quizNameGlobal  = ""
+
+    lateinit var etQuizName : EditText
+    lateinit var etInstruction : EditText
+
+    lateinit var etStatementOne : EditText
+    lateinit var etStatementTwo : EditText
+
+    lateinit var etStatementThree : EditText
+    lateinit var etStatementCorrect : EditText
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_add_rearange)
@@ -24,12 +37,12 @@ class QuizAddRearange : AppCompatActivity() {
 
         dbHandler = DatabaseHelper(this)
 
-        val etInstruction = findViewById<EditText>(R.id.et_quiz_instrunction)
-        val etQuizName = findViewById<EditText>(R.id.et_quiz_name)
-        val etStatementOne = findViewById<EditText>(R.id.et_first_statement)
-        val etStatementTwo = findViewById<EditText>(R.id.et_second_statement)
-        val etStatementThree = findViewById<EditText>(R.id.et_third_statement)
-        val etStatementCorrect = findViewById<EditText>(R.id.et_answer_statement)
+        etInstruction = findViewById(R.id.et_quiz_instrunction)
+        etQuizName = findViewById(R.id.et_quiz_name)
+        etStatementOne = findViewById(R.id.et_first_statement)
+        etStatementTwo = findViewById(R.id.et_second_statement)
+        etStatementThree = findViewById(R.id.et_third_statement)
+        etStatementCorrect = findViewById(R.id.et_answer_statement)
 
         val continueButton= findViewById<Button>(R.id.buttonContinue)
         continueButton.setOnClickListener {
@@ -91,7 +104,30 @@ class QuizAddRearange : AppCompatActivity() {
         }
     }
     override fun onBackPressed() {
-        Toast.makeText(this, "Please press finish button to save the quiz.", Toast.LENGTH_LONG)
-            .show()
+        var successQuizList : Boolean = false
+        val quizModel = QuizListModel()
+        quizModel.topic_name = topicGlobal
+        quizModel.quiz_name = quizNameGlobal
+        quizModel.quiz_model = "QuizAddMulChoice4"
+
+        if (etQuizName.text.toString().isNotEmpty()
+            && etInstruction.text.toString().isNotEmpty()
+            && etStatementOne.text.toString().isNotEmpty()
+            && etStatementThree.text.toString().isNotEmpty()
+            && etStatementTwo.text.toString().isNotEmpty()
+            && etStatementCorrect.text.toString().isNotEmpty())
+        {
+            successQuizList = dbHandler?.addALlQuizList(quizModel) as Boolean
+
+            if (successQuizList) {
+                Toast.makeText(this, "Please press finish button to save the quiz.", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this, "Unsuccessful.", Toast.LENGTH_SHORT).show()
+            }
+        }else{
+            val intent = Intent(this, QuizTypeActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

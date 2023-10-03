@@ -9,7 +9,11 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Gravity
 import android.widget.ImageButton
+import com.example.workbookapp.AdminActivity
+import com.example.workbookapp.LandingActivity
+import com.example.workbookapp.MainActivity
 import com.example.workbookapp.R
+import com.example.workbookapp.history.HistoryActivity
 
 class QuizTypeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -464,5 +468,12 @@ class QuizTypeActivity : AppCompatActivity() {
             }
 
         }
+
+        val buttonTypeHome = findViewById<Button>(R.id.imageButtonHome)
+        buttonTypeHome.setOnClickListener {
+            val intent = Intent(this, AdminActivity::class.java)
+            startActivity(intent)
+        }
     }
+
 }

@@ -28,6 +28,19 @@
         app:layout_constraintTop_toTopOf="@+id/view"
         app:layout_constraintVertical_bias="0.106"/>
 
+
+    <ImageButton
+        android:id="@+id/imageButtonUpdate"
+        android:layout_width="59dp"
+        android:layout_height="54dp"
+        android:background="@drawable/loop"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.135" />
+
     <ImageButton
         android:id="@+id/imageButtonLessons"
         android:layout_width="159dp"
@@ -63,7 +76,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageButtonLessons" />
 
     <ImageButton
-        android:id="@+id/imageButtonImportDB"
+        android:id="@+id/imageButtonHistory"
         android:layout_width="159dp"
         android:layout_height="175dp"
         android:background="@drawable/button_history"
@@ -72,15 +85,5 @@
         app:layout_constraintStart_toStartOf="@+id/imageButtonQuizzes"
         app:layout_constraintTop_toBottomOf="@+id/imageButtonQuizzes" />
 
-    <Button
-        android:id="@+id/buttonExportDB"
-        style="@style/ButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Export"
-        app:layout_constraintBottom_toTopOf="@+id/imageButtonQuizzes"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

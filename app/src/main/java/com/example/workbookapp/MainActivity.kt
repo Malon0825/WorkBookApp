@@ -11,6 +11,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.example.workbookapp.database.DatabaseHelper
+import com.example.workbookapp.history.HistoryActivity
 import com.example.workbookapp.lessons.LessonActivity
 import com.example.workbookapp.quizzes.QuizzesActivity
 import com.example.workbookapp.scores.ScoresActivity
@@ -51,42 +52,21 @@ class MainActivity : ComponentActivity() {
             startActivity(intent)
         }
 
-        val importDb = findViewById<ImageButton>(R.id.imageButtonImportDB)
+        val historyButton = findViewById<ImageButton>(R.id.imageButtonHistory)
+        historyButton.setOnClickListener {
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
+        }
+
+        val importDb = findViewById<ImageButton>(R.id.imageButtonUpdate)
         importDb.setOnClickListener {
-//
-//            requestPermissions(arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE), NEW_REQUEST_PERMISSIONS_CODE)
-//            operationCopyPaste = false
-//           // val intent = Intent(Intent.ACTION_GET_CONTENT)
-//           // intent.type = "application/*" // This will filter the results to only show database files.
-//            Log.e("ImportDb:", "Clicked")
-//            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT_TREE)
-//            startActivityForResult(intent, PICKFOLDER_RESULT_CODE)
-
             operationCopyPaste = dbHandler!!.importFromFirestoreToSQLite()
-
             if (operationCopyPaste == true){
-                Toast.makeText(this, "Update complete.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Update successful.", Toast.LENGTH_LONG).show()
+            }else{
+                Toast.makeText(this, "Failed to import data!!", Toast.LENGTH_LONG).show()
             }
         }
-
-        val exportDb = findViewById<Button>(R.id.buttonExportDB)
-        exportDb.setOnClickListener {
-//            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT_TREE)
-//            startActivityForResult(intent, PICKFOLDER_RESULT_CODE)
-            Log.e("ExportDb:", "Clicked")
-
-//            requestPermissions(arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE), REQUEST_PERMISSIONS_CODE)
-//            operationCopyPaste = true
-//            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT_TREE)
-//            startActivityForResult(intent, PICKFOLDER_RESULT_CODE)
-            operationCopyPaste = dbHandler!!.exportDbToFirestore()
-
-            if (operationCopyPaste == true){
-                Toast.makeText(this, "Update complete.", Toast.LENGTH_SHORT).show()
-            }
-
-        }
-
 
     }
 //
@@ -199,5 +179,9 @@ class MainActivity : ComponentActivity() {
 ////
 ////        }
 ////    }
-
+    override fun onBackPressed() {
+        val intent = Intent(this, LandingActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }

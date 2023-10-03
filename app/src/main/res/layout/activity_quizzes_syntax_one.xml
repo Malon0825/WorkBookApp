@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewTopic"
         android:layout_width="337dp"
         android:layout_height="102dp"
         android:background="@drawable/button_syntax_one"
@@ -37,9 +37,9 @@
         android:layout_height="306dp"
         android:background="@drawable/layout_bg_long"
         app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewTopic"
+        app:layout_constraintStart_toStartOf="@+id/imageViewTopic"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewTopic"
         app:layout_constraintVertical_bias="0.425" />
 
     <ScrollView
@@ -64,8 +64,29 @@
 
     </ScrollView>
 
+    <ImageView
+        android:id="@+id/imageButtonBg"
+        android:layout_width="160dp"
+        android:layout_height="70dp"
+        android:background="@drawable/layout_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewContent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/imageViewContent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewContent"
+        app:layout_constraintVertical_bias="0.724" />
 
-
+    <Button
+        android:id="@+id/imageButtonHome"
+        style="@style/ButtonStyle"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButtonBg"
+        app:layout_constraintEnd_toEndOf="@+id/imageButtonBg"
+        app:layout_constraintStart_toStartOf="@+id/imageButtonBg"
+        app:layout_constraintTop_toTopOf="@+id/imageButtonBg"
+        app:layout_constraintVertical_bias="0.47" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

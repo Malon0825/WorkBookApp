@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.Gravity
 import android.widget.Button
 import android.widget.TextView
@@ -75,8 +76,13 @@ class QuizModelMulChoice7 : AppCompatActivity() {
         fun showQuestion() {
             if (currentQuestionIndex < questionList.size) {
                 val question = questionList[currentQuestionIndex]
+
+                textViewInstruction.apply {
+                    text = question.instruction
+                }
+                textViewInstruction.setMovementMethod(ScrollingMovementMethod())
+
                 textViewQuestion.text = question.question
-                textViewInstruction.text = question.question
                 buttonChoiceA.text = question.choice_a
                 buttonChoiceB.text = question.choice_b
                 buttonChoiceC.text = question.choice_c
@@ -310,5 +316,9 @@ class QuizModelMulChoice7 : AppCompatActivity() {
     @SuppressLint("NotifyDataSetChanged")
     private fun fetchList(){
         questionList = dbHandler!!.getALlQuizModel7(quiz_name.toString(), topic.toString())
+    }
+
+    override fun onBackPressed() {
+        Toast.makeText(this, "Please finish the all the questions.", Toast.LENGTH_SHORT).show()
     }
 }
