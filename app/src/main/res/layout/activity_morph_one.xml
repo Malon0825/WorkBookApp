@@ -22,7 +22,7 @@
         android:id="@+id/imageView"
         android:layout_width="337dp"
         android:layout_height="102dp"
-        android:background="@drawable/button_syntax_five"
+        android:background="@drawable/button_morph_one"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"

@@ -21,7 +21,7 @@
         android:id="@+id/textViewInstruction"
         style="@style/TextViewStyle"
         android:layout_width="310dp"
-        android:layout_height="143dp"
+        android:layout_height="wrap_content"
         android:text="Rule 6: Rule of Proximity (Compound Subject with Singular and Plural)"
         android:textAlignment="center"
         android:textSize="30sp"

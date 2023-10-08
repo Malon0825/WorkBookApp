@@ -98,7 +98,7 @@ class SyntaxActivityTwo : AppCompatActivity() {
 
             val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
             textViewContent.apply {
-                text = getString(R.string.syntaxt_two_two)
+                text = getString(R.string.syntaxt_two_three)
             }
 
             textViewContent.setMovementMethod(ScrollingMovementMethod())

@@ -21,7 +21,7 @@
         android:id="@+id/textViewInstruction"
         style="@style/TextViewStyle"
         android:layout_width="299dp"
-        android:layout_height="137dp"
+        android:layout_height="wrap_content"
         android:text="@string/seven_5"
         android:textAlignment="center"
         android:textSize="30sp"

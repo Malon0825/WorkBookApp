@@ -20,7 +20,7 @@
         android:id="@+id/textViewInstruction"
         style="@style/TextViewStyle"
         android:layout_width="310dp"
-        android:layout_height="127dp"
+        android:layout_height="wrap_content"
         android:text="@string/seven_10"
         android:textAlignment="center"
         android:textSize="30sp"

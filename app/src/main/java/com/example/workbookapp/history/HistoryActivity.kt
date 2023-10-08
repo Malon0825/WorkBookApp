@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.compose.ui.graphics.Color
 import com.example.workbookapp.R
 import com.example.workbookapp.database.DatabaseHelper
 import com.example.workbookapp.model.ScoreModel
@@ -22,11 +23,22 @@ class HistoryActivity : AppCompatActivity() {
         fetchList()
 
         for (score in scoreList) {
-            val textScore = TextView(this).apply {
-                text = score.quiz_name + "  ||  " + score.dateTaken
-                setTextAppearance(this@HistoryActivity, R.style.TextViewStyle) // Replace 'YourActivity' with the name of your activity
+            val textQuizName = TextView(this).apply {
+                text = score.quiz_name
+                setTextAppearance(this@HistoryActivity, R.style.TextViewStyleHistoryScoreTitle)
             }
-            layout.addView(textScore)
+            val textDateTaken = TextView(this).apply {
+                text = "  ||  " + score.dateTaken
+                setTextAppearance(this@HistoryActivity, R.style.TextViewStyleHistoryScore)
+            }
+
+            // Create a new LinearLayout, add both TextViews to it, then add it to your main layout
+            val layoutScore = LinearLayout(this).apply {
+                orientation = LinearLayout.HORIZONTAL
+                addView(textQuizName)
+                addView(textDateTaken)
+            }
+            layout.addView(layoutScore)
         }
     }
 

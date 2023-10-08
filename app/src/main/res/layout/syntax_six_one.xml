@@ -14,13 +14,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintVertical_bias="0.061" />
 
     <TextView
         android:id="@+id/textViewInstruction"
         style="@style/TextViewStyle"
         android:layout_width="313dp"
-        android:layout_height="67dp"
+        android:layout_height="wrap_content"
         android:text="Independent Clauses"
         android:textAlignment="center"
         android:textSize="30sp"

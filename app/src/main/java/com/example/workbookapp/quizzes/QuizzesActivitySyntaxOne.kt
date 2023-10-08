@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.withStyledAttributes
@@ -50,9 +51,10 @@ class QuizzesActivitySyntaxOne : AppCompatActivity() {
 
         // Iterate over each quiz in the questionList
         for (quiz in questionList) {
-
             val button = Button(this).apply {
                 text = quiz.quiz_name
+               // setBackgroundResource(R.color.background)
+                //setTextColor(getColor(R.color.text))
             }
             layout.addView(button)
             // Set an OnClickListener for the button based on the quiz model

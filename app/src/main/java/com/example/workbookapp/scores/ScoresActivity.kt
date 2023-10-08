@@ -24,11 +24,22 @@ class ScoresActivity : AppCompatActivity() {
         fetchList()
 
         for (score in scoreList) {
-            val textScore = TextView(this).apply {
-                text = score.quiz_name + "  ||  " + score.score
-                setTextAppearance(this@ScoresActivity, R.style.TextViewStyle) // Replace 'YourActivity' with the name of your activity
+            val textQuizName = TextView(this).apply {
+                text = score.quiz_name
+                setTextAppearance(this@ScoresActivity, R.style.TextViewStyleHistoryScoreTitle)
             }
-            layout.addView(textScore)
+            val textDateTaken = TextView(this).apply {
+                text = "  ||  " + score.score
+                setTextAppearance(this@ScoresActivity, R.style.TextViewStyleHistoryScore)
+            }
+
+            // Create a new LinearLayout, add both TextViews to it, then add it to your main layout
+            val layoutScore = LinearLayout(this).apply {
+                orientation = LinearLayout.HORIZONTAL
+                addView(textQuizName)
+                addView(textDateTaken)
+            }
+            layout.addView(layoutScore)
         }
     }
 

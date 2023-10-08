@@ -122,7 +122,7 @@ class QuizModelRearrange : AppCompatActivity() {
         val buttonSubmit = findViewById<Button>(R.id.buttonSubmit)
         buttonSubmit.setOnClickListener {
             val question = questionList[currentQuestionIndex]
-            val answerString = editTextAnswer.text.toString()
+            var answerString = editTextAnswer.text.toString()
 
             if (questionAnswer == answerString) {
                 currentCorrectAnswerIndex++
@@ -134,6 +134,7 @@ class QuizModelRearrange : AppCompatActivity() {
             }
             currentQuestionIndex++
             showQuestion()
+            editTextAnswer.setText("")
 
         }
 

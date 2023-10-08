@@ -20,7 +20,7 @@
         android:id="@+id/textViewInstruction"
         style="@style/TextViewStyle"
         android:layout_width="313dp"
-        android:layout_height="67dp"
+        android:layout_height="wrap_content"
         android:text="Adverbial Phrase"
         android:textAlignment="center"
         android:textSize="30sp"
