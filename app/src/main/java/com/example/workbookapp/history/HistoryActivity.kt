@@ -3,6 +3,7 @@ package com.example.workbookapp.history
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.TypedValue
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.compose.ui.graphics.Color
@@ -26,6 +27,12 @@ class HistoryActivity : AppCompatActivity() {
             val textQuizName = TextView(this).apply {
                 text = score.quiz_name
                 setTextAppearance(this@HistoryActivity, R.style.TextViewStyleHistoryScoreTitle)
+
+                // Convert 100dp to pixels
+                val maxWidthInPixels = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150f, resources.displayMetrics).toInt()
+
+                // Set the maximum width of the TextView
+                maxWidth = maxWidthInPixels
             }
             val textDateTaken = TextView(this).apply {
                 text = "  ||  " + score.dateTaken
@@ -39,6 +46,7 @@ class HistoryActivity : AppCompatActivity() {
                 addView(textDateTaken)
             }
             layout.addView(layoutScore)
+
         }
     }
 

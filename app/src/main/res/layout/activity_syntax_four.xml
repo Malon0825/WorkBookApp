@@ -99,42 +99,47 @@
                 android:id="@+id/buttonOne"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
+                android:textSize="15sp"
                 android:layout_height="100dp"
-                android:text="1.	Subject-Verb (SV)"
+                android:text="1. Subject-Verb (SV)"
                 tools:layout_editor_absoluteX="89dp"
                 tools:layout_editor_absoluteY="391dp" />
 
             <Button
                 android:id="@+id/buttonTwo"
                 style="@style/ButtonStyle"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
                 android:layout_height="115dp"
-                android:text="2.	Subject-Verb-Obje-ct (SVO)" />
+                android:text="2. Subject-Verb-Object (SVO)" />
 
             <Button
                 android:id="@+id/buttonThree"
                 style="@style/ButtonStyle"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="3.	Subject-Verb-Adje-ctive (SVA) "
+                android:text="3. Subject-Verb-Adjective (SVA) "
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="635dp" />
 
             <Button
                 android:id="@+id/buttonFour"
                 style="@style/ButtonStyle"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="4.	Subject-Verb-Adve-rb (SVA)"
+                android:text="4. Subject-Verb-Adverb (SVA)"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="565dp" />
 
             <Button
                 android:id="@+id/buttonFive"
                 style="@style/ButtonStyle"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
                 android:layout_height="121dp"
-                android:text="5.	Subject-Verb-Obje-ct-Complement (SVOC)"
+                android:text="5. Subject-Verb-\nObject-Complement (SVOC)"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="565dp" />
         </LinearLayout>

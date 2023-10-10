@@ -3,6 +3,7 @@ package com.example.workbookapp.scores
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.TypedValue
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -27,6 +28,12 @@ class ScoresActivity : AppCompatActivity() {
             val textQuizName = TextView(this).apply {
                 text = score.quiz_name
                 setTextAppearance(this@ScoresActivity, R.style.TextViewStyleHistoryScoreTitle)
+
+                // Convert 100dp to pixels
+                val maxWidthInPixels = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150f, resources.displayMetrics).toInt()
+
+                // Set the maximum width of the TextView
+                maxWidth = maxWidthInPixels
             }
             val textDateTaken = TextView(this).apply {
                 text = "  ||  " + score.score
@@ -40,6 +47,7 @@ class ScoresActivity : AppCompatActivity() {
                 addView(textDateTaken)
             }
             layout.addView(layoutScore)
+
         }
     }
 

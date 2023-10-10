@@ -21,6 +21,7 @@
     </style>
 
     <style name="TextViewStyleHistoryScoreTitle">
+        <item name="maxWidth">80px</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/background</item>
         <item name="fontFamily">sans-serif-black</item>
