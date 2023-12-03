@@ -56,6 +56,22 @@
         app:layout_constraintVertical_bias="0.155" />
 
 
+<!--    <TextView-->
+<!--        android:id="@+id/textViewInstructions"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="sans-serif-black"-->
+<!--        android:textColor="@color/red"-->
+<!--        android:text="EN7G-II-a-1"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/textViewInstruction"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/textViewInstructionContent"-->
+<!--        app:layout_constraintHorizontal_bias="0.256"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/textViewInstruction"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/textViewInstruction"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+
     <TextView
         android:id="@+id/textViewInstructionContent"
         android:layout_width="270dp"
@@ -71,7 +87,6 @@
         app:layout_constraintStart_toStartOf="@+id/textViewInstruction"
         app:layout_constraintTop_toBottomOf="@+id/textViewInstruction"
         app:layout_constraintVertical_bias="0.0" />
-
 
     <ImageView
         android:id="@+id/imageViewContent"

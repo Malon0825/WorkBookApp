@@ -21,9 +21,10 @@ class SyntaxActivityOne : AppCompatActivity() {
         // Get a reference to the TextView object
         val textView = findViewById<TextView>(R.id.textViewInstructionContent)
 
+        val instructionText = getString(R.string.syntax_one_instruction_content)
         // Set the properties of the TextView object
         textView.apply {
-            text = getString(R.string.syntax_one_instruction_content) // Get the text from strings.xml
+            text = instructionText
         }
 
         // Enable scrolling on the TextView object
