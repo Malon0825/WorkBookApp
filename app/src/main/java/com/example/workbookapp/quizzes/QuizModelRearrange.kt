@@ -16,6 +16,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.workbookapp.R
+import com.example.workbookapp.VoiceHelper
 import com.example.workbookapp.database.DatabaseHelper
 import com.example.workbookapp.model.AnswersModel
 import com.example.workbookapp.model.QuizzesMulChoice2Model
@@ -32,7 +33,7 @@ class QuizModelRearrange : AppCompatActivity() {
     private var wrongSound : MediaPlayer?= null
     var quiz_name : String? = ""
     var topic : String? = ""
-
+    private lateinit var playSound: VoiceHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_model_rearrange)
@@ -44,6 +45,7 @@ class QuizModelRearrange : AppCompatActivity() {
         wrongSound = MediaPlayer.create(this, R.raw.wrong)
 
         dbHandler = DatabaseHelper(this)
+        playSound = VoiceHelper(applicationContext)
         fetchList()
         var currentQuestionIndex = 0
         var currentCorrectAnswerIndex = 0
@@ -122,24 +124,23 @@ class QuizModelRearrange : AppCompatActivity() {
         val buttonSubmit = findViewById<Button>(R.id.buttonSubmit)
         buttonSubmit.setOnClickListener {
             val question = questionList[currentQuestionIndex]
-            var answerString = editTextAnswer.text.toString()
+            var answerString = editTextAnswer.text.toString().trim()
+
+            // Remove spaces after dots
+            answerString = answerString.replace(Regex("\\.\\s+"), ".")
 
             if (questionAnswer == answerString) {
                 currentCorrectAnswerIndex++
-                correctSound?.start()
+                playSound.playSound(true)
                 Toast.makeText(this, "Your answer is correct.", Toast.LENGTH_SHORT).show()
-            }else{
-                wrongSound?.start()
-                Toast.makeText(this, "The correct answer is " + questionAnswer, Toast.LENGTH_SHORT).show()
+            } else {
+                playSound.playSound(false)
+                Toast.makeText(this, "The correct answer is $questionAnswer", Toast.LENGTH_SHORT).show()
             }
             currentQuestionIndex++
             showQuestion()
             editTextAnswer.setText("")
-
         }
-
-
-
         showQuestion()
     }
 

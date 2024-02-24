@@ -34,11 +34,12 @@
         android:layout_width="159dp"
         android:layout_height="175dp"
         android:background="@drawable/button_syntax"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.222" />
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/imageButtonMorph"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageButtonMorph"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonMorph"
+        app:layout_constraintVertical_bias="0.194" />
 
     <ImageButton
         android:id="@+id/imageButtonMorph"
@@ -46,10 +47,9 @@
         android:layout_height="175dp"
         android:background="@drawable/button_morph"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageButtonSyntax"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageButtonSyntax"
-        app:layout_constraintTop_toBottomOf="@+id/imageButtonSyntax"
-        app:layout_constraintVertical_bias="0.159" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.156" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

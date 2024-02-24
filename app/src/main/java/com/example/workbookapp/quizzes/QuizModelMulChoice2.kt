@@ -15,6 +15,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.workbookapp.R
+import com.example.workbookapp.VoiceHelper
 import com.example.workbookapp.database.DatabaseHelper
 import com.example.workbookapp.model.AnswersModel
 import com.example.workbookapp.model.QuizzesModel
@@ -31,6 +32,7 @@ class QuizModelMulChoice2 : AppCompatActivity() {
     private var wrongSound : MediaPlayer?= null
     var quiz_name : String? = ""
     var topic : String? = ""
+    private lateinit var playSound: VoiceHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +44,7 @@ class QuizModelMulChoice2 : AppCompatActivity() {
         wrongSound = MediaPlayer.create(this, R.raw.wrong)
 
         dbHandler = DatabaseHelper(this)
+        playSound = VoiceHelper(applicationContext)
         fetchList()
         var currentQuestionIndex = 0
         var currentCorrectAnswerIndex = 0
@@ -134,10 +137,10 @@ class QuizModelMulChoice2 : AppCompatActivity() {
             if (success) {
                 if (questionAnswer == answer.answer_answer) {
                     currentCorrectAnswerIndex++
-                    correctSound?.start()
+                    playSound.playSound(true)
                     Toast.makeText(this, "Your answer is correct.", Toast.LENGTH_SHORT).show()
                 }else{
-                    wrongSound?.start()
+                    playSound.playSound(false)
                     Toast.makeText(this, "The correct answer is " + questionAnswer, Toast.LENGTH_SHORT).show()
                 }
                 currentQuestionIndex++
@@ -159,10 +162,10 @@ class QuizModelMulChoice2 : AppCompatActivity() {
             if (success) {
                 if (questionAnswer == answer.answer_answer) {
                     currentCorrectAnswerIndex++
-                    correctSound?.start()
+                    playSound.playSound(true)
                     Toast.makeText(this, "Your answer is correct.", Toast.LENGTH_SHORT).show()
                 }else{
-                    wrongSound?.start()
+                    playSound.playSound(false)
                     Toast.makeText(this, "The correct answer is " + questionAnswer, Toast.LENGTH_SHORT).show()
                 }
                 currentQuestionIndex++

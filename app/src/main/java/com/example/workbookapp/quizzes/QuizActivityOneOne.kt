@@ -15,6 +15,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.workbookapp.R
+import com.example.workbookapp.VoiceHelper
 import com.example.workbookapp.database.DatabaseHelper
 import com.example.workbookapp.lessons.SyntaxActivityOne
 import com.example.workbookapp.model.AnswersModel
@@ -29,10 +30,10 @@ class QuizActivityOneOne : AppCompatActivity() {
 
     var dbHandler : DatabaseHelper = DatabaseHelper(this)
     var questionList : List<QuizzesModel> = ArrayList<QuizzesModel>()
-    private var correctSound : MediaPlayer ?= null
-    private var wrongSound : MediaPlayer ?= null
     var quiz_name : String? = ""
     var topic : String? = ""
+    private lateinit var playSound: VoiceHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_one_one)
@@ -40,10 +41,8 @@ class QuizActivityOneOne : AppCompatActivity() {
         quiz_name = intent.getStringExtra("quiz_name")
         topic = intent.getStringExtra("topic")
 
-        correctSound = MediaPlayer.create(this, R.raw.correct)
-        wrongSound = MediaPlayer.create(this, R.raw.wrong)
-
         dbHandler = DatabaseHelper(this)
+        playSound = VoiceHelper(applicationContext)
         fetchList()
         var currentQuestionIndex = 0
         var currentCorrectAnswerIndex = 0
@@ -52,7 +51,6 @@ class QuizActivityOneOne : AppCompatActivity() {
         var successAddScore: Boolean = false
         val answer: AnswersModel = AnswersModel()
         val score: ScoreModel = ScoreModel()
-
 
         var quizName = ""
         val textViewQuestion = findViewById<TextView>(R.id.textViewQuestion)
@@ -67,11 +65,6 @@ class QuizActivityOneOne : AppCompatActivity() {
 
         val dateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
         val dateString = dateFormat.format(currentDate)
-
-
-
-
-
 
         fun showQuestion() {
             if (currentQuestionIndex < questionList.size) {
@@ -138,10 +131,10 @@ class QuizActivityOneOne : AppCompatActivity() {
             if (success) {
                 if (questionAnswer == answer.answer_answer) {
                     currentCorrectAnswerIndex++
-                    correctSound?.start()
+                    playSound.playSound(true)
                     Toast.makeText(this, "Your answer is correct.", Toast.LENGTH_SHORT).show()
                 }else{
-                    wrongSound?.start()
+                    playSound.playSound(false)
                     Toast.makeText(this, "The correct answer is " + questionAnswer, Toast.LENGTH_SHORT).show()
                 }
                 currentQuestionIndex++
@@ -163,10 +156,10 @@ class QuizActivityOneOne : AppCompatActivity() {
             if (success) {
                 if (questionAnswer == answer.answer_answer) {
                     currentCorrectAnswerIndex++
-                    correctSound?.start()
+                    playSound.playSound(true)
                     Toast.makeText(this, "Your answer is correct.", Toast.LENGTH_SHORT).show()
                 }else{
-                    wrongSound?.start()
+                    playSound.playSound(false)
                     Toast.makeText(this, "The correct answer is " + questionAnswer, Toast.LENGTH_SHORT).show()
                 }
                 currentQuestionIndex++
@@ -188,10 +181,10 @@ class QuizActivityOneOne : AppCompatActivity() {
             if (success) {
                 if (questionAnswer == answer.answer_answer) {
                     currentCorrectAnswerIndex++
-                    correctSound?.start()
+                    playSound.playSound(true)
                     Toast.makeText(this, "Your answer is correct.", Toast.LENGTH_SHORT).show()
                 }else{
-                    wrongSound?.start()
+                    playSound.playSound(false)
                     Toast.makeText(this, "The correct answer is " + questionAnswer, Toast.LENGTH_SHORT).show()
                 }
                 currentQuestionIndex++
@@ -213,10 +206,10 @@ class QuizActivityOneOne : AppCompatActivity() {
             if (success) {
                 if (questionAnswer == answer.answer_answer) {
                     currentCorrectAnswerIndex++
-                    correctSound?.start()
+                    playSound.playSound(true)
                     Toast.makeText(this, "Your answer is correct.", Toast.LENGTH_SHORT).show()
                 }else{
-                    wrongSound?.start()
+                    playSound.playSound(false)
                     Toast.makeText(this, "The correct answer is " + questionAnswer, Toast.LENGTH_SHORT).show()
                 }
                 currentQuestionIndex++
