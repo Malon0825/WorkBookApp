@@ -60,125 +60,13 @@ class MainActivity : ComponentActivity() {
 
         val importDb = findViewById<ImageButton>(R.id.imageButtonUpdate)
         importDb.setOnClickListener {
-            operationCopyPaste = dbHandler!!.importFromFirestoreToSQLite()
-            if (operationCopyPaste == true){
-                Toast.makeText(this, "Update successful.", Toast.LENGTH_LONG).show()
-            }else{
-                Toast.makeText(this, "Failed to import data!!", Toast.LENGTH_LONG).show()
-            }
+
+            dbHandler.deleteQuiz()
+            dbHandler.importFromFirestoreToSQLite()
+            Toast.makeText(this, "Update successful.", Toast.LENGTH_LONG).show()
         }
 
     }
-//
-//    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-//        if (requestCode == REQUEST_PERMISSIONS_CODE) {
-//
-//            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//
-//                Log.e("ExportDb:", "Access Granted")
-//
-//                val documentsDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
-//                val direct = File(documentsDirectory, "English Workbook")
-//
-//                if (!direct.exists()) {
-//                    direct.mkdirs()
-//
-//                }
-//                val success = dbHandler!!.exportDatabase(direct.toString())
-//                if (success) {
-//                    Toast.makeText(
-//                        this,
-//                        "Database has been added successfully.",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                    Log.e("ExportDB:", "Successfully")
-//                } else {
-//                    Toast.makeText(this, "Database saving failed!!", Toast.LENGTH_SHORT).show()
-//                    Log.e("ExportDB:", "Failed")
-//                }
-//
-//
-//            }
-//            else{
-//                Log.e("ExportDb:", "Access Denied")
-//            }
-//        }else if (requestCode == NEW_REQUEST_PERMISSIONS_CODE){
-//
-//            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                Log.e("ImportDb:", "Access Granted")
-//
-//                val documentsDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
-//                val direct = File(documentsDirectory, "English Workbook")
-//                Log.e("ExportDB:", direct.toString())
-//                if (!direct.exists()) {
-//                    direct.mkdirs()
-//                    Log.e("ExportDB:", "Direct is created")
-//                }else{
-//                    Log.e("ExportDB:", "Direct exist")
-//                }
-//
-//                val success = dbHandler!!.importDatabase(direct.toString())
-//                if (success){
-//                    Toast.makeText(this, "Database has been added successfully.", Toast.LENGTH_SHORT).show()
-//                    Log.e("ExportDB:", "Successfully")
-//                }else{
-//                    Toast.makeText(this, "Database saving failed!!", Toast.LENGTH_SHORT).show()
-//                    Log.e("ExportDB:", "Failed")
-//                }
-//            }
-//        }
-//        else{
-//            Log.e("ExportDb:", "Access Denied")
-//        }
-//    }
-//
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//
-//        if (requestCode == PICKFILE_RESULT_CODE && resultCode == RESULT_OK) {
-//            val folderUri = data?.data
-//
-//            // Use the folderUri to access the folder and store the file in it.
-////            val documentsDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
-////            val direct = File(documentsDirectory, "English Workbook")
-////
-////            if (!direct.exists()) {
-////                direct.mkdirs()
-////            }
-////
-////            val success = dbHandler!!.importDatabase(folderUri)
-////            if (success){
-////                Toast.makeText(this, "Database has been added successfully.", Toast.LENGTH_SHORT).show()
-////                Log.e("ExportDB:", "Successfully")
-////            }else{
-////                Toast.makeText(this, "Database saving failed!!", Toast.LENGTH_SHORT).show()
-////                Log.e("ExportDB:", "Failed")
-////            }
-//        }
-//    }
-//
-////    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-////        super.onActivityResult(requestCode, resultCode, data)
-////        if (requestCode == PICKFILE_RESULT_CODE && resultCode == RESULT_OK) {
-////            val uri = data?.data
-////            //Log.e("Choice A", uri.toString())
-////            // Now you can use the path to import the database
-////            val success = dbHandler!!.importDatabase(uri.toString())
-////            if (success) {
-////                Toast.makeText(this, "Database has been added successfully.", Toast.LENGTH_SHORT)
-////                    .show()
-////                Log.e("ImportDB:", "Successfully")
-////            } else {
-////                Toast.makeText(this, "Database saving failed!!", Toast.LENGTH_SHORT).show()
-////                Log.e("ImportDB:", "Failed")
-////            }
-////        }
-////       else if (requestCode == PICKFOLDER_RESULT_CODE && resultCode == RESULT_OK) {
-////            val uri = data?.data
-////
-////        }
-////    }
     override fun onBackPressed() {
         val intent = Intent(this, LandingActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

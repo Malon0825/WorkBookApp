@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "913551396738",
+    "project_id": "workbookapp-e33c5",
+    "storage_bucket": "workbookapp-e33c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913551396738:android:13505733581dd98672c99b",
+        "android_client_info": {
+          "package_name": "com.example.workbookapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvt7Ya1Yg2C9ghtdvBTSvtsoTSJDaj7eo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

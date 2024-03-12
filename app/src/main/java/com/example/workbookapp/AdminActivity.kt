@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.workbookapp.database.DatabaseHelper
 import com.example.workbookapp.quizzes.QuizTypeActivity
 
@@ -28,12 +29,25 @@ class AdminActivity : AppCompatActivity() {
         val exportData= findViewById<Button>(R.id.buttonExportDatabase)
         exportData.setOnClickListener {
 
-            operationCopyPaste = dbHandler!!.exportDbToFirestore()
-            if (operationCopyPaste == true){
-                Toast.makeText(this, "Export complete.", Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(this, "Failed to export data!!", Toast.LENGTH_LONG).show()
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Question")
+            builder.setMessage("Are you sure you want to proceed?")
+
+            builder.setPositiveButton("OK") { dialog, which ->
+                operationCopyPaste = dbHandler!!.exportDbToFirestore()
+                if (operationCopyPaste == true){
+                    Toast.makeText(this, "Export complete.", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(this, "Failed to export data!!", Toast.LENGTH_LONG).show()
+                }
+                dialog.dismiss()
             }
+
+            builder.setNegativeButton("Cancel") { dialog, which ->
+                dialog.dismiss()
+            }
+
+            builder.show()
         }
     }
     override fun onBackPressed() {

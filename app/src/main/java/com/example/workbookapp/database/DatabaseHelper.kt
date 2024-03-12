@@ -656,7 +656,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         }
     }
 
-    fun addScore(score : ScoreModel): Boolean{ val db = this.writableDatabase
+    fun addScore(score : ScoreModel): Boolean{
+        val db = this.writableDatabase
         val values = ContentValues()
         values.put(SCORE_QUIZ_NAME, score.quiz_name)
         values.put(SCORE, score.score)
@@ -679,8 +680,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
 
 
 
-    fun importFromFirestoreToSQLite(): Boolean{
-        val success : Boolean
+    fun importFromFirestoreToSQLite(){
         try {
             TABLE_NAME_QUIZ_LIST_IMPORT()
             TABLE_NAME_SYNTAX_ONE_IMPORT()
@@ -688,13 +688,10 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
             TABLE_NAME_QUIZ_MUL_CHOICE_6_IMPORT()
             TABLE_NAME_QUIZ_MUL_CHOICE_7_IMPORT()
             TABLE_NAME_QUIZ_REARRANGE_IMPORT()
-
         }catch (e: Exception){
             Log.e("DBHelper", e.message.toString())
-        }finally {
-            success = true
+            throw e
         }
-        return success
     }
 
     fun TABLE_NAME_SYNTAX_ONE_IMPORT() {
@@ -1232,5 +1229,55 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         cursor.close()
     }
 
+    fun deleteQuiz()  {
+        Log.e("Firestore: ", "Deleting data..")
+        clearQuizListData()
+        clearQuizRearrange()
+        clearQuizMulChoice7()
+        clearQuizMulChoice2()
+        clearQuizMulChoice6()
+        clearSyntaxOne()
+        Log.e("Firestore: ", "Success")
+    }
+    fun clearQuizListData() {
+        val db = getWritableDatabase()
+        val deleteStatement = "DELETE FROM $TABLE_NAME_QUIZ_LIST"
+        db.execSQL(deleteStatement)
+        db.close()
+    }
 
+    fun clearQuizRearrange() {
+        val db = getWritableDatabase()
+        val deleteStatement = "DELETE FROM $TABLE_NAME_QUIZ_REARRANGE"
+        db.execSQL(deleteStatement)
+        db.close()
+    }
+
+    fun clearQuizMulChoice7() {
+        val db = getWritableDatabase()
+        val deleteStatement = "DELETE FROM $TABLE_NAME_QUIZ_MUL_CHOICE_7"
+        db.execSQL(deleteStatement)
+        db.close()
+    }
+
+    fun clearQuizMulChoice2() {
+        val db = getWritableDatabase()
+        val deleteStatement = "DELETE FROM $TABLE_NAME_QUIZ_MUL_CHOICE_2"
+        db.execSQL(deleteStatement)
+        db.close()
+    }
+
+    fun clearQuizMulChoice6() {
+        val db = getWritableDatabase()
+        val deleteStatement = "DELETE FROM $TABLE_NAME_QUIZ_MUL_CHOICE_6"
+        db.execSQL(deleteStatement)
+        db.close()
+    }
+
+    fun clearSyntaxOne() {
+        val db = getWritableDatabase()
+        val deleteStatement = "DELETE FROM $TABLE_NAME_SYNTAX_ONE"
+        db.execSQL(deleteStatement)
+        db.close()
+    }
 }

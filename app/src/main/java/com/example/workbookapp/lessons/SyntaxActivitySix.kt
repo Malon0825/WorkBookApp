@@ -128,6 +128,30 @@ class SyntaxActivitySix : AppCompatActivity() {
             textViewContent.setMovementMethod(ScrollingMovementMethod())
         }
 
+        val oneFive = findViewById<Button>(R.id.buttonFive)
+        oneFive.setOnClickListener {
+            val dialogBinding = layoutInflater.inflate(R.layout.syntax_six_two_three, null)
+
+            val myDialog = Dialog(this)
+            myDialog.setContentView(dialogBinding)
+
+            val window = myDialog.window
+            window?.setGravity(Gravity.CENTER)
+            window?.setDimAmount(0.6F)
+
+            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            myDialog.setCanceledOnTouchOutside(true)
+            myDialog.show()
+
+
+            val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
+            textViewContent.apply {
+                text = getString(R.string.syntax_six_two_two)
+            }
+
+            textViewContent.setMovementMethod(ScrollingMovementMethod())
+        }
+
 
     }
 }
