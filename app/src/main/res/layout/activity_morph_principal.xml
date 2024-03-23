@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MorphPrincipal">
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <ImageView
+        android:id="@+id/imageViewInstruction"
+        android:layout_width="329dp"
+        android:layout_height="135dp"
+        android:background="@drawable/layout_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
+
+
+    <TextView
+        android:id="@+id/textViewInstruction"
+        android:layout_width="267dp"
+        android:layout_height="80dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Principal Parts of a Word"
+        android:textAlignment="center"
+        android:textColor="@color/background"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewInstruction"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewInstruction"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/imageViewInstruction"
+        app:layout_constraintTop_toTopOf="@+id/imageViewInstruction"
+        app:layout_constraintVertical_bias="0.517" />
+
+    <ImageView
+        android:id="@+id/imageViewContent"
+        android:layout_width="337dp"
+        android:layout_height="303dp"
+        android:background="@drawable/layout_bg_long"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewInstruction"
+        app:layout_constraintStart_toStartOf="@+id/imageViewInstruction"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewInstruction"
+        app:layout_constraintVertical_bias="0.226" />
+
+        <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="271dp"
+        android:layout_height="259dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewContent"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewContent"
+        app:layout_constraintStart_toStartOf="@+id/imageViewContent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewContent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/buttonOne"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="1. Prefixes"
+                tools:layout_editor_absoluteX="89dp"
+                tools:layout_editor_absoluteY="391dp" />
+
+            <Button
+                android:id="@+id/buttonTwo"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="2. Suffixes" />
+
+            <Button
+                android:id="@+id/buttonThree"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="3. Roots"
+                tools:layout_editor_absoluteX="79dp"
+                tools:layout_editor_absoluteY="635dp" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

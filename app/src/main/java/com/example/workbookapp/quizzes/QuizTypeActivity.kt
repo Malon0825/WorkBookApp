@@ -93,7 +93,7 @@ class QuizTypeActivity : AppCompatActivity() {
 
             val buttonEight = dialogBinding.findViewById<ImageButton>(R.id.imageButtonEight)
             buttonEight.setOnClickListener{
-                val passData = "Syntax Topic 8"
+                val passData = "Morphology Topic 8"
                 val intent = Intent(this, QuizAddActivity::class.java)
                 intent.putExtra("topic", passData)
                 startActivity(intent)
@@ -101,7 +101,7 @@ class QuizTypeActivity : AppCompatActivity() {
 
             val buttonNine = dialogBinding.findViewById<ImageButton>(R.id.imageButtonNine)
             buttonNine.setOnClickListener{
-                val passData = "Syntax Topic 9"
+                val passData = "Morphology Topic 9"
                 val intent = Intent(this, QuizAddActivity::class.java)
                 intent.putExtra("topic", passData)
                 startActivity(intent)
@@ -183,7 +183,7 @@ class QuizTypeActivity : AppCompatActivity() {
 
             val buttonEight = dialogBinding.findViewById<ImageButton>(R.id.imageButtonEight)
             buttonEight.setOnClickListener {
-                val passData = "Syntax Topic 8"
+                val passData = "Morphology Topic 8"
                 val intent = Intent(this, QuizAddMulChoice6::class.java)
                 intent.putExtra("topic", passData)
                 startActivity(intent)
@@ -191,7 +191,7 @@ class QuizTypeActivity : AppCompatActivity() {
 
             val buttonNine = dialogBinding.findViewById<ImageButton>(R.id.imageButtonNine)
             buttonNine.setOnClickListener {
-                val passData = "Syntax Topic 9"
+                val passData = "Morphology Topic 9"
                 val intent = Intent(this, QuizAddMulChoice6::class.java)
                 intent.putExtra("topic", passData)
                 startActivity(intent)
@@ -273,7 +273,7 @@ class QuizTypeActivity : AppCompatActivity() {
 
             val buttonEight = dialogBinding.findViewById<ImageButton>(R.id.imageButtonEight)
             buttonEight.setOnClickListener {
-                val passData = "Syntax Topic 8"
+                val passData = "Morphology Topic 8"
                 val intent = Intent(this, QuizAddMulChoice7::class.java)
                 intent.putExtra("topic", passData)
                 startActivity(intent)
@@ -281,7 +281,7 @@ class QuizTypeActivity : AppCompatActivity() {
 
             val buttonNine = dialogBinding.findViewById<ImageButton>(R.id.imageButtonNine)
             buttonNine.setOnClickListener {
-                val passData = "Syntax Topic 9"
+                val passData = "Morphology Topic 9"
                 val intent = Intent(this, QuizAddMulChoice7::class.java)
                 intent.putExtra("topic", passData)
                 startActivity(intent)
@@ -363,7 +363,7 @@ class QuizTypeActivity : AppCompatActivity() {
 
             val buttonEight = dialogBinding.findViewById<ImageButton>(R.id.imageButtonEight)
             buttonEight.setOnClickListener {
-                val passData = "Syntax Topic 8"
+                val passData = "Morphology Topic 8"
                 val intent = Intent(this, QuizAddMulChoice7::class.java)
                 intent.putExtra("topic", passData)
                 startActivity(intent)
@@ -371,7 +371,7 @@ class QuizTypeActivity : AppCompatActivity() {
 
             val buttonNine = dialogBinding.findViewById<ImageButton>(R.id.imageButtonNine)
             buttonNine.setOnClickListener {
-                val passData = "Syntax Topic 9"
+                val passData = "Morphology Topic 9"
                 val intent = Intent(this, QuizAddMulChoice7::class.java)
                 intent.putExtra("topic", passData)
                 startActivity(intent)
@@ -453,7 +453,7 @@ class QuizTypeActivity : AppCompatActivity() {
 
             val buttonEight = dialogBinding.findViewById<ImageButton>(R.id.imageButtonEight)
             buttonEight.setOnClickListener {
-                val passData = "Syntax Topic 8"
+                val passData = "Morphology Topic 8"
                 val intent = Intent(this, QuizAddMulChoice2::class.java)
                 intent.putExtra("topic", passData)
                 startActivity(intent)
@@ -461,7 +461,7 @@ class QuizTypeActivity : AppCompatActivity() {
 
             val buttonNine = dialogBinding.findViewById<ImageButton>(R.id.imageButtonNine)
             buttonNine.setOnClickListener {
-                val passData = "Syntax Topic 9"
+                val passData = "Morphology Topic 9"
                 val intent = Intent(this, QuizAddMulChoice2::class.java)
                 intent.putExtra("topic", passData)
                 startActivity(intent)

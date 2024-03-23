@@ -14,7 +14,7 @@ class QuizzesActivityMorph : AppCompatActivity() {
 
         val quizOne= findViewById<ImageButton>(R.id.imageButtonOne)
         quizOne.setOnClickListener {
-            val passData = "Syntax Topic 8"
+            val passData = "Morphology Topic 8"
             val intent = Intent(this, QuizzesActivitySyntaxOne::class.java)
             intent.putExtra("topic", passData)
             startActivity(intent)
@@ -22,7 +22,7 @@ class QuizzesActivityMorph : AppCompatActivity() {
 
         val quizTwo= findViewById<ImageButton>(R.id.imageButtonTwo)
         quizTwo.setOnClickListener {
-            val passData = "Syntax Topic 9"
+            val passData = "Morphology Topic 9"
             val intent = Intent(this, QuizzesActivitySyntaxOne::class.java)
             intent.putExtra("topic", passData)
             startActivity(intent)

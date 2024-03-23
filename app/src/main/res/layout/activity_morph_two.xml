@@ -96,37 +96,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/buttonOne"
-                style="@style/ButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="1. Prefixes"
-                tools:layout_editor_absoluteX="89dp"
-                tools:layout_editor_absoluteY="391dp" />
-
-            <Button
-                android:id="@+id/buttonTwo"
-                style="@style/ButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="2. Suffixes" />
-
-            <Button
-                android:id="@+id/buttonThree"
-                style="@style/ButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="3. Roots"
-                tools:layout_editor_absoluteX="79dp"
-                tools:layout_editor_absoluteY="635dp" />
 
             <Button
                 android:id="@+id/buttonFour"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="4. Compounding"
+                android:text="1. Compounding"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="565dp" />
 
@@ -135,7 +111,7 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="5. Blending"
+                android:text="2. Blending"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="565dp" />
 
@@ -144,7 +120,7 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="6. Backformation"
+                android:text="3. Backformation"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="635dp" />
 
@@ -153,7 +129,7 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="7. Conversion"
+                android:text="4. Conversion"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="565dp" />
         </LinearLayout>

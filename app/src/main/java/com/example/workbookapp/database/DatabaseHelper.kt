@@ -680,7 +680,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
 
 
 
-    fun importFromFirestoreToSQLite(){
+    fun importFromFirestoreToSQLite() : Boolean{
         try {
             TABLE_NAME_QUIZ_LIST_IMPORT()
             TABLE_NAME_SYNTAX_ONE_IMPORT()
@@ -692,6 +692,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
             Log.e("DBHelper", e.message.toString())
             throw e
         }
+        return true
     }
 
     fun TABLE_NAME_SYNTAX_ONE_IMPORT() {
@@ -1229,15 +1230,20 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         cursor.close()
     }
 
-    fun deleteQuiz()  {
+    fun deleteQuiz() : Boolean {
         Log.e("Firestore: ", "Deleting data..")
-        clearQuizListData()
-        clearQuizRearrange()
-        clearQuizMulChoice7()
-        clearQuizMulChoice2()
-        clearQuizMulChoice6()
-        clearSyntaxOne()
-        Log.e("Firestore: ", "Success")
+        try {
+            clearQuizListData()
+            clearQuizRearrange()
+            clearQuizMulChoice7()
+            clearQuizMulChoice2()
+            clearQuizMulChoice6()
+            clearSyntaxOne()
+            Log.e("Firestore: ", "Success")
+        }catch (e: Exception){
+            throw e
+        }
+        return true
     }
     fun clearQuizListData() {
         val db = getWritableDatabase()
@@ -1280,4 +1286,5 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         db.execSQL(deleteStatement)
         db.close()
     }
+
 }

@@ -1,6 +1,7 @@
 package com.example.workbookapp.lessons
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -8,10 +9,13 @@ import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.Gravity
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
+import com.example.workbookapp.MorphPrincipal
 import com.example.workbookapp.R
+import com.example.workbookapp.scores.ScoresActivity
 
-class MorphActivityOne : AppCompatActivity() {
+class   MorphActivityOne : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_morph_one)
@@ -78,6 +82,13 @@ class MorphActivityOne : AppCompatActivity() {
 
             textViewContent.setMovementMethod(ScrollingMovementMethod())
         }
+
+        val buttonThree = findViewById<Button>(R.id.buttonThree)
+        buttonThree.setOnClickListener {
+            val intent = Intent(this, MorphPrincipal::class.java)
+            startActivity(intent)
+        }
+
 
 
     }

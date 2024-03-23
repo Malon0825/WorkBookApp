@@ -43,16 +43,16 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/imageButtonOne"
+                android:id="@+id/imageButtonFive"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="@drawable/button_syntax_one" />
+                android:background="@drawable/button_syntax_five" />
 
             <ImageButton
-                android:id="@+id/imageButtonTwo"
+                android:id="@+id/imageButtonSix"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="@drawable/button_syntax_two" />
+                android:background="@drawable/button_syntax_six" />
 
             <ImageButton
                 android:id="@+id/imageButtonThree"
@@ -67,22 +67,27 @@
                 android:background="@drawable/button_syntax_four" />
 
             <ImageButton
-                android:id="@+id/imageButtonFive"
+                android:id="@+id/imageButtonOne"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="@drawable/button_syntax_five" />
+                android:background="@drawable/button_syntax_one" />
 
             <ImageButton
-                android:id="@+id/imageButtonSix"
+                android:id="@+id/imageButtonTwo"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="@drawable/button_syntax_six" />
+                android:background="@drawable/button_syntax_two" />
 
             <ImageButton
                 android:id="@+id/imageButtonSeven"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@drawable/button_syntax_seven" />
+
+
+
+
+
 
         </LinearLayout>
     </ScrollView>

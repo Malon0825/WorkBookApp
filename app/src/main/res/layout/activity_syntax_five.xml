@@ -101,7 +101,7 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="1.	Noun Phrase"
+                android:text="1. Noun Phrase"
                 tools:layout_editor_absoluteX="89dp"
                 tools:layout_editor_absoluteY="391dp" />
 
@@ -110,14 +110,23 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="2.	Verb Phrase" />
+                android:text="2. Verb Phrase" />
+
+            <Button
+                android:id="@+id/buttonFive"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="3. Prepositional Phrase"
+                tools:layout_editor_absoluteX="79dp"
+                tools:layout_editor_absoluteY="565dp" />
 
             <Button
                 android:id="@+id/buttonThree"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="3.	Adjectival Phrase"
+                android:text="4. Adjectival Phrase"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="635dp" />
 
@@ -126,16 +135,7 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="4.	Adverbial Phrase"
-                tools:layout_editor_absoluteX="79dp"
-                tools:layout_editor_absoluteY="565dp" />
-
-            <Button
-                android:id="@+id/buttonFive"
-                style="@style/ButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="5.	Prepositional Phrase"
+                android:text="5. Adverbial Phrase"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="565dp" />
 
@@ -144,7 +144,7 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="6.	Infinitive Phrase"
+                android:text="6. Infinitive Phrase"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="635dp" />
 
@@ -153,7 +153,7 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="7.	Participial Phrase"
+                android:text="7. Participial Phrase"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="565dp" />
         </LinearLayout>

@@ -61,12 +61,22 @@ class MainActivity : ComponentActivity() {
         val importDb = findViewById<ImageButton>(R.id.imageButtonUpdate)
         importDb.setOnClickListener {
 
-            dbHandler.deleteQuiz()
-            dbHandler.importFromFirestoreToSQLite()
-            Toast.makeText(this, "Update successful.", Toast.LENGTH_LONG).show()
+            try{
+                val isQuizDeleted = dbHandler.deleteQuiz()
+                val isQuizImported = dbHandler.importFromFirestoreToSQLite()
+
+                if (isQuizDeleted && isQuizImported){
+                    Toast.makeText(this, "Update successful.", Toast.LENGTH_LONG).show()
+                }else{
+                    Toast.makeText(this, "Update failed! Please check you internet connection and try again.", Toast.LENGTH_LONG).show()
+                }
+            }catch(e: Exception){
+                Toast.makeText(this, "Failed to update quizzes: $e", Toast.LENGTH_LONG).show()
+            }
         }
 
     }
+
     override fun onBackPressed() {
         val intent = Intent(this, LandingActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
