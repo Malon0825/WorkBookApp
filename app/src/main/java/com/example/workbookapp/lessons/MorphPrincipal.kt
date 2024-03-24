@@ -3,32 +3,23 @@ package com.example.workbookapp.lessons
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.Gravity
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
 import com.example.workbookapp.R
 
-class MorphActivityTwo : AppCompatActivity() {
+class MorphPrincipal : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_morph_two)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_morph_principal)
 
-
-        val textView = findViewById<TextView>(R.id.textViewInstructionContent)
-
-        textView.apply {
-            text = getString(R.string.morph_two_instruction) // Get the text from strings.xml
-        }
-        textView.setMovementMethod(ScrollingMovementMethod())
-
-
-
-
-        val buttonCompounding = findViewById<Button>(R.id.buttonCompounding)
-        buttonCompounding.setOnClickListener {
+        val oneOne = findViewById<Button>(R.id.buttonOne)
+        oneOne.setOnClickListener {
 
             val dialogBinding = layoutInflater.inflate(R.layout.display_lesson_content, null)
 
@@ -45,18 +36,19 @@ class MorphActivityTwo : AppCompatActivity() {
 
             val textViewTitle = dialogBinding.findViewById<TextView>(R.id.textViewTitle)
             textViewTitle.apply {
-                text = "Compounding"
+                text = "Prefixes"
             }
+
             val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
             textViewContent.apply {
-                text = getString(R.string.Compounding)
+                text = getString(R.string.Prefixes)
             }
 
             textViewContent.setMovementMethod(ScrollingMovementMethod())
         }
 
-        val buttonBlending = findViewById<Button>(R.id.buttonBlending)
-        buttonBlending.setOnClickListener {
+        val oneTwo = findViewById<Button>(R.id.buttonTwo)
+        oneTwo.setOnClickListener {
 
             val dialogBinding = layoutInflater.inflate(R.layout.display_lesson_content, null)
 
@@ -73,19 +65,18 @@ class MorphActivityTwo : AppCompatActivity() {
 
             val textViewTitle = dialogBinding.findViewById<TextView>(R.id.textViewTitle)
             textViewTitle.apply {
-                text = "Blending"
+                text = "Suffixes"
             }
-
             val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
             textViewContent.apply {
-                text = getString(R.string.Blending)
+                text = getString(R.string.Suffixes)
             }
 
             textViewContent.setMovementMethod(ScrollingMovementMethod())
         }
 
-        val buttonBackformation = findViewById<Button>(R.id.buttonBackformation)
-        buttonBackformation.setOnClickListener {
+        val oneThree = findViewById<Button>(R.id.buttonThree)
+        oneThree.setOnClickListener {
 
             val dialogBinding = layoutInflater.inflate(R.layout.display_lesson_content, null)
 
@@ -102,41 +93,11 @@ class MorphActivityTwo : AppCompatActivity() {
 
             val textViewTitle = dialogBinding.findViewById<TextView>(R.id.textViewTitle)
             textViewTitle.apply {
-                text = "Backformation"
+                text = "Roots"
             }
-
             val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
             textViewContent.apply {
-                text = getString(R.string.Backformation)
-            }
-
-            textViewContent.setMovementMethod(ScrollingMovementMethod())
-        }
-
-        val buttonConversion = findViewById<Button>(R.id.buttonConversion)
-        buttonConversion.setOnClickListener {
-
-            val dialogBinding = layoutInflater.inflate(R.layout.display_lesson_content, null)
-
-            val myDialog = Dialog(this)
-            myDialog.setContentView(dialogBinding)
-
-            val window = myDialog.window
-            window?.setGravity(Gravity.CENTER)
-            window?.setDimAmount(0.6F)
-
-            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            myDialog.setCanceledOnTouchOutside(true)
-            myDialog.show()
-
-            val textViewTitle = dialogBinding.findViewById<TextView>(R.id.textViewTitle)
-            textViewTitle.apply {
-                text = "Conversion"
-            }
-
-            val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
-            textViewContent.apply {
-                text = getString(R.string.Conversion)
+                text = getString(R.string.Roots)
             }
 
             textViewContent.setMovementMethod(ScrollingMovementMethod())

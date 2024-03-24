@@ -1,4 +1,4 @@
-package com.example.workbookapp
+package com.example.workbookapp.lessons
 
 import android.app.Dialog
 import android.graphics.Color
@@ -10,19 +10,18 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.workbookapp.R
 
-class MorphPrincipal : AppCompatActivity() {
+class FreeBoundMorphemes : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_morph_principal)
+        setContentView(R.layout.activity_free_bound_morphemes)
 
         val oneOne = findViewById<Button>(R.id.buttonOne)
         oneOne.setOnClickListener {
 
-            val dialogBinding = layoutInflater.inflate(R.layout.morph_one_three, null)
+            val dialogBinding = layoutInflater.inflate(R.layout.display_lesson_content, null)
 
             val myDialog = Dialog(this)
             myDialog.setContentView(dialogBinding)
@@ -37,12 +36,12 @@ class MorphPrincipal : AppCompatActivity() {
 
             val textViewTitle = dialogBinding.findViewById<TextView>(R.id.textViewTitle)
             textViewTitle.apply {
-                text = "Prefixes"
+                text = "Free Morphemes"
             }
 
             val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
             textViewContent.apply {
-                text = getString(R.string.morph_two_one)
+                text = getString(R.string.Free_Morphemes)
             }
 
             textViewContent.setMovementMethod(ScrollingMovementMethod())
@@ -51,7 +50,7 @@ class MorphPrincipal : AppCompatActivity() {
         val oneTwo = findViewById<Button>(R.id.buttonTwo)
         oneTwo.setOnClickListener {
 
-            val dialogBinding = layoutInflater.inflate(R.layout.morph_one_three, null)
+            val dialogBinding = layoutInflater.inflate(R.layout.display_lesson_content, null)
 
             val myDialog = Dialog(this)
             myDialog.setContentView(dialogBinding)
@@ -66,43 +65,17 @@ class MorphPrincipal : AppCompatActivity() {
 
             val textViewTitle = dialogBinding.findViewById<TextView>(R.id.textViewTitle)
             textViewTitle.apply {
-                text = "Suffixes"
+                text = "Bound Morphemes"
             }
             val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
             textViewContent.apply {
-                text = getString(R.string.morph_two_two)
+                text = getString(R.string.Bound_Morphemes)
             }
 
             textViewContent.setMovementMethod(ScrollingMovementMethod())
         }
 
-        val oneThree = findViewById<Button>(R.id.buttonThree)
-        oneThree.setOnClickListener {
 
-            val dialogBinding = layoutInflater.inflate(R.layout.morph_one_three, null)
-
-            val myDialog = Dialog(this)
-            myDialog.setContentView(dialogBinding)
-
-            val window = myDialog.window
-            window?.setGravity(Gravity.CENTER)
-            window?.setDimAmount(0.6F)
-
-            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            myDialog.setCanceledOnTouchOutside(true)
-            myDialog.show()
-
-            val textViewTitle = dialogBinding.findViewById<TextView>(R.id.textViewTitle)
-            textViewTitle.apply {
-                text = "Roots"
-            }
-            val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
-            textViewContent.apply {
-                text = getString(R.string.morph_two_three)
-            }
-
-            textViewContent.setMovementMethod(ScrollingMovementMethod())
-        }
 
     }
 }

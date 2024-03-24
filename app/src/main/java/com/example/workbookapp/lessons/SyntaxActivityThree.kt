@@ -130,7 +130,7 @@ class SyntaxActivityThree : AppCompatActivity() {
 
         val oneFive = findViewById<Button>(R.id.buttonFive)
         oneFive.setOnClickListener {
-            val dialogBinding = layoutInflater.inflate(R.layout.syntax_three_four, null)
+            val dialogBinding = layoutInflater.inflate(R.layout.syntax_three_five, null)
 
             val myDialog = Dialog(this)
             myDialog.setContentView(dialogBinding)

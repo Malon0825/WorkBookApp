@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".lessons.SyntaxActivityFive">
+    android:layout_height="match_parent">
 
     <View
         android:id="@+id/view"
@@ -97,68 +96,69 @@
             android:orientation="vertical" >
 
             <Button
-                android:id="@+id/buttonNoun"
+                android:id="@+id/buttonOne"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="1. Noun Phrase"
+                android:text="1.	Noun Phrase"
                 tools:layout_editor_absoluteX="89dp"
                 tools:layout_editor_absoluteY="391dp" />
 
             <Button
-                android:id="@+id/buttonVerb"
+                android:id="@+id/buttonTwo"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="2. Verb Phrase" />
+                android:text="2.	Verb Phrase" />
 
             <Button
-                android:id="@+id/buttonPrepositional"
+                android:id="@+id/buttonThree"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="3. Prepositional Phrase"
-                tools:layout_editor_absoluteX="79dp"
-                tools:layout_editor_absoluteY="565dp" />
-
-            <Button
-                android:id="@+id/buttonAdjectival"
-                style="@style/ButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="4. Adjectival Phrase"
+                android:text="3.	Adjectival Phrase"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="635dp" />
 
             <Button
-                android:id="@+id/buttonAdverbial"
+                android:id="@+id/buttonFour"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="5. Adverbial Phrase"
+                android:text="4.	Adverbial Phrase"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="565dp" />
 
             <Button
-                android:id="@+id/buttonInfinitive"
+                android:id="@+id/buttonFive"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="6. Infinitive Phrase"
+                android:text="5.	Prepositional Phrase"
+                tools:layout_editor_absoluteX="79dp"
+                tools:layout_editor_absoluteY="565dp" />
+
+            <Button
+                android:id="@+id/buttonSix"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="6.	Infinitive Phrase"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="635dp" />
 
             <Button
-                android:id="@+id/buttonParticipial"
+                android:id="@+id/buttonSeven"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="7. Participial Phrase"
+                android:text="7.	Participial Phrase"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="565dp" />
         </LinearLayout>
 
 
     </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -98,7 +98,7 @@
 
 
             <Button
-                android:id="@+id/buttonFour"
+                android:id="@+id/buttonCompounding"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -107,7 +107,7 @@
                 tools:layout_editor_absoluteY="565dp" />
 
             <Button
-                android:id="@+id/buttonFive"
+                android:id="@+id/buttonBlending"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -116,7 +116,7 @@
                 tools:layout_editor_absoluteY="565dp" />
 
             <Button
-                android:id="@+id/buttonSix"
+                android:id="@+id/buttonBackformation"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -125,7 +125,7 @@
                 tools:layout_editor_absoluteY="635dp" />
 
             <Button
-                android:id="@+id/buttonSeven"
+                android:id="@+id/buttonConversion"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"

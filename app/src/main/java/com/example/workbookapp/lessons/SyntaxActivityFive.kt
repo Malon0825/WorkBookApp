@@ -10,11 +10,16 @@ import android.view.Gravity
 import android.widget.Button
 import android.widget.TextView
 import com.example.workbookapp.R
+import com.example.workbookapp.adapter.OpenLessonWindow
 
 class SyntaxActivityFive : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_syntax_five)
+
+        val openLesson = OpenLessonWindow()
+        var title : String
+        var content : String
 
         // Get a reference to the TextView object
         val textView = findViewById<TextView>(R.id.textViewInstructionContent)
@@ -28,177 +33,62 @@ class SyntaxActivityFive : AppCompatActivity() {
         textView.setMovementMethod(ScrollingMovementMethod())
 
 
+        val buttonNoun = findViewById<Button>(R.id.buttonNoun)
+        buttonNoun.setOnClickListener {
+            title = "Noun Phrase"
+            content = getString(R.string.Noun)
 
-        val oneOne = findViewById<Button>(R.id.buttonOne)
-        oneOne.setOnClickListener {
-
-            val dialogBinding = layoutInflater.inflate(R.layout.syntax_five_one, null)
-
-            val myDialog = Dialog(this)
-            myDialog.setContentView(dialogBinding)
-
-            val window = myDialog.window
-            window?.setGravity(Gravity.CENTER)
-            window?.setDimAmount(0.6F)
-
-            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            myDialog.setCanceledOnTouchOutside(true)
-            myDialog.show()
-
-
-            val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
-            textViewContent.apply {
-                text = getString(R.string.syntax_five_one)
-            }
-
-            textViewContent.setMovementMethod(ScrollingMovementMethod())
+            openLesson.ShowLessonDialog(this, title, content)
         }
 
-        val oneTwo = findViewById<Button>(R.id.buttonTwo)
-        oneTwo.setOnClickListener {
+        val buttonVerb = findViewById<Button>(R.id.buttonVerb)
+        buttonVerb.setOnClickListener {
+            title = "Verb Phrase"
+            content = getString(R.string.Verb)
 
-            val dialogBinding = layoutInflater.inflate(R.layout.syntax_five_two, null)
-
-            val myDialog = Dialog(this)
-            myDialog.setContentView(dialogBinding)
-
-            val window = myDialog.window
-            window?.setGravity(Gravity.CENTER)
-            window?.setDimAmount(0.6F)
-
-            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            myDialog.setCanceledOnTouchOutside(true)
-            myDialog.show()
-
-
-            val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
-            textViewContent.apply {
-                text = getString(R.string.syntax_five_two)
-            }
-
-            textViewContent.setMovementMethod(ScrollingMovementMethod())
+            openLesson.ShowLessonDialog(this, title, content)
         }
 
-        val oneThree = findViewById<Button>(R.id.buttonThree)
-        oneThree.setOnClickListener {
+        val buttonPrepositional = findViewById<Button>(R.id.buttonPrepositional)
+        buttonPrepositional.setOnClickListener {
+            title = "Prepositional Phrase"
+            content = getString(R.string.Prepositional)
 
-            val dialogBinding = layoutInflater.inflate(R.layout.syntax_five_three, null)
-
-            val myDialog = Dialog(this)
-            myDialog.setContentView(dialogBinding)
-
-            val window = myDialog.window
-            window?.setGravity(Gravity.CENTER)
-            window?.setDimAmount(0.6F)
-
-            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            myDialog.setCanceledOnTouchOutside(true)
-            myDialog.show()
-
-
-            val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
-            textViewContent.apply {
-                text = getString(R.string.syntax_five_three)
-            }
-
-            textViewContent.setMovementMethod(ScrollingMovementMethod())
+            openLesson.ShowLessonDialog(this, title, content)
         }
 
-        val oneFour = findViewById<Button>(R.id.buttonFour)
-        oneFour.setOnClickListener {
-            val dialogBinding = layoutInflater.inflate(R.layout.syntax_five_four, null)
+        val buttonAdjectival = findViewById<Button>(R.id.buttonAdjectival)
+        buttonAdjectival.setOnClickListener {
+            title = "Adjectival Phrase"
+            content = getString(R.string.Adjectival)
 
-            val myDialog = Dialog(this)
-            myDialog.setContentView(dialogBinding)
-
-            val window = myDialog.window
-            window?.setGravity(Gravity.CENTER)
-            window?.setDimAmount(0.6F)
-
-            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            myDialog.setCanceledOnTouchOutside(true)
-            myDialog.show()
-
-
-            val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
-            textViewContent.apply {
-                text = getString(R.string.syntax_five_four)
-            }
-
-            textViewContent.setMovementMethod(ScrollingMovementMethod())
+            openLesson.ShowLessonDialog(this, title, content)
         }
 
-        val oneFive = findViewById<Button>(R.id.buttonFive)
-        oneFive.setOnClickListener {
-            val dialogBinding = layoutInflater.inflate(R.layout.syntax_five_five, null)
+        val buttonAdverbial = findViewById<Button>(R.id.buttonAdverbial)
+        buttonAdverbial.setOnClickListener {
+            title = "Adverbial Phrase"
+            content = getString(R.string.Adverbial)
 
-            val myDialog = Dialog(this)
-            myDialog.setContentView(dialogBinding)
-
-            val window = myDialog.window
-            window?.setGravity(Gravity.CENTER)
-            window?.setDimAmount(0.6F)
-
-            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            myDialog.setCanceledOnTouchOutside(true)
-            myDialog.show()
-
-
-            val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
-            textViewContent.apply {
-                text = getString(R.string.syntax_five_five)
-            }
-
-            textViewContent.setMovementMethod(ScrollingMovementMethod())
+            openLesson.ShowLessonDialog(this, title, content)
         }
 
-        val oneSix = findViewById<Button>(R.id.buttonSix)
-        oneSix.setOnClickListener {
-            val dialogBinding = layoutInflater.inflate(R.layout.syntax_five_six, null)
+        val buttonInfinitive = findViewById<Button>(R.id.buttonInfinitive)
+        buttonInfinitive.setOnClickListener {
+            title = "Infinitive Phrase"
+            content = getString(R.string.Infinitive)
 
-            val myDialog = Dialog(this)
-            myDialog.setContentView(dialogBinding)
-
-            val window = myDialog.window
-            window?.setGravity(Gravity.CENTER)
-            window?.setDimAmount(0.6F)
-
-            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            myDialog.setCanceledOnTouchOutside(true)
-            myDialog.show()
-
-
-            val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
-            textViewContent.apply {
-                text = getString(R.string.syntax_five_six)
-            }
-
-            textViewContent.setMovementMethod(ScrollingMovementMethod())
+            openLesson.ShowLessonDialog(this, title, content)
         }
 
-        val oneSeven = findViewById<Button>(R.id.buttonSeven)
-        oneSeven.setOnClickListener {
-            val dialogBinding = layoutInflater.inflate(R.layout.syntax_five_seven, null)
+        val buttonParticipial = findViewById<Button>(R.id.buttonParticipial)
+        buttonParticipial.setOnClickListener {
+            title = "Participial Phrase"
+            content = getString(R.string.Participial)
 
-            val myDialog = Dialog(this)
-            myDialog.setContentView(dialogBinding)
-
-            val window = myDialog.window
-            window?.setGravity(Gravity.CENTER)
-            window?.setDimAmount(0.6F)
-
-            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            myDialog.setCanceledOnTouchOutside(true)
-            myDialog.show()
-
-
-            val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
-            textViewContent.apply {
-                text = getString(R.string.syntax_five_seven)
-            }
-
-            textViewContent.setMovementMethod(ScrollingMovementMethod())
+            openLesson.ShowLessonDialog(this, title, content)
         }
+
 
     }
 }

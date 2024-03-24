@@ -16,7 +16,16 @@
         android:theme="@style/Theme.WorkBookApp"
         tools:targetApi="31">
         <activity
-            android:name=".MorphPrincipal"
+            android:name=".lessons.SubordinatingClauses"
+            android:exported="false" />
+        <activity
+            android:name=".lessons.InflectionalDerivationalMorphemes"
+            android:exported="false" />
+        <activity
+            android:name=".lessons.FreeBoundMorphemes"
+            android:exported="false" />
+        <activity
+            android:name=".lessons.MorphPrincipal"
             android:exported="false" />
         <activity
             android:name=".quizzes.QuizModelRearrange"

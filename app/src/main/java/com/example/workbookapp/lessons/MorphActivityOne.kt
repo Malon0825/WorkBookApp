@@ -1,19 +1,12 @@
 package com.example.workbookapp.lessons
 
-import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
-import android.view.Gravity
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.TextView
-import com.example.workbookapp.MorphPrincipal
 import com.example.workbookapp.R
-import com.example.workbookapp.scores.ScoresActivity
 
 class   MorphActivityOne : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,52 +28,14 @@ class   MorphActivityOne : AppCompatActivity() {
 
         val oneOne = findViewById<Button>(R.id.buttonOne)
         oneOne.setOnClickListener {
-
-            val dialogBinding = layoutInflater.inflate(R.layout.morph_one_one, null)
-
-            val myDialog = Dialog(this)
-            myDialog.setContentView(dialogBinding)
-
-            val window = myDialog.window
-            window?.setGravity(Gravity.CENTER)
-            window?.setDimAmount(0.6F)
-
-            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            myDialog.setCanceledOnTouchOutside(true)
-            myDialog.show()
-
-
-            val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
-            textViewContent.apply {
-                text = getString(R.string.morph_one_one)
-            }
-
-            textViewContent.setMovementMethod(ScrollingMovementMethod())
+            val intent = Intent(this, FreeBoundMorphemes::class.java)
+            startActivity(intent)
         }
 
-        val oneTwo = findViewById<Button>(R.id.buttonTwo)
-        oneTwo.setOnClickListener {
-
-            val dialogBinding = layoutInflater.inflate(R.layout.morph_one_two, null)
-
-            val myDialog = Dialog(this)
-            myDialog.setContentView(dialogBinding)
-
-            val window = myDialog.window
-            window?.setGravity(Gravity.CENTER)
-            window?.setDimAmount(0.6F)
-
-            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            myDialog.setCanceledOnTouchOutside(true)
-            myDialog.show()
-
-
-            val textViewContent = dialogBinding.findViewById<TextView>(R.id.textViewContent)
-            textViewContent.apply {
-                text = getString(R.string.morph_one_two)
-            }
-
-            textViewContent.setMovementMethod(ScrollingMovementMethod())
+        val buttonTwo = findViewById<Button>(R.id.buttonTwo)
+        buttonTwo.setOnClickListener {
+            val intent = Intent(this, InflectionalDerivationalMorphemes::class.java)
+            startActivity(intent)
         }
 
         val buttonThree = findViewById<Button>(R.id.buttonThree)

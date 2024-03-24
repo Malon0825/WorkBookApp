@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="syntax_clauses_instruction">Clauses are essential components of sentences, and mastering them is crucial for developing strong writing skills. \n\nIn this lesson, we will cover the basics of independent and dependent clauses, various types of dependent clauses, and how to use them in sentences. \n\nBy the end of this workbook, you\'ll be able to craft more complex and engaging sentences. \n\nLet\'s get started! \n\nA clause is a group of words that contains a subject and a verb. \n\nIt can either stand alone as a complete thought (independent clause) or rely on another clause to make sense (dependent clause). \n\nEN7G-II-a-1 \nUse phrases, clauses, and sentences appropriately and meaningfully. \n\nEN8WC-Id-1.1.6 \nOrganize ideas in one-step word, phrase, and sentence outline forms.
+    </string>
+
+    <string name="syntax_clauses_independent">Main Clauses \n\nExamples: \n\n\"I love reading books.\" \n\n\"He played basketball.\" \n\nMain clauses are clauses that can stand alone as complete sentences. In the first example, \"I love reading books,\" the subject (\"I\") and the verb (\"love reading books\") create a complete thought that can be a sentence on its own. The same applies to the second example, \"He played basketball.\"
+    </string>
+
+    <string name="syntax_clauses_dependent">Subordinating Clauses \n\nExamples: \n\n\"Although it rained\" \n\n\"Because she was tired\" \n\nSubordinating clauses are clauses that cannot stand alone as complete sentences. In the first example, \"Although it rained,\" we have the subordinating conjunction \"Although\" that makes it a dependent clause. It needs more information to complete the thought. The second example, \"Because she was tired,\" also relies on additional information to make sense as it starts with the subordinating conjunction \"Because.\"
+    </string>
+
+    <string name="syntax_clauses_adjective">Types of Dependent Clauses \n\nAdjective Clauses \n\nExamples: \n\n\""The book that I borrowed from the library is fascinating.\" \n\n\"The girl who won the race is my sister.\" \n\nAdjective clauses provide additional information about nouns in sentences. In the first example, \"that I borrowed from the library\" describes which book we're talking about. In the second example, \"who won the race\" provides more information about the girl. These clauses function like adjectives, adding details to the nouns they modify.
+    </string>
+
+    <string name="syntax_clauses_adverbial">Adverbial Clauses \n\nExamples: \n\n\"She studied hard because she wanted to pass the exam.\" \n\n\"He ran quickly so that he could catch the bus.\" \n\nAdverbial clauses modify verbs, adjectives, or adverbs. In the first example, \"because she wanted to pass the exam\" explains why she studied hard, modifying the verb \"studied.\" In the second example, \"so that he could catch the bus\" tells us the purpose of running quickly, modifying the verb \"ran.\"
+    </string>
+
+    <string name="syntax_clauses_noun">A noun clause is a clause (a group of words with a subject and a verb) that serves as a noun in a sentence. It is a dependent clause and cannot function alone as a complete 	sentence. To work properly, it must be part of a larger sentence to form a complete thought. \nIn other words, a noun clause has a subject and a predicate, like a sentence, but because it is dependent, it doesn\’t express a complete thought. \nA Noun clause usually begins with words such as \"what,\" \"why,\" \"who,\" \"when,\" \"how,\" or \"that,\" and can be used to provide more information about a noun in the sentence.
+        \n\nExamples:
+		\nMy mom helped me decide which school should I enroll in.
+		\nThe most wonderful thing I admired about my teachers is that they are so brilliant.
+		\nWhat my parent said helped me to become the person I am now.
+    </string>
+
+</resources>
