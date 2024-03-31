@@ -42,8 +42,8 @@ class QuizzesActivitySyntaxOne : AppCompatActivity() {
             "Syntax Topic 6" -> topicLogo.background = resources.getDrawable(R.drawable.button_syntax_six, null)
             "Syntax Topic 7" -> topicLogo.background = resources.getDrawable(R.drawable.button_syntax_seven, null)
 
-            "Syntax Topic 8" -> topicLogo.background = resources.getDrawable(R.drawable.button_morph_one, null)
-            "Syntax Topic 9" -> topicLogo.background = resources.getDrawable(R.drawable.button_morph_two, null)
+            "Morphology Topic 8" -> topicLogo.background = resources.getDrawable(R.drawable.button_morph_one, null)
+            "Morphology Topic 9" -> topicLogo.background = resources.getDrawable(R.drawable.button_morph_two, null)
             else -> {
                 // Handle other cases
             }
