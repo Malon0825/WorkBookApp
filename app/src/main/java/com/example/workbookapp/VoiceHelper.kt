@@ -15,7 +15,9 @@ class VoiceHelper(private val context: Context) {
         MediaPlayer.create(context, R.raw.wrong_one),
         MediaPlayer.create(context, R.raw.wrong_two),
         MediaPlayer.create(context, R.raw.wrong_three),
-        MediaPlayer.create(context, R.raw.wrong_four)
+
+        //Excluded by user request
+        //MediaPlayer.create(context, R.raw.wrong_four)
     )
 
     fun playSound(correct: Boolean) {
