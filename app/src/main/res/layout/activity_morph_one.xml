@@ -97,11 +97,18 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/buttonThree"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="1. Principal Parts of a Word" />
+
+            <Button
                 android:id="@+id/buttonOne"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="1.	Free and Bound Morphemes"
+                android:text="2. Free and Bound Morphemes"
                 tools:layout_editor_absoluteX="89dp"
                 tools:layout_editor_absoluteY="391dp" />
 
@@ -110,14 +117,7 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="2.	Inflectional and Derivational Morphemes" />
-
-            <Button
-                android:id="@+id/buttonThree"
-                style="@style/ButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="3. Principal Parts of a Word" />
+                android:text="3. Inflectional and Derivational Morphemes" />
 
         </LinearLayout>
 
